@@ -1,0 +1,111 @@
+.privatefooter {
+    box-sizing: border-box;
+    margin-top: 115px;
+    background-color: #E3E2E2;
+    /* 出现横向滚动条，背景色没铺满的问题 */
+    min-width: -moz-max-content;
+    min-width: max-content;
+}
+
+.privatefooter-wrap {
+    width: 1182px;
+    box-sizing: border-box;
+    padding-top: 52px;
+    padding-bottom: 52px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.privatefooter-wrap-img {
+    width: 304px;
+    height: 77px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 33px;
+}
+
+.privatefooter-wrap-info {
+    float: right;
+}
+
+.privatefooter-wrap-info-title {
+}
+
+.privatefooter-wrap-info-title-item {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 33px;
+}
+
+.privatefooter-wrap-info-title-item:last-child {
+    margin-right: 20px;
+}
+
+.privatefooter-wrap-info-title-item-mark {
+    width: 2px;
+    height: 20px;
+    background: rgba(140, 151, 165, 0.11);
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 16px;
+}
+
+.privatefooter-wrap-info-title-item-txt {
+    font-size: 14px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #808080;
+    line-height: 15px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.privatefooter-wrap-info-xieyi {
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #A6A6A6;
+    line-height: 13px;
+    display: block;
+    margin-top: 13px;
+}
+
+.privatefooter-wrap-info-xieyidesc {
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #A6A6A6;
+    line-height: 13px;
+    display: block;
+    margin-top: 9px;
+}
+
+.privatefooter-wrap-info-warn {
+    display: block;
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #A6A6A6;
+    line-height: 13px;
+    margin-top: 9px;
+}
+
+.privatefooter-wrap-info-beian {
+    display: block;
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #A6A6A6;
+    line-height: 13px;
+    margin-top: 9px;
+}
+
+.privatefooter-wrap-info-piwen {
+    display: block;
+    margin-top: 9px;
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #A6A6A6;
+    line-height: 14px;
+}

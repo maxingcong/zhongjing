@@ -1,0 +1,157 @@
+.privateheader {
+    /* 出现横向滚动条，背景色没铺满的问题 */
+    min-width: -moz-max-content;
+    min-width: max-content;
+    height: 98px;
+    background-color: #E3E2E2;
+}
+
+.privateheader-wrap {
+    width: 1182px;
+    height: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding-top: 25px;
+    position: relative;
+}
+
+.privateheader-wrap-logo {
+    width: 159px;
+    height: 40px;
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.privateheader-wrap-item {
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 6px;
+    margin-left: 51px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.privateheader-wrap-item-home {
+    margin-left: 159px;
+}
+
+.privateheader-wrap-item-txt {
+    font-size: 20px;
+    font-family: Microsoft YaHei;
+    font-weight: bold;
+    font-style: italic;
+    color: #323B35;
+    letter-spacing: 8px;
+    display: block;
+}
+
+.privateheader-wrap-item-desc {
+    font-size: 12px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    font-style: italic;
+    color: #323B35;
+    opacity: 0.3;
+    display: block;
+    margin-top: 6px;
+    position: relative;
+    left: -3px;
+}
+
+.privateheader-wrap-item-home .privateheader-wrap-item-desc {
+    text-align: left;
+    left: 0;
+}
+
+.privateheader-wrap-item-active .privateheader-wrap-item-txt {
+    color: #00AB85;
+}
+
+.privateheader-wrap-item-active .privateheader-wrap-item-desc {
+    color: #0BA986;
+}
+
+.privateheader-wrap-login {
+    float: right;
+    margin-top: 9px;
+    cursor: pointer;
+    margin-right: 38px;
+}
+
+.privateheader-wrap-login-img {
+    width: 22px;
+    height: 24px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.privateheader-wrap-login-txt {
+    font-size: 18px;
+    font-family: Microsoft YaHei;
+    font-weight: 400;
+    color: #00B590;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 4px;
+    margin-left: 13px;
+}
+
+.privateheader-wrap-login-warn {
+    width: 140px;
+    height: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    left: 1182px;
+    top: 0;
+    background-color: #E3E2E2;
+    padding-top: 25px;
+    display: none;
+}
+
+.privateheader-wrap-login-warn-wrap {
+    width: 100%;
+    height: 44px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    border: 3px dashed #7BC661;
+    line-height: 38px;
+    cursor: pointer;
+}
+
+.privateheader-wrap-login-warn-txt {
+    text-align: center;
+    font-size: 16px;
+    font-family: Microsoft YaHei;
+    font-weight: bold;
+    color: #FF4F4F;
+    position: absolute;
+    top: 39px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* 误删，这个就是UI上面的边框渐变 */
+@supports (-webkit-mask: none) or (mask: none) {
+    .privateheader-wrap-login-warn-wrap {
+        border: none;
+        background: linear-gradient(to right, #2BAEB9, #7BC661) no-repeat;
+        -webkit-mask-image: linear-gradient(to right, #000 6px, transparent 6px), linear-gradient(to bottom, #000 6px, transparent 6px), linear-gradient(to right, #000 6px, transparent 6px), linear-gradient(to bottom, #000 6px, transparent 6px);
+        -webkit-mask-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
+        -webkit-mask-position: 0 0, 0 0, 0 100%, 100% 0;
+        -webkit-mask-size: 12px 3px, 3px 12px, 12px 3px, 3px 12px;
+        /* 合并写法 */
+        mask: linear-gradient(to right, #000 6px, transparent 6px) repeat-x,
+        linear-gradient(to bottom, #000 6px, transparent 6px) repeat-y,
+        linear-gradient(to right, #000 6px, transparent 6px) repeat-x 0 100%,
+        linear-gradient(to bottom, #000 6px, transparent 6px) repeat-y 100% 0;
+        mask-size: 12px 3px, 3px 12px, 12px 3px, 3px 12px;
+    }
+}
+
+@media screen and (min-width: 1462px) {
+    .privateheader-wrap-login-warn {
+        display: block;
+    }
+}
