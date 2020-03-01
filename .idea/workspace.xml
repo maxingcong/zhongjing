@@ -2,133 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cc570b4-3f8b-4bd8-b84f-5df221d01a87" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/user/forgetPassword.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/user/login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/user/register.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/css/follow.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/css/materialdesignicons.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/css/subject.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/css/vue-dplayer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/materialdesignicons-webfont.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/materialdesignicons-webfont.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/materialdesignicons-webfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/materialdesignicons-webfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/fonts/materialdesignicons-webfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/001.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/002.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/003.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/004.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/005.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/QR-code-img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/add.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/admin.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/bg003.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/bisai.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/chongzhi01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/chongzhi02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/chongzhi03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/chongzhi04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/chongzhi05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/chongzhi06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/4.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/6.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/avatar.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/biaoqing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/demo_img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/dianzan.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/fans-img1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/lol.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/pinglun.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/quanzi001.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/quanzi002.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/quanzi003.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/quanzi004.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/quanzi_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/send.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/upload.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/circle/video.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/code.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/edit.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/email.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/game1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/gameblg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/gameedg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/gamefpb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/gameigy.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/gamejdm.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/guanzhu01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/icon_ali01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/icon_wechat01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/kplsais.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/lianjie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/lplsaishi.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/myicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/nav-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/phone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/quickpay01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/reduce.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/shangpin01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/success-img.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/touxiang01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/tuiguangma.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/user1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/xuanshou.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/images/zhandui.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/js/DPlayer.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/video/demo_video.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/layout/BodyHeader.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/modules/auth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/validator/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/validator/validPositiveInteger.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/validator/validPositiveRealNumber.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/validator/validateCardNo.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/circle/Circle.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/circle/components/DefaultCircle.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/circle/components/MyDynamic.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/circle/components/MyFans.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/circle/components/MyFollow.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/circle/components/PublicDynamic.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/AgentPromotion.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/MyConcern.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/MyGuess.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/MyInfo.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/MyOrder.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/SystemMessage.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/AgentPromotionDetails.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/AgentPromotionExchange.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/AgentPromotionFriend.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedGame.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedPlayer.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedTeam.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/InfoEdit.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/OnfoDetailed.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/OrderDetails.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/Recharge.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/Footer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/BodyFooter.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/Header.vue" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/Main.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/BodyMain.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/layout/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/layout/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modules/menu.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/circle/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/circle/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -151,11 +26,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="register.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="register.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/api/user/register.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="45">
               <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="525">
+                <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -298,6 +185,7 @@
         <option value="$PROJECT_DIR$/vue.config.js" />
         <option value="$PROJECT_DIR$/src/api/index.js" />
         <option value="$PROJECT_DIR$/src/api/user/register.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -424,12 +312,12 @@
       <option name="presentableId" value="Default" />
       <updated>1582949028128</updated>
       <workItem from="1582949032216" duration="33203000" />
-      <workItem from="1583058468980" duration="4890000" />
+      <workItem from="1583058468980" duration="5365000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38093000" />
+    <option name="totallyTimeSpent" value="38568000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="45" width="1400" height="772" extended-state="0" />
@@ -518,13 +406,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/views/home/index.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../中竞网-个人中心/circle-fans.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -875,6 +756,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="5" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="525">
+            <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
