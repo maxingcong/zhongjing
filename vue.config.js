@@ -87,5 +87,18 @@ module.exports = {
             )
             .end();
     },
+    //服务器代理
+    devServer: {
+        proxy: {
+            '/api': {
+                target: 'http://120.24.224.218:8081/', //对应自己的接口
+                changeOrigin: true,
+                ws: true,
+                pathRewrite: {
+                    '^/api': ''
+                }
+            }
+        }
+    }
 
 }

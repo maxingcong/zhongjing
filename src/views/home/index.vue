@@ -6,7 +6,15 @@
 
 <script>
     export default {
-        name: "home"
+        name: "home",
+        created() {
+            this.query()
+        },
+        methods: {
+            query() {
+                console.log('home')
+            }
+        }
     }
 </script>
 

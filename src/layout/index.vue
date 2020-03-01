@@ -1,17 +1,17 @@
 <template>
     <div class="vertical">
-        <Header></Header>
-        <Main></Main>
-        <Footer></Footer>
+        <BodyHeader></BodyHeader>
+        <BodyMain></BodyMain>
+        <BodyFooter></BodyFooter>
     </div>
 </template>
 <script>
-    import Header from './Header'
-    import Footer from './Footer'
-    import Main from './Main'
+    import BodyHeader from './BodyHeader'
+    import BodyFooter from './BodyFooter'
+    import BodyMain from './BodyMain'
 
     export default {
-        components: {Header, Footer, Main}
+        components: {BodyHeader, BodyFooter, BodyMain}
     }
 </script>
 <style>
