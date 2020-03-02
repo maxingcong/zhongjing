@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { Message } from 'element-ui'
+import {Message} from 'element-ui'
 
 const baseURL = '/api'
 
-const instance = axios.create({
+const http = axios.create({
     baseURL,
     timeout: 15000,
     // 只作用于 params（手动拼接在 url 后的参数不走这里）
@@ -12,7 +12,7 @@ const instance = axios.create({
         'Accept': 'application/json'
     }
 })
-instance.interceptors.request.use(config => {
+http.interceptors.request.use(config => {
     // const token = store.getters.auth.token
     // if (token) {
     //     config.headers['X-Auth-Token'] = token
@@ -23,7 +23,7 @@ instance.interceptors.request.use(config => {
     return Promise.reject(error)
 })
 
-instance.interceptors.response.use(response => {
+http.interceptors.response.use(response => {
     const data = response.data || {}
     // 将响应结果 `data.resultData` 挂载到 `response.body`
     if (data.resultCode === 1000) {
@@ -37,7 +37,8 @@ instance.interceptors.response.use(response => {
     return response
 }, error => {
     if (axios.isCancel(error)) {
-        return new Promise(() => {})
+        return new Promise(() => {
+        })
     }
     if (error.response) {
         // removePending(error.response)
@@ -52,4 +53,4 @@ instance.interceptors.response.use(response => {
     return Promise.reject(error)
 })
 
-export default instance
+export default http

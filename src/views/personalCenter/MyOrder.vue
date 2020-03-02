@@ -48,25 +48,31 @@
                     </div>
                     <div class="page-turning-box">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#"><i class="mdi-set mdi-chevron-left"></i></a></li>
-                            <li class="page-item"><a class="page-link" href="#"><i class="mdi-set mdi-chevron-right"></i></a></li>
+                            <li class="page-item"><a class="page-link" href="#"><i class="mdi-set mdi-chevron-left"></i></a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#"><i
+                                    class="mdi-set mdi-chevron-right"></i></a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <Details v-else />
+            <Details :data="data" v-else/>
         </div>
     </div>
 </template>
 
 <script>
     import Details from './components/OrderDetails'
+    import {queryOrderList, queryOrderDetails} from '@/api/personalCenter'
+
     export default {
         name: "my_order",
         data() {
-           return {
-               isShow: true
-           }
+            return {
+                isShow: true,
+                data: {},
+                list: []
+            }
         },
         created() {
             this.query()
@@ -75,14 +81,41 @@
             Details
         },
         mounted() {
-          this.isShow = true
+            this.isShow = true
+        },
+        beforeRouteUpdate() {
+            this.isShow = true
         },
         methods: {
             query() {
-                console.log('home')
+                this.loading = true
+                queryOrderList({}).then(res => {
+                    if (res.success) {
+                        this.data = res.data
+                    } else {
+                        this.$message.warning('网路开小差')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                    this.$message.warning('网路开小差')
+                })
             },
             detail() {
-                this.isShow = false
+                queryOrderDetails({}).then(res => {
+                    if (res.success) {
+                        this.data = res.data
+                    } else {
+                        this.$message.warning('网路开小差')
+                    }
+                    this.isShow = false
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                    this.$message.warning('网路开小差')
+                })
             }
         }
     }

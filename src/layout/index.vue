@@ -1,5 +1,5 @@
 <template>
-    <div class="vertical">
+    <div class="vertical" v-loading="loading">
         <BodyHeader></BodyHeader>
         <BodyMain></BodyMain>
         <BodyFooter></BodyFooter>
@@ -11,6 +11,16 @@
     import BodyMain from './BodyMain'
 
     export default {
+        data() {
+            return {
+                loading: false
+            }
+        },
+        provide() {
+            return {
+                layoutApp: this
+            }
+        },
         components: {BodyHeader, BodyFooter, BodyMain}
     }
 </script>

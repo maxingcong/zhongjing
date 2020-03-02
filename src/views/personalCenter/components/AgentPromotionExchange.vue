@@ -7,9 +7,15 @@
                         <label class="form-label">选择方式</label>
                         <div class="form-content">
                             <ul class="payment-method">
-                                <li><label class="d-radiobox"> <input type="radio" name="tdr7" value="nn"><i></i><em></em><b><img src="images/icon_wechat01.png">微信支付</b></label></li>
-                                <li><label class="d-radiobox"> <input type="radio" name="tdr7" value="nn"><i></i><em></em><b><img src="images/icon_wechat01.png">微信支付</b></label></li>
-                                <li><label class="d-radiobox"> <input type="radio" name="tdr7" value="nn"><i></i><em></em><b><img src="images/quickpay01.png">银联云闪付</b></label></li>
+                                <li><label class="d-radiobox"> <input type="radio" name="tdr7"
+                                                                      value="nn"><i></i><em></em><b><img
+                                        src="images/icon_wechat01.png">微信支付</b></label></li>
+                                <li><label class="d-radiobox"> <input type="radio" name="tdr7"
+                                                                      value="nn"><i></i><em></em><b><img
+                                        src="images/icon_wechat01.png">微信支付</b></label></li>
+                                <li><label class="d-radiobox"> <input type="radio" name="tdr7"
+                                                                      value="nn"><i></i><em></em><b><img
+                                        src="images/quickpay01.png">银联云闪付</b></label></li>
                             </ul>
                         </div>
                     </div>
@@ -39,6 +45,8 @@
 </template>
 
 <script>
+    import {queryAgentExchange, postAgentExchange} from '@/api/personalCenter'
+
     export default {
         name: "agent_promotion",
         created() {
@@ -46,7 +54,37 @@
         },
         methods: {
             query() {
-                console.log('home')
+                this.loading = true
+                queryAgentExchange({}).then(res => {
+                    if (res.success) {
+                        this.data = res.data
+                    } else {
+                        this.$message.warning('网路开小差')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                    this.$message.warning('网路开小差')
+                })
+            },
+            submit() {
+                if (!this.totalSum || !this.paymentType) {
+                    this.isTotalSum = true
+                    return
+                }
+                this.layoutApp.loading = true
+                postAgentExchange({params: JSON.stringify(this.list)}).then(res => {
+                    console.log(res)
+                    this.$message.success('充值成功')
+                    this.layoutApp.loading = false
+                    this.$emit('success')
+                }).catch(err => {
+                    // this.message.warning('充值失败')
+                    this.layoutApp.loading = false
+                    this.$message.warning('充值失败')
+                    console.log(err)
+                })
             }
         }
     }

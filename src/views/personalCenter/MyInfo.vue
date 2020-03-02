@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div v-loading="loading">
         <div class="pannel">
             <div class="pannel-body">
                 <div class="user-info">
@@ -28,9 +28,9 @@
             </div>
         </div>
         <div>
-            <InfoEdit v-if="type == 1" :isEdit="isEdit"/>
-            <Detailed v-if="type == 2"/>
-            <Recharge v-if="type == 3"/>
+            <InfoEdit v-show="type == 1" ref="infoEdit" @load="loading = false" :isEdit="isEdit" @success="query"/>
+            <Detailed v-show="type == 2" ref="detailed" @load="loading = false"/>
+            <Recharge v-show="type == 3" ref="recharge" @load="loading = false" @success="query"/>
         </div>
 
     </div>
@@ -40,19 +40,42 @@
     import InfoEdit from './components/InfoEdit'
     import Detailed from './components/OnfoDetailed'
     import Recharge from './components/Recharge'
+    import {queryMyInfo} from '@/api/personalCenter'
 
     export default {
         name: "my_info",
         data() {
             return {
                 isEdit: true,
-                type: 1
+                type: 1,
+                data: {},
+                loading: false
             }
         },
         components: {
             InfoEdit,
             Detailed,
             Recharge
+        },
+        watch: {
+            type() {
+                // this.$nextTick(() => {
+                switch (this.type) {
+                    case 1:
+                        this.$refs.infoEdit.query();
+                        break;
+                    case 2:
+                        this.$refs.detailed.query();
+                        break;
+                    case 3:
+                        this.$refs.recharge.query();
+                        break;
+                    default:
+                        this.$refs.infoEdit.query();
+                }
+                this.loading = true
+                // })
+            }
         },
         methods: {
             edit() {
@@ -65,6 +88,21 @@
             },
             recharge() {
                 this.type = 3
+            },
+            query() {
+                this.loading = true
+                queryMyInfo({}).then(res => {
+                    if (res.success) {
+                        this.data = res.data
+                    } else {
+                        this.$message.warning('网路开小差')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                    this.$message.warning('网路开小差')
+                })
             }
         }
     }

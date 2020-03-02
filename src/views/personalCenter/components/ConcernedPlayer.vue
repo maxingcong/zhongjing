@@ -102,6 +102,8 @@
 </template>
 
 <script>
+    import {queryInfoPlayer} from '@/api/personalCenter'
+
     export default {
         name: "infoEdit",
         props: {
@@ -112,6 +114,26 @@
         data() {
             return {
                 activeName: 'first'
+            }
+        },
+        mounted() {
+            this.query()
+        },
+        methods: {
+            query() {
+                this.loading = true
+                queryInfoPlayer({}).then(res => {
+                    if (res.success) {
+                        this.data = res.data
+                    } else {
+                        this.$message.warning('网路开小差')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                    this.$message.warning('网路开小差')
+                })
             }
         }
     }

@@ -17,10 +17,8 @@
                                 tag="li"
                                 :to="{name: item.name}"
                                 active-class="active">
-                            <!--<li>-->
-                                <div :class="{'nav-icon':true, ['icon'+ (index+1)] : true }"></div>
-                                <a>{{item.meta.title}}</a>
-                            <!--</li>-->
+                            <div :class="{'nav-icon':true, ['icon'+ (index+1)] : true }"></div>
+                            <a>{{item.meta.title}}</a>
                         </router-link>
                     </ul>
                 </div>
@@ -52,12 +50,9 @@
 </script>
 
 <style scoped lang="less">
-    /*/deep/.el-tabs__item{*/
-        /*background: red !important;*/
-      /deep/ .is-active{
-            color: #ee5d5d !important;
-        }
+    /deep/ .is-active {
+        color: #ee5d5d !important;
+    }
 
-    /*}*/
 
 </style>

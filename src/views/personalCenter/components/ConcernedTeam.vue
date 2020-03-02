@@ -2,10 +2,10 @@
     <div>
         <div class="follow-list-box">
             <!--<ul >-->
-                <!--<li class="nav-sign-item active"><a href="#"></a></li>-->
-                <!--<li class="nav-sign-item"><a href="#">王者荣耀</a></li>-->
+            <!--<li class="nav-sign-item active"><a href="#"></a></li>-->
+            <!--<li class="nav-sign-item"><a href="#">王者荣耀</a></li>-->
             <!--</ul>-->
-            <el-tabs v-model="activeName" type="card"  class="nav-sign">
+            <el-tabs v-model="activeName" type="card" class="nav-sign">
                 <el-tab-pane label="英雄联盟" name="first">
                     <div class="content-item">
                         <ul class="team-list">
@@ -112,6 +112,8 @@
 </template>
 
 <script>
+    import {queryInfoTeam} from '@/api/personalCenter'
+
     export default {
         name: "infoEdit",
         props: {
@@ -122,6 +124,26 @@
         data() {
             return {
                 activeName: 'first'
+            }
+        },
+        mounted() {
+            this.query()
+        },
+        methods: {
+            query() {
+                this.loading = true
+                queryInfoTeam({}).then(res => {
+                    if (res.success) {
+                        this.data = res.data
+                    } else {
+                        this.$message.warning('网路开小差')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                    this.$message.warning('网路开小差')
+                })
             }
         }
     }

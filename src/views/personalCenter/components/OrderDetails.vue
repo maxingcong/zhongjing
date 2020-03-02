@@ -101,6 +101,12 @@
         props: {
             isEdit: {
                 default: true
+            },
+            data: {
+                type: Object,
+                default: () => {
+                    return {}
+                }
             }
         }
     }

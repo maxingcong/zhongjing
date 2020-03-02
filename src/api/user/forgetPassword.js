@@ -7,6 +7,6 @@ import http from '@/api/index'
  * @param {Function} failure 失败
  * @param {Function} error 访问异常
  */
-export const userLogin = ()=>{
+export const userLogin = (params)=>{
     return http.post('/auth/login', params)
 }

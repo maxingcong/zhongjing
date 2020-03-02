@@ -51,11 +51,29 @@
 </template>
 
 <script>
+    import {queryDetailed} from '@/api/personalCenter'
+
     export default {
         name: "infoDetailed",
         props: {
             isEdit: {
                 default: true
+            }
+        },
+        methods: {
+            query() {
+                queryDetailed({}).then(res => {
+                    if (res.success) {
+                        this.data = res.data
+                    } else {
+                        this.$message.warning('网路开小差')
+                    }
+                    this.$emit('load')
+                }).catch(err => {
+                    this.$emit('load')
+                    console.log(err)
+                    this.$message.warning('网路开小差')
+                })
             }
         }
     }

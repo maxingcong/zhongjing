@@ -3,23 +3,16 @@
         <div class="circle-content-wrap">
             <div class="circle-content-wrap-left">
                 <div class="circle-content-wrap-left-input">
-                    <!--<textarea id="saytext" name="saytext" placeholder="发布你的想法"></textarea>-->
-                    <!--<div class="circle-content-wrap-left-input-handle">-->
-                    <!--<img class="circle-content-wrap-left-input-handle-img" src="@/assets/images/circle/upload.png"-->
-                    <!--alt="">-->
-                    <!--<img class="sub_btn circle-content-wrap-left-input-handle-biaoqing"-->
-                    <!--src="@/assets/images/circle/biaoqing.png" alt="">-->
                     <div ref="editor" class="text"></div>
                     <div style="display: flex;justify-content: space-between;margin-top: 20px">
                         <div ref="toolbar" class="toolbar"></div>
                         <button class="circle-content-wrap-left-input-handle-btn">发表</button>
                     </div>
                 </div>
+                <DefaultCircle/>
                 <MyFanse/>
                 <MyDynamic/>
                 <MyFollow/>
-                <DefaultCircle/>
-
             </div>
             <div class="circle-content-wrap-right">
                 <div class="privatecircleright">

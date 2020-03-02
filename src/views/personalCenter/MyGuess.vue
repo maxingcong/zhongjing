@@ -10,9 +10,10 @@
                 <div class="guessing-competition-box">
                     <div class="box">
                         <div class="box-head">
-                            <div class="head-data-list time">2019-11-28  23:09</div>
+                            <div class="head-data-list time">2019-11-28 23:09</div>
                             <div class="head-data-list game"><img src="images/game1.png" class="mr10">LPL职业联赛</div>
-                            <div class="head-data-list states"><span class="mr10 text-success">预测成功</span><label class="lbl lbl-c1">已结算</label></div>
+                            <div class="head-data-list states"><span class="mr10 text-success">预测成功</span><label
+                                    class="lbl lbl-c1">已结算</label></div>
                         </div>
                         <div class="box-body">
                             <div class="detail-data">
@@ -39,9 +40,10 @@
                     </div>
                     <div class="box">
                         <div class="box-head">
-                            <div class="head-data-list time">2019-11-28  23:09</div>
+                            <div class="head-data-list time">2019-11-28 23:09</div>
                             <div class="head-data-list game"><img src="images/game1.png" class="mr10">LPL职业联赛</div>
-                            <div class="head-data-list states"><span class="mr10 text-danger">预测失败</span><label class="lbl lbl-c1">已结算</label></div>
+                            <div class="head-data-list states"><span class="mr10 text-danger">预测失败</span><label
+                                    class="lbl lbl-c1">已结算</label></div>
                         </div>
                         <div class="box-body">
                             <div class="detail-data">
@@ -68,7 +70,7 @@
                     </div>
                     <div class="box">
                         <div class="box-head">
-                            <div class="head-data-list time">2019-11-28  23:09</div>
+                            <div class="head-data-list time">2019-11-28 23:09</div>
                             <div class="head-data-list game"><img src="images/game1.png" class="mr10">LPL职业联赛</div>
                             <div class="head-data-list states"><label class="lbl lbl-c2">未结算</label></div>
                         </div>
@@ -97,9 +99,10 @@
                     </div>
                     <div class="box">
                         <div class="box-head">
-                            <div class="head-data-list time">2019-11-28  23:09</div>
+                            <div class="head-data-list time">2019-11-28 23:09</div>
                             <div class="head-data-list game"><img src="images/game1.png" class="mr10">LPL职业联赛</div>
-                            <div class="head-data-list states"><span class="mr10 text-success">预测成功</span><label class="lbl lbl-c1">已结算</label></div>
+                            <div class="head-data-list states"><span class="mr10 text-success">预测成功</span><label
+                                    class="lbl lbl-c1">已结算</label></div>
                         </div>
                         <div class="box-body">
                             <div class="detail-data">
@@ -126,7 +129,7 @@
                     </div>
                     <div class="box">
                         <div class="box-head">
-                            <div class="head-data-list time">2019-11-28  23:09</div>
+                            <div class="head-data-list time">2019-11-28 23:09</div>
                             <div class="head-data-list game"><img src="images/game1.png" class="mr10">LPL职业联赛</div>
                             <div class="head-data-list states"><label class="lbl lbl-c2">未结算</label></div>
                         </div>
@@ -160,14 +163,33 @@
 </template>
 
 <script>
+    import {queryGuess} from '@/api/personalCenter'
+
     export default {
         name: "my_guess",
+        data() {
+            return {
+                data: {}
+            }
+        },
         created() {
             this.query()
         },
         methods: {
             query() {
-                console.log('home')
+                this.loading = true
+                queryGuess({}).then(res => {
+                    if (res.success) {
+                        this.data = res.data
+                    } else {
+                        this.$message.warning('网路开小差')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                    this.$message.warning('网路开小差')
+                })
             }
         }
     }

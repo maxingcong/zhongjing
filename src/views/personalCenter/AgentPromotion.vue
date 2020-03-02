@@ -53,9 +53,9 @@
                     </div>
                 </div>
             </div>
-            <AgentPromotionDetails v-if="switchNum == 2" />
-            <AgentPromotionFriend v-if="switchNum == 3" />
-            <AgentPromotionExchange v-if="switchNum == 4" />
+            <AgentPromotionDetails ref="agentPromotionDetails" v-if="switchNum == 2" />
+            <AgentPromotionFriend ref="agentPromotionFriend" v-if="switchNum == 3" />
+            <AgentPromotionExchange ref="agentPromotionExchange" v-if="switchNum == 4" />
         </div>
     </div>
 </template>
@@ -64,6 +64,8 @@
     import AgentPromotionDetails from './components/AgentPromotionDetails'
     import AgentPromotionFriend from './components/AgentPromotionFriend'
     import AgentPromotionExchange from './components/AgentPromotionExchange'
+    import {queryMyInfo} from '@/api/personalCenter'
+
     export default {
         name: "agent_promotion",
         components: {
@@ -76,12 +78,47 @@
                 switchNum: 1
             }
         },
+        watch: {
+            switchNum() {
+                // this.$nextTick(() => {
+                switch (this.type) {
+                    case 1:
+                        this.query();
+                        break;
+                    case 2:
+                        this.$refs.agentPromotionDetails.query();
+                        break;
+                    case 3:
+                        this.$refs.agentPromotionFriend.query();
+                        break;
+                    case 4:
+                        this.$refs.agentPromotionExchange.query();
+                        break;
+                    default:
+                        this.query();
+                }
+                this.loading = true
+                // })
+            }
+        },
         created() {
             this.query()
         },
         methods: {
             query() {
-                console.log('home')
+                this.loading = true
+                queryMyInfo({}).then(res => {
+                    if (res.success) {
+                        this.data = res.data
+                    } else {
+                        this.$message.warning('网路开小差')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                    this.$message.warning('网路开小差')
+                })
             }
         }
     }
