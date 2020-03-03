@@ -65,7 +65,6 @@
                 }).catch(err => {
                     this.loading = false
                     console.log(err)
-                    this.$message.warning('网路开小差')
                 })
             },
             submit() {
@@ -82,7 +81,6 @@
                 }).catch(err => {
                     // this.message.warning('充值失败')
                     this.layoutApp.loading = false
-                    this.$message.warning('充值失败')
                     console.log(err)
                 })
             }

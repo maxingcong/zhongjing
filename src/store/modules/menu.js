@@ -1,3 +1,38 @@
+let shoppingMall = [
+    {
+        name: 'all_merchandise',
+        path: 'all_merchandise',
+        meta: {
+            title: '全部商品'
+        },
+        component: () => import("@/views/shoppingMall/List.vue")
+    },
+    {
+        name: 'game_hand',
+        path: 'game_hand/:type',
+        meta: {
+            title: '游戏手办'
+        },
+        component: () => import("@/views/shoppingMall/List.vue")
+    },
+    {
+        name: 'game_skin',
+        path: 'game_skin/:type',
+        meta: {
+            title: '游戏皮肤'
+        },
+        component: () => import("@/views/shoppingMall/List.vue")
+    },
+    {
+        name: 'bonus_points',
+        path: 'bonus_points/:type',
+        meta: {
+            title: '积分红包'
+        },
+        component: () => import("@/views/shoppingMall/List.vue")
+    }
+]
+
 //我的关注
 let concerned = [
     {
@@ -140,11 +175,15 @@ let store = [
             {
                 name: 'shoppingMall',
                 path: '/shoppingMall',
+                redirect: '/shoppingMall/all_merchandise',
                 meta: {
                     title: "商城",
                     englishTitle: 'Mall'
                 },
-                component: () => import("@/views/shoppingMall")
+                component: () => import("@/views/shoppingMall"),
+                children: [
+                    ...shoppingMall
+                ]
             },
             {
                 name: 'login',
@@ -184,7 +223,8 @@ export default {
     state: {
         data: store,
         myCenter,
-        concerned
+        concerned,
+        shoppingMall
     },
     actions: {}
 }

@@ -149,9 +149,7 @@
                     this.layoutApp.loading = false
                     this.$emit('success')
                 }).catch(err => {
-                    // this.message.warning('充值失败')
                     this.layoutApp.loading = false
-                    this.$message.warning('充值失败')
                     console.log(err)
                 })
             }

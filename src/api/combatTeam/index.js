@@ -2,12 +2,9 @@ import http from '@/api/'
 
 
 // eslint-disable-next-line valid-jsdoc
-/**
+/*战队列表 轮播图
  * @param {Object} params 参数
- * @param {Function} success 成功
- * @param {Function} failure 失败
- * @param {Function} error 访问异常
  */
-export const userLogin = (params)=>{
-    return http.post('/auth/login', params)
+export const queryTeamList = (params) => {
+    return http.get('/home/banner', params)
 }

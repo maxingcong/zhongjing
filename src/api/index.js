@@ -1,5 +1,6 @@
 import axios from 'axios'
 import {Message} from 'element-ui'
+import {addPending, removePending} from './utils'
 
 const baseURL = '/api'
 
@@ -13,6 +14,8 @@ const http = axios.create({
     }
 })
 http.interceptors.request.use(config => {
+    removePending(config)
+    addPending(config)
     // const token = store.getters.auth.token
     // if (token) {
     //     config.headers['X-Auth-Token'] = token
@@ -24,18 +27,19 @@ http.interceptors.request.use(config => {
 })
 
 http.interceptors.response.use(response => {
+    removePending(response)
     const data = response.data || {}
-    // 将响应结果 `data.resultData` 挂载到 `response.body`
-    if (data.resultCode === 1000) {
+    if (data.code === 200) {
         response.succeed = true
-        response.body = data.resultData || {}
-    } else if (data.resultCode === 1003) { // 登录状态失效
-        console.log("登录失效了")
+        response.body = data.data || {}
+    } else if (data.code === -1) { // 登录状态失效
+        console.log("参数错误")
     } else {
-        response.body = data.resultData || {}
+        response.body = data.data || {}
     }
     return response
 }, error => {
+    removePending(error.response)
     if (axios.isCancel(error)) {
         return new Promise(() => {
         })
