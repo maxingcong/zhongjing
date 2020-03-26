@@ -1,18 +1,20 @@
 <template>
     <div>
         <div class="circle-content-wrap-left-list">
-            <div class="circle-content-wrap-left-list-item">
+            <div class="circle-content-wrap-left-list-item" v-for="item in list" :key="item.id">
                 <div class="circle-content-wrap-left-list-item-info">
-                    <img class="circle-content-wrap-left-list-item-info-avatar" src="@/assets/images/circle/lol.png"
+                    <img class="circle-content-wrap-left-list-item-info-avatar" :src="item.avatar || item.pic"
                          alt="">
                     <div class="circle-content-wrap-left-list-item-info-content">
-                        <span class="circle-content-wrap-left-list-item-info-content-name">英雄联盟那些事</span>
-                        <span class="circle-content-wrap-left-list-item-info-content-time">15分钟以前</span>
+                        <span class="circle-content-wrap-left-list-item-info-content-name">{{item.nickname || item.circleName}}</span>
+                        <span class="circle-content-wrap-left-list-item-info-content-time">{{item.createTime | filterallYear}}</span>
                     </div>
-                    <button class="circle-content-wrap-left-list-item-info-btn">关注</button>
+                    <button class="circle-content-wrap-left-list-item-info-btn" @click="followCircle(item)"
+                            v-if="isCirle !== 4">关注
+                    </button>
                 </div>
-                <span class="circle-content-wrap-left-list-item-title">LPL全明星周末11月30日海口冯小刚电影公社正式开幕</span>
-                <div class="circle-content-wrap-left-list-item-content">
+                <span class="circle-content-wrap-left-list-item-title" v-html="item.content"></span>
+                <div class="circle-content-wrap-left-list-item-content" v-if="isCirle != 4">
                     <d-player @play="play" ref="play" class="circle-content-wrap-left-list-item-content-video"
                               :options="options"/>
                     <!--<img class="circle-content-wrap-left-list-item-content-one-img" src="@/assets/images/circle/demo_img.png" alt="">-->
@@ -23,124 +25,28 @@
                              src="@/assets/images/circle/send.png" alt="">
                         <span class="circle-content-wrap-left-list-item-handle-item-txt">36</span>
                     </div>
+                    <!--品论-->
                     <div class="circle-content-wrap-left-list-item-handle-item">
                         <img class="circle-content-wrap-left-list-item-handle-item-img"
                              src="@/assets/images/circle/pinglun.png" alt="">
                         <span class="circle-content-wrap-left-list-item-handle-item-txt">1020</span>
                     </div>
-                    <div class="circle-content-wrap-left-list-item-handle-item">
+                    <!--点赞-->
+                    <div class="circle-content-wrap-left-list-item-handle-item" @click="thumbsUp">
                         <img class="circle-content-wrap-left-list-item-handle-item-img"
                              src="@/assets/images/circle/dianzan.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">1020</span>
+                        <span class="circle-content-wrap-left-list-item-handle-item-txt">
+                            <!--{{item.num}}-->123
+                        </span>
                     </div>
-                </div>
-            </div>
-            <div class="circle-content-wrap-left-list-item">
-                <div class="circle-content-wrap-left-list-item-info">
-                    <img class="circle-content-wrap-left-list-item-info-avatar" src="@/assets/images/circle/lol.png"
-                         alt="">
-                    <div class="circle-content-wrap-left-list-item-info-content">
-                        <span class="circle-content-wrap-left-list-item-info-content-name">英雄联盟那些事</span>
-                        <span class="circle-content-wrap-left-list-item-info-content-time">15分钟以前</span>
-                    </div>
-                    <button class="circle-content-wrap-left-list-item-info-btn">关注</button>
-                </div>
-                <span class="circle-content-wrap-left-list-item-title">LPL全明星周末11月30日海口冯小刚电影公社正式开幕</span>
-                <div class="circle-content-wrap-left-list-item-content">
-                    <div class="circle-content-wrap-left-list-item-content-six">
-                        <img class="circle-content-wrap-left-list-item-content-six-img"
-                             src="@/assets/images/circle/1.png" alt=""/>
-                        <img class="circle-content-wrap-left-list-item-content-six-img"
-                             src="@/assets/images/circle/2.png" alt=""/>
-                        <img class="circle-content-wrap-left-list-item-content-six-img"
-                             src="@/assets/images/circle/3.png" alt=""/>
-                        <img class="circle-content-wrap-left-list-item-content-six-img"
-                             src="@/assets/images/circle/4.png" alt=""/>
-                        <img class="circle-content-wrap-left-list-item-content-six-img"
-                             src="@/assets/images/circle/5.png" alt=""/>
-                        <img class="circle-content-wrap-left-list-item-content-six-img"
-                             src="@/assets/images/circle/6.png" alt=""/>
-                    </div>
-                </div>
-                <div class="circle-content-wrap-left-list-item-handle">
-                    <div class="circle-content-wrap-left-list-item-handle-item">
-                        <img class="circle-content-wrap-left-list-item-handle-item-img"
-                             src="@/assets/images/circle/send.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">36</span>
-                    </div>
-                    <div class="circle-content-wrap-left-list-item-handle-item">
-                        <img class="circle-content-wrap-left-list-item-handle-item-img"
-                             src="@/assets/images/circle/pinglun.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">1020</span>
-                    </div>
-                    <div class="circle-content-wrap-left-list-item-handle-item">
-                        <img class="circle-content-wrap-left-list-item-handle-item-img"
-                             src="@/assets/images/circle/dianzan.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">1020</span>
-                    </div>
-                </div>
-            </div>
-            <div class="circle-content-wrap-left-list-item">
-                <div class="circle-content-wrap-left-list-item-info">
-                    <img class="circle-content-wrap-left-list-item-info-avatar" src="@/assets/images/circle/lol.png"
-                         alt="">
-                    <div class="circle-content-wrap-left-list-item-info-content">
-                        <span class="circle-content-wrap-left-list-item-info-content-name">英雄联盟那些事</span>
-                        <span class="circle-content-wrap-left-list-item-info-content-time">15分钟以前</span>
-                    </div>
-                    <button class="circle-content-wrap-left-list-item-info-btn">关注</button>
-                </div>
-                <div class="circle-content-wrap-left-list-item-content">
-                    <span class="circle-content-wrap-left-list-item-content-txt">LPL全明星周末11月30日海口冯小刚电影公社正式开幕啦！祝贺！</span>
-                </div>
-                <div class="circle-content-wrap-left-list-item-handle">
-                    <div class="circle-content-wrap-left-list-item-handle-item">
-                        <img class="circle-content-wrap-left-list-item-handle-item-img"
-                             src="@/assets/images/circle/send.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">36</span>
-                    </div>
-                    <div class="circle-content-wrap-left-list-item-handle-item">
-                        <img class="circle-content-wrap-left-list-item-handle-item-img"
-                             src="@/assets/images/circle/pinglun.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">1020</span>
-                    </div>
-                    <div class="circle-content-wrap-left-list-item-handle-item">
-                        <img class="circle-content-wrap-left-list-item-handle-item-img"
-                             src="@/assets/images/circle/dianzan.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">1020</span>
-                    </div>
-                </div>
-            </div>
-            <div class="circle-content-wrap-left-list-item">
-                <div class="circle-content-wrap-left-list-item-info">
-                    <img class="circle-content-wrap-left-list-item-info-avatar" src="@/assets/images/circle/lol.png"
-                         alt="">
-                    <div class="circle-content-wrap-left-list-item-info-content">
-                        <span class="circle-content-wrap-left-list-item-info-content-name">英雄联盟那些事</span>
-                        <span class="circle-content-wrap-left-list-item-info-content-time">15分钟以前</span>
-                    </div>
-                    <button class="circle-content-wrap-left-list-item-info-btn">关注</button>
-                </div>
-                <div class="circle-content-wrap-left-list-item-content">
-                    <div id="dplayer" class="circle-content-wrap-left-list-item-content-video"><img
-                            src="@/assets/images/circle/video.png"></div>
-                </div>
-                <div class="circle-content-wrap-left-list-item-handle">
-                    <div class="circle-content-wrap-left-list-item-handle-item">
-                        <img class="circle-content-wrap-left-list-item-handle-item-img"
-                             src="@/assets/images/circle/send.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">36</span>
-                    </div>
-                    <div class="circle-content-wrap-left-list-item-handle-item">
-                        <img class="circle-content-wrap-left-list-item-handle-item-img"
-                             src="@/assets/images/circle/pinglun.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">1020</span>
-                    </div>
-                    <div class="circle-content-wrap-left-list-item-handle-item">
-                        <img class="circle-content-wrap-left-list-item-handle-item-img"
-                             src="@/assets/images/circle/dianzan.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">1020</span>
-                    </div>
+                    <!--评论-->
+                    <!--<diiv>-->
+                    <!--<div ref="editor" class="text"></div>-->
+                    <!--<div style="display: flex;justify-content: space-between;margin-top: 20px">-->
+                    <!--<div ref="toolbar" class="toolbar"></div>-->
+                    <!--<button class="circle-content-wrap-left-input-handle-btn">发表</button>-->
+                    <!--</div>-->
+                    <!--</diiv>-->
                 </div>
             </div>
         </div>
@@ -152,6 +58,14 @@
     import VueDPlayer from 'vue-dplayer'
     import '@/assets/css/vue-dplayer.css'
     import mp4File from '@/assets/video/demo_video.mp4'
+    import {
+        getCircleAll,
+        getCircleFollow,
+        queryMyFollowCircle,
+        queryCancelCircle,
+        getCircleDynamic
+    } from '@/api/circle'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'publicDynamic',//动态
@@ -164,19 +78,119 @@
                     video: {
                         url: mp4File
                     }
-                }
+                },
+                list: []
+            }
+        },
+        props: {
+            isCirle: {
+                type: String,
+                default: ''
+            }
+        },
+        watch: {
+            isCirle() {
+                this.query()
             }
         },
         mounted() {
-            // new DPlayer({
-            //     container: document.getElementById('dplayer'),
-            //     video: {
-            //         url: './video/demo_video.mp4',
-            //     },
+            this.query()
+        },
+        computed: {
+            ...mapState(['auth'])
         },
         methods: {
             play() {
                 console.log('play callback')
+            },
+            thumbsUp() {
+                // queryMyFollowCircle({id: e.id}).then(res => {
+                //     if (res.succeed) {
+                this.$message.success('点赞成功')
+                //     } else {
+                //         this.$message.warning(res.data.msg)
+                //     }
+                // }).catch(err => {
+                //     console.log(err)
+                // })
+            },
+            followCircle(e) {
+                debugger
+                if (true) {
+                    queryMyFollowCircle({circleId: e.id}).then(res => {
+                        if (res.succeed) {
+                            this.$message.success('关注成功')
+                        } else {
+                            console.log(res);
+                            this.$message.warning(res.data.data.msg || '网络错误')
+                        }
+                        this.loading = false
+                    }).catch(err => {
+                        this.loading = false
+                        console.log(err)
+                    })
+                } else {
+                    this.cancelfollowCircle(e)
+                }
+            },
+            cancelfollowCircle(e) {
+                queryCancelCircle({circle_id: e.id}).then(res => {
+                    if (res.succeed) {
+                        this.$message.success('关注成功')
+                    } else {
+                        console.log(res);
+                        this.$message.warning(res.data.data.msg || '网络错误')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                })
+            },
+            query() {
+                debugger
+                if (this.isCirle == 2) {
+                    // getCircleDynamic({}).then(res => {
+                    getCircleFollow({}).then(res => {
+                        // let data = res.body
+                        // debugger
+                        if (res.succeed) {
+                            // console.log(res)
+                            this.list = res.data && res.data.rows || []
+                        } else {
+                            this.list = []
+                        }
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                } else if (this.isCirle == 4) {
+                    getCircleDynamic({}).then(res => {
+                        // let data = res.body
+                        // debugger
+                        if (res.succeed) {
+                            // console.log(res)
+                            this.list = res.data && res.data.rows || []
+                        } else {
+                            this.list = []
+                        }
+                    }).catch(err => {
+                        console.log(err)
+                    })
+
+                } else {
+                    getCircleAll({}).then(res => {
+                        // let data = res.body
+                        // debugger
+                        if (res.succeed) {
+                            // console.log(res)
+                            this.list = res.data && res.data.rows || []
+                        } else {
+                            this.list = []
+                        }
+                    }).catch(err => {
+                        console.log(err)
+                    })
+                }
             }
         }
     }

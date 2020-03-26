@@ -27,8 +27,34 @@
 </template>
 
 <script>
+    import {getCircleFollow} from '@/api/circle'
+
     export default {
-        name: 'follow' //关注
+        name: 'follow', //关注
+        data() {
+            return {
+                list: []
+            }
+        },
+        mounted() {
+            this.query()
+        },
+        methods: {
+            query() {
+                getCircleFollow({}).then(res => {
+                    // debugger
+                    let data = res.data
+                    if (res.succeed) {
+                        // console.log(res)
+                        this.list = data.rows || []
+                    } else {
+                        this.list = []
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
+            }
+        }
     }
 </script>
 

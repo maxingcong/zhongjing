@@ -1,25 +1,32 @@
 import axios from 'axios'
 import {Message} from 'element-ui'
 import {addPending, removePending} from './utils'
+import store from './../store'
+import * as filterDate from './apiFilterJson.js'
 
 const baseURL = '/api'
-
+// const baseURL = 'http://netdj.com/api'
+//
+console.log(process.env.NODE_ENV);
 const http = axios.create({
     baseURL,
     timeout: 15000,
     // 只作用于 params（手动拼接在 url 后的参数不走这里）
     // paramsSerializer,
     headers: {
+        // 'Access-Control-Allow-Origin': '*',
         'Accept': 'application/json'
     }
 })
 http.interceptors.request.use(config => {
     removePending(config)
     addPending(config)
-    // const token = store.getters.auth.token
-    // if (token) {
-    //     config.headers['X-Auth-Token'] = token
-    // }
+    console.log(123123, config, filterDate)
+    const token = store.state.auth.info.token
+    if (token && !filterDate.data.includes(config.url)) {
+        config.headers['Authorization'] = token
+    }
+    console.log(token, store, config.params)
     config.params = config.params || {}
     return config
 }, error => {

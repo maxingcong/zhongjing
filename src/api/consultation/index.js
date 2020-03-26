@@ -1,13 +1,16 @@
 import http from '@/api/'
 
 
-// eslint-disable-next-line valid-jsdoc
-/**
- * @param {Object} params 参数
- * @param {Function} success 成功
- * @param {Function} failure 失败
- * @param {Function} error 访问异常
+/*
+资讯列表
  */
-export const userLogin = (params)=>{
-    return http.post('/auth/login', params)
+export const queryInfoClass = (params) => {
+    return http.get('/home/infoClass', {params})
+}
+
+/*
+资讯详情
+ */
+export const queryInfoDetails = (params) => {
+    return http.get('/home/infoDetail', {params})
 }

@@ -3,7 +3,9 @@
         <div class="pannel">
             <div class="pannel-head">
                 <ul>
-                    <li class="active" @click="switchNum = 1">代理推广{{switchNum == 2 ? '-明细': switchNum == 3 ? '-好友' : switchNum == 4 ? '-兑换' : '' }}</li>
+                    <li class="active" @click="switchNum = 1">代理推广{{switchNum == 2 ? '-明细': switchNum == 3 ? '-好友' :
+                        switchNum == 4 ? '-兑换' : '' }}
+                    </li>
                 </ul>
             </div>
             <div class="pannel-body" v-if="switchNum == 1">
@@ -26,19 +28,19 @@
                             <div class="title">我的推广</div>
                             <ul>
                                 <li>
-                                    <a href="#" class="QR-code-btn">
+                                    <a @click="editType('qrcode')" class="QR-code-btn">
                                         <div class="promotion-mode"><img src="@/assets/images/code.png"></div>
                                         <div class="promotion-name">二维码</div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="invitation-link-btn">
+                                    <a @click="editType('invitation-link')" class="invitation-link-btn">
                                         <div class="promotion-mode"><img src="@/assets/images/code.png"></div>
                                         <div class="promotion-name">邀请链接</div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#" class="generalization-code-btn">
+                                    <a @click="editType('generalization-code')" class="generalization-code-btn">
                                         <div class="promotion-mode"><img src="@/assets/images/code.png"></div>
                                         <div class="promotion-name">推广码</div>
                                     </a>
@@ -53,9 +55,57 @@
                     </div>
                 </div>
             </div>
-            <AgentPromotionDetails ref="agentPromotionDetails" v-if="switchNum == 2" />
-            <AgentPromotionFriend ref="agentPromotionFriend" v-if="switchNum == 3" />
-            <AgentPromotionExchange ref="agentPromotionExchange" v-if="switchNum == 4" />
+            <AgentPromotionDetails ref="agentPromotionDetails" v-if="switchNum == 2"/>
+            <AgentPromotionFriend ref="agentPromotionFriend" v-if="switchNum == 3"/>
+            <AgentPromotionExchange ref="agentPromotionExchange" v-if="switchNum == 4"/>
+        </div>
+        <div class="modal QR-code" :class="{'modal-open': type == 'qrcode'}">
+            <div class="modal-content">
+                <div class="modal-head">
+                    <a @click="type = ''" class="modal-remove"><i class="mdi-set mdi-close el-icon-close"></i></a>
+                    <!--<a href="javascript:;" class="modal-remove"><i class="mdi-set mdi-close mr5"></i></a>-->
+                    <div class="user-info">
+                        <div class="head-sculpture"><img src="@/assets/images/myicon.png"></div>
+                        <div class="info-text">
+                            <p>中竞网瑞雯</p>
+                            <p>ID:23569331311</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="QR-code-img"><img src="@/assets/images/QR-code-img.png"></div>
+                </div>
+            </div>
+        </div>
+        <!-- 邀请链接弹框 -->
+        <div class="modal invitation-link" :class="{'modal-open': type == 'invitation-link'}">
+            <div class="modal-content">
+                <div class="modal-head modal-body">
+                    <a @click="cope" class="modal-remove"><i
+                            class="mdi-set mdi-close el-icon-close"></i></a>
+                    <div class="invitation-link-box">
+                        <h5>推广链接复制成功！</h5>
+                        <a href="#" class="determination" @click="type = ''">确定</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 推广码弹框 -->
+        <div class="modal generalization-code" :class="{'modal-open': type == 'generalization-code'}">
+            <div class="modal-content">
+                <div class="modal-head">
+                    <a @click="type = ''" class="modal-remove"><i class="mdi-set mdi-close el-icon-close"></i></a>
+                    <div class="user-info">
+                        <div class="head-sculpture"><img src="@/assets/images/myicon.png"></div>
+                        <p>中竞网瑞雯</p>
+                        <h2>这里真的太好玩了！注册即送188竞豆！</h2>
+                        <h2>和我一起竞猜赢大奖吧！</h2>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="QR-code-img"><img src="@/assets/images/QR-code-img.png"></div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -64,7 +114,7 @@
     import AgentPromotionDetails from './components/AgentPromotionDetails'
     import AgentPromotionFriend from './components/AgentPromotionFriend'
     import AgentPromotionExchange from './components/AgentPromotionExchange'
-    import {queryMyInfo} from '@/api/personalCenter'
+    import {queryAgent} from '@/api/personalCenter'
 
     export default {
         name: "agent_promotion",
@@ -75,7 +125,8 @@
         },
         data() {
             return {
-                switchNum: 1
+                switchNum: 1,
+                type: ''
             }
         },
         watch: {
@@ -105,13 +156,21 @@
             this.query()
         },
         methods: {
-            query() {
+            cope() {
+                this.type = ''
+                document.execCommand('Copy');
+            },
+            editType(e) {
+                this.type = e
+            },
+            query() {//代理推广
                 this.loading = true
-                queryMyInfo({}).then(res => {
+                queryAgent({}).then(res => {
                     if (res.success) {
-                        this.data = res.data
+                        this.data = res.data.data || {}
                     } else {
-                        this.$message.warning('网路开小差')
+                        console.log(1)
+                        // this.$message.warning(res.data.msg || '')
                     }
                     this.loading = false
                 }).catch(err => {
@@ -123,6 +182,12 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+    .modal.generalization-code .modal-content {
+        margin: 2rem auto;
+    }
 
+    .modal.QR-code .modal-content {
+        margin: 2rem auto;
+    }
 </style>

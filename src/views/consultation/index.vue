@@ -7,123 +7,34 @@
                     <HotgameList/>
                 </div>
             </div>
-            <div class="row-page">
-                <div class="page hotspot-today-box information-box">
-                    <div class="information-category">
-                        <h3>所有资讯</h3>
-                        <ul class="nav">
-                            <li class="nav-item active"><a href="#">全部</a></li>
-                            <li class="nav-item"><a href="#">最新资讯</a></li>
-                            <li class="nav-item"><a href="#">赛事资讯</a></li>
-                            <li class="nav-item"><a href="#">视频资讯</a></li>
-                        </ul>
-                    </div>
-                    <div class="page-body">
-                        <div class="information-category-content">
-                            <div class="information-category-list">
-                                <div class="information-img"><img src="images/index/picb.png"></div>
-                                <div class="information-text">
-                                    <h3>2019年德玛西亚杯八强赛的晋级队伍名单</h3>
-                                    <p>小组赛阶段在12月22日已经决出了八强赛的晋级队伍名单，VG、WE、EDG、TES、JDG、RNG、RW和BLG取得了各自小组</p>
-                                    <div class="tag">
-                                        <span>日期：2019-11-27</span>
-                                        <div class="goto">
-                                            <a href="information-details.html">
-                                                <img class="normal" src="images/index/goto.png">
-                                                <img class="hover" src="images/index/goto2.png">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="information-category-list">
-                                <div class="information-img"><img src="images/index/picb.png"></div>
-                                <div class="information-text">
-                                    <h3>2019年德玛西亚杯八强赛的晋级队伍名单</h3>
-                                    <p>小组赛阶段在12月22日已经决出了八强赛的晋级队伍名单，VG、WE、EDG、TES、JDG、RNG、RW和BLG取得了各自小组</p>
-                                    <div class="tag">
-                                        <span>日期：2019-11-27</span>
-                                        <div class="goto">
-                                            <a href="information-details.html">
-                                                <img class="normal" src="images/index/goto.png">
-                                                <img class="hover" src="images/index/goto2.png">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="information-category-list">
-                                <div class="information-img"><img src="images/index/picb.png"></div>
-                                <div class="information-text">
-                                    <h3>2019年德玛西亚杯八强赛的晋级队伍名单</h3>
-                                    <p>小组赛阶段在12月22日已经决出了八强赛的晋级队伍名单，VG、WE、EDG、TES、JDG、RNG、RW和BLG取得了各自小组</p>
-                                    <div class="tag">
-                                        <span>日期：2019-11-27</span>
-                                        <div class="goto">
-                                            <a href="information-details.html">
-                                                <img class="normal" src="images/index/goto.png">
-                                                <img class="hover" src="images/index/goto2.png">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="information-category-list">
-                                <div class="information-img"><img src="images/index/picb.png"></div>
-                                <div class="information-text">
-                                    <h3>2019年德玛西亚杯八强赛的晋级队伍名单</h3>
-                                    <p>小组赛阶段在12月22日已经决出了八强赛的晋级队伍名单，VG、WE、EDG、TES、JDG、RNG、RW和BLG取得了各自小组</p>
-                                    <div class="tag">
-                                        <span>日期：2019-11-27</span>
-                                        <div class="goto">
-                                            <a href="information-details.html">
-                                                <img class="normal" src="images/index/goto.png">
-                                                <img class="hover" src="images/index/goto2.png">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="information-category-list">
-                                <div class="information-img"><img src="images/index/picb.png"></div>
-                                <div class="information-text">
-                                    <h3>2019年德玛西亚杯八强赛的晋级队伍名单</h3>
-                                    <p>小组赛阶段在12月22日已经决出了八强赛的晋级队伍名单，VG、WE、EDG、TES、JDG、RNG、RW和BLG取得了各自小组</p>
-                                    <div class="tag">
-                                        <span>日期：2019-11-27</span>
-                                        <div class="goto">
-                                            <a href="information-details.html">
-                                                <img class="normal" src="images/index/goto.png">
-                                                <img class="hover" src="images/index/goto2.png">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="information-category-list">
-                                <div class="information-img"><img src="images/index/picb.png"></div>
-                                <div class="information-text">
-                                    <h3>2019年德玛西亚杯八强赛的晋级队伍名单</h3>
-                                    <p>小组赛阶段在12月22日已经决出了八强赛的晋级队伍名单，VG、WE、EDG、TES、JDG、RNG、RW和BLG取得了各自小组</p>
-                                    <div class="tag">
-                                        <span>日期：2019-11-27</span>
-                                        <div class="goto">
-                                            <a href="information-details.html">
-                                                <img class="normal" src="images/index/goto.png">
-                                                <img class="hover" src="images/index/goto2.png">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="information-category-list-more"><a href="#">加载更多</a></div>
+            <div class="main-content">
+                <div class="row-page">
+                    <div class="page hotspot-today-box information-box">
+                        <div class="information-category">
+                            <h3>所有资讯</h3>
+                            <ul class="nav">
+                                <li @click="getLiType()" class="nav-item"
+                                    :class="{active: isConsultationType == ''}">
+                                    <a>全部</a>
+                                </li>
+                                <li @click="getLiType(3)" :class="{active: isConsultationType == 3}"
+                                    class="nav-item"><a>最新资讯 </a>
+                                </li>
+                                <li @click="getLiType(1)" :class="{active: isConsultationType == 1}"
+                                    class="nav-item"><a>赛事资讯</a>
+                                </li>
+                                <li @click="getLiType(2)" :class="{active: isConsultationType == 2}"
+                                    class="nav-item"><a>视频资讯</a>
+                                </li>
+                            </ul>
                         </div>
+                        <router-view></router-view>
                     </div>
-                </div>
-                <div class="page hotteam-box information-box hot-match-box">
-                    <HotForecast/>
-                    <div style="height: 20px"></div>
-                    <HotForecast/>
+                    <div class="page hotteam-box information-box hot-match-box">
+                        <HotForecast/>
+                        <div style="height: 20px"></div>
+                        <HotMatch/>
+                    </div>
                 </div>
             </div>
         </div>
@@ -141,6 +52,26 @@
             HotgameList,
             HotMatch,
             HotForecast
+        },
+        computed: {
+            rout() {
+                return this.$route.name
+            }
+        },
+        data() {
+            return {
+                isConsultationType: ''
+            }
+        },
+        methods: {
+            handQuery(e) {
+                console.log(e)
+            },
+            getLiType(item) {
+                this.$router.push({name: 'consultation_list', query: {id: item}})
+                this.isConsultationType = item || ''
+                // this.query()
+            }
         }
     }
 </script>

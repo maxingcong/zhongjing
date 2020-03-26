@@ -37,9 +37,12 @@
         name: "personal_center",
         created() {
             this.query()
+            if (!this.auth.info || this.auth.info && !this.auth.info.token) {
+                this.$router.back()
+            }
         },
         computed: {
-            ...mapState(['menu'])
+            ...mapState(['auth', 'menu'])
         },
         methods: {
             query() {

@@ -7,16 +7,32 @@ import http from '@/api'
  * @return fn  promise
  */
 export const queryMyInfo = (params) => {
-    return http.get('/auth/login', params)
+    return http.get('/user/info',{params})
 }
 
-/*个人信息修改
+/*个人信息修改  修改手机号
  * @param {Object} params 参数
  * @return fn  promise
  */
-export const postMyInfo = (params) => {
-    return http.post('/auth/login', params)
+export const postMyInfoPhoto = (params) => {
+    return http.get('/user/editPhone', params)
 }
+/*个人信息修改  修改邮箱
+ * @param {Object} params 参数
+ * @return fn  promise
+ */
+export const postMyInfoEmail = (params) => {
+    return http.get('/user/editEmail', {params})
+}
+
+/*个人头像
+*  * @param {Object} params 参数
+ * @return fn  promise
+ */
+export const postMyInfoImg = (params) => {
+    return http.post('/user/updateUser', params)
+}
+
 
 /*
 *充值
@@ -39,12 +55,12 @@ export const queryRecharge = (params) => {
 
 
 /*
-*查询明细
+*京豆明细
  * @param {Object} params 参数
  *  * @return fn  promise
  */
 export const queryDetailed = (params) => {
-    return http.get('/auth/login', params)
+    return http.get('/user/beanDetailed', params)
 }
 
 
@@ -54,7 +70,7 @@ export const queryDetailed = (params) => {
  *  * @return fn  promise
  */
 export const queryGuess = (params) => {
-    return http.get('/auth/login', params)
+    return http.get('/user/mybetting', params)
 }
 
 /*
@@ -63,7 +79,7 @@ export const queryGuess = (params) => {
  *  * @return fn  promise
  */
 export const queryOrderList = (params) => {
-    return http.get('/auth/login', params)
+    return http.get('/user/myOrder', params)
 }
 
 
@@ -73,7 +89,7 @@ export const queryOrderList = (params) => {
  *  * @return fn  promise
  */
 export const queryOrderDetails = (params) => {
-    return http.get('/auth/login', params)
+    return http.get('/user/orderDetail' + params.id)
 }
 
 /*
@@ -86,7 +102,7 @@ export const queryInfoGame = (params) => {
 }
 
 /*
-*订我的比赛
+*我的比赛
  * @param {Object} params 参数
  *  * @return fn  promise
  */
@@ -110,7 +126,7 @@ export const queryInfoPlayer = (params) => {
  *  * @return fn  promise
  */
 export const queryAgent = (params) => {
-    return http.get('/auth/login', params)
+    return http.get('/user/promotionDetails', params)
 }
 /*
 *t推广明细
@@ -118,7 +134,7 @@ export const queryAgent = (params) => {
  *  * @return fn  promise
  */
 export const queryAgentDetails = (params) => {
-    return http.get('/auth/login', params)
+    return http.get('/user/promotionDetails', params)
 }
 
 /*
@@ -127,7 +143,7 @@ export const queryAgentDetails = (params) => {
  *  * @return fn  promise
  */
 export const queryAgentFriend = (params) => {
-    return http.get('/auth/login', params)
+    return http.get('/user/friend', params)
 }
 
 /*
@@ -153,6 +169,42 @@ export const postAgentExchange = (params) => {
  * @param {Object} params 参数
  *  * @return fn  promise
  */
-export const postSystem = (params) => {
-    return http.get('/auth/login', params)
+export const getSystem = (params) => {
+    return http.get('/user/message', params)
+}
+
+/*
+*关注赛事
+ * @param {Object} params 参数
+ *  * @return fn  promise
+ */
+export const getFollowMatch = (params) => {
+    return http.get('/user/followMatch', params)
+}
+/*
+*关注战队
+ * @param {Object} params 参数
+ *  * @return fn  promise
+ */
+export const getFollowTeam = (params) => {
+    return http.get('/user/followTeam', params)
+}
+
+
+/*
+*关注选手
+ * @param {Object} params 参数
+ *  * @return fn  promise
+ */
+export const getFollowPlayer = (params) => {
+    return http.get('/user/followPlayer', params)
+}
+
+/*
+*我的房间
+ * @param {Object} params 参数
+ *  * @return fn  promise
+ */
+export const queryMyRoom = (params) => {
+    return http.get('/user/myRoom', params)
 }

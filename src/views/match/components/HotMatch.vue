@@ -6,32 +6,13 @@
         <div class="page-body">
             <div class="hotmatch-list">
                 <ul>
-                    <li>
-                        <a href="match-details.html">
+                    <li v-for="item in list" :key="item.id">
+                        <a @click="$router.push({name: 'match_details',query:{id:item.id}})">
                             <div class="status-label"><img src="@/assets/images/index/inProgress.png"></div>
-                            <div class="hotmatch-img"><img src="@/assets/images/index/hotmatch01.png"></div>
-                            <div class="match-name"><img src="@/assets/images/index/sgame01.png">KPL职业赛</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="match-details.html">
-                            <div class="status-label"><img src="@/assets/images/index/inProgress.png"></div>
-                            <div class="hotmatch-img"><img src="@/assets/images/index/hotmatch02.png"></div>
-                            <div class="match-name"><img src="@/assets/images/index/sgame01.png">KPL职业赛</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="match-details.html">
-                            <div class="status-label"><img src="@/assets/images/index/inProgress.png"></div>
-                            <div class="hotmatch-img"><img src="@/assets/images/index/hotmatch03.png"></div>
-                            <div class="match-name"><img src="@/assets/images/index/sgame01.png">KPL职业赛</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="match-details.html">
-                            <div class="status-label"><img src="@/assets/images/index/inProgress.png"></div>
-                            <div class="hotmatch-img"><img src="@/assets/images/index/hotmatch04.png"></div>
-                            <div class="match-name"><img src="@/assets/images/index/sgame01.png">KPL职业赛</div>
+                            <!--                            <div class="hotmatch-img"><img :src="item.picture"></div>-->
+                            <div class="hotmatch-img"><img src="@/assets/images/index/hotgame06.png"></div>
+                            <div class="match-name"><img src="@/assets/images/index/sgame01.png">{{item.matchName}}
+                            </div>
                         </a>
                     </li>
                 </ul>
@@ -46,7 +27,9 @@
     export default {
         name: "Forecast.vue",
         data() {
-            return {}
+            return {
+                list: [{id: 1}]
+            }
         },
         mounted() {
             this.query()
@@ -54,10 +37,11 @@
         methods: {
             query() {
                 queryHomeMatch({}).then(res => {
-                    if (res.success) {
-                        this.data = res.data
+                    if (res.succeed) {
+                        this.list = res.data && res.data.rows || []
                     } else {
-                        this.$message.warning('网路开小差')
+                        console.log(res);
+                        // this.$message.warning('网路开小差')
                     }
                     this.loading = false
                 }).catch(err => {

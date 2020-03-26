@@ -1,7 +1,9 @@
 // vue.config.js
 const path = require("path");
 // const fs = require('fs');
+console.log(process.env.NODE_ENV);
 module.exports = {
+    publicPath: process.env.NODE_ENV == 'development' ? '/' : '/pc/',
     chainWebpack: config => {
         config.entry('main').add('babel-polyfill');
         config.resolve.alias.set("@", path.resolve(__dirname, "src"));
@@ -91,7 +93,7 @@ module.exports = {
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://120.24.224.218:8080/', //对应自己的接口
+                target: 'http://netdj.com/api', //对应自己的接口
                 changeOrigin: true,
                 ws: true,
                 pathRewrite: {
@@ -99,6 +101,12 @@ module.exports = {
                 }
             }
         }
-    }
+    },
+    // overlay: {
+    //     warnings: false,
+    //     errors: false
+    // },
+    lintOnSave: false,
+    transpileDependencies: ['vue-awesome-countdown']
 
 }

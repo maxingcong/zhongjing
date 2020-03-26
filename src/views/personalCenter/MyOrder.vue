@@ -16,45 +16,23 @@
                             <div class="order-detail"></div>
                             <div class="order-time">下单时间</div>
                         </div>
-                        <div class="list-body">
+                        <div class="list-body" v-for="item in list" :key="item.id">
                             <div class="order-number">
-                                <div class="order-img"><img src="images/shangpin01.png"></div>
-                                <p>【现货】武神&幽兰颜究小盒</p>
+                                <div class="order-img"><img :src="item.picture"></div>
+                                <p>{{item.commodityName}}</p>
                             </div>
-                            <div class="order-quantity">2</div>
-                            <div class="actual-payment">￥215.00</div>
-                            <div class="order-detail">已发货 <a @click="detail">订单详情</a></div>
-                            <div class="order-time">2020-2-1</div>
+                            <div class="order-quantity">{{item.shippingSn}}</div>
+                            <div class="actual-payment">￥{{item.totalAmount}}</div>
+                            <div class="order-detail">{{item.orderStatus}} <a @click="detail(item.id)">订单详情</a></div>
+                            <div class="order-time">{{item.paymentTime}}</div>
                         </div>
-                    </div>
-                    <div class="order-list">
-                        <div class="list-head">
-                            <div class="order-number">订单号: 787267040447818847</div>
-                            <div class="order-quantity">数量</div>
-                            <div class="actual-payment">实付款</div>
-                            <div class="order-detail"></div>
-                            <div class="order-time">下单时间</div>
-                        </div>
-                        <div class="list-body">
-                            <div class="order-number">
-                                <div class="order-img"><img src="images/shangpin01.png"></div>
-                                <p>【现货】武神&幽兰颜究小盒</p>
-                            </div>
-                            <div class="order-quantity">2</div>
-                            <div class="actual-payment">￥215.00</div>
-                            <div class="order-detail">已发货 <a @click="detail">订单详情</a></div>
-                            <div class="order-time">2020-2-1</div>
-                        </div>
-                    </div>
-                    <div class="page-turning-box">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#"><i class="mdi-set mdi-chevron-left"></i></a>
-                            </li>
-                            <li class="page-item"><a class="page-link" href="#"><i
-                                    class="mdi-set mdi-chevron-right"></i></a></li>
-                        </ul>
                     </div>
                 </div>
+                <el-pagination
+                        layout="prev, pager, next"
+                        @current-change="query"
+                        :total="total">
+                </el-pagination>
             </div>
             <Details :data="data" v-else/>
         </div>
@@ -71,7 +49,8 @@
             return {
                 isShow: true,
                 data: {},
-                list: []
+                list: [],
+                total: 0
             }
         },
         created() {
@@ -90,10 +69,13 @@
             query() {
                 this.loading = true
                 queryOrderList({}).then(res => {
-                    if (res.success) {
-                        this.data = res.data
+                    debugger
+                    if (res.succeed) {
+                        this.list = (res.data && res.data.rows) || []
+                        this.total = (res.data && res.data.total) || 0
                     } else {
-                        this.$message.warning('网路开小差')
+                        console.log(res);
+                        this.$message.warning(res.data.msg || '')
                     }
                     this.loading = false
                 }).catch(err => {
@@ -101,12 +83,14 @@
                     console.log(err)
                 })
             },
-            detail() {
-                queryOrderDetails({}).then(res => {
-                    if (res.success) {
-                        this.data = res.data
+            detail(id) {
+                queryOrderDetails({id}).then(res => {
+                    debugger
+                    if (res.succeed) {
+                        this.data = res.data && res.data.data || {}
                     } else {
-                        this.$message.warning('网路开小差')
+                        console.log(res);
+                        // this.$message.warning('网路开小差')
                     }
                     this.isShow = false
                     this.loading = false

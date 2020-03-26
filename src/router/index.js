@@ -15,10 +15,18 @@ Vue.use(Router);
 const createRouter = () => new Router({
     routes: [
         ...store.state.data
-    ]
+    ],
+    scrollBehavior: function (to, from, savedPosition) {
+        if (from.name == 'consultation_list' || from.name == 'consultation_details') {
+            return savedPosition || {x: 0, y: 100}
+        } else {
+            return savedPosition || {x: 0, y: 0}
+        }
+    }
 });
 
 const router = createRouter()
+
 
 router.beforeEach((to, from, next) => {
     clearPending()

@@ -3,11 +3,12 @@
         <div class="pannel">
             <div class="pannel-body">
                 <div class="user-info">
-                    <div class="head-sculpture"><img src="@/assets/images/touxiang01.png"></div>
+                    <div class="head-sculpture"><img style="width:104px;height: 104px;border-radius: 50%"
+                                                     :src="data.avatar"></div>
                     <div class="info-text">
-                        <h5>中竞网瑞文 <p><span>ID</span>5656598989</p></h5>
-                        <div class="tag"><img src="@/assets/images/phone.png"><span>1598002049</span></div>
-                        <div class="tag no-after"><img src="@/assets/images/email.png"><span>791859946@qq.com</span>
+                        <h5>{{data.nickname}} <p><span>ID</span>{{data.id}}</p></h5>
+                        <div class="tag"><img src="@/assets/images/phone.png"><span>{{data.phone}}</span></div>
+                        <div class="tag no-after"><img src="@/assets/images/email.png"><span>{{data.email}}</span>
                         </div>
                     </div>
                     <div class="operation-box">
@@ -16,7 +17,7 @@
                         <div class="details">
                             <div class="numbers">
                                 <span>竞豆数量</span>
-                                <h4>0</h4>
+                                <h4>{{data.bean}}</h4>
                             </div>
                             <div class="recharge">
                                 <a @click="detailed" class="number-detail">明细</a>
@@ -28,7 +29,7 @@
             </div>
         </div>
         <div>
-            <InfoEdit v-show="type == 1" ref="infoEdit" @load="loading = false" :isEdit="isEdit" @success="query"/>
+            <InfoEdit v-show="type == 1" ref="infoEdit" @load="loading = false" :isEdit="isEdit" :item="data" @success="query"/>
             <Detailed v-show="type == 2" ref="detailed" @load="loading = false"/>
             <Recharge v-show="type == 3" ref="recharge" @load="loading = false" @success="query"/>
         </div>
@@ -41,6 +42,7 @@
     import Detailed from './components/OnfoDetailed'
     import Recharge from './components/Recharge'
     import {queryMyInfo} from '@/api/personalCenter'
+    import {mapMutations, mapState} from 'vuex'
 
     export default {
         name: "my_info",
@@ -57,27 +59,39 @@
             Detailed,
             Recharge
         },
+        computed: {
+            ...mapState(['auth'])
+        },
         watch: {
             type() {
                 // this.$nextTick(() => {
                 switch (this.type) {
                     case 1:
-                        this.$refs.infoEdit.query();
+                        this.$refs.infoEdit.query();//编辑信息
                         break;
                     case 2:
-                        this.$refs.detailed.query();
+                        this.$refs.detailed.query();//明细
                         break;
                     case 3:
-                        this.$refs.recharge.query();
+                        this.$refs.recharge.query();//充值
                         break;
                     default:
                         this.$refs.infoEdit.query();
                 }
-                this.loading = true
+                // this.loading = true
                 // })
             }
         },
+        mounted() {
+            this.query()
+        },
         methods: {
+            ...mapMutations(
+                {
+                    setAuth: 'SET_AUTH',
+                    setBean: 'setBean'
+                }
+            ),
             edit() {
                 this.type = 1
                 // console.log(123)
@@ -91,11 +105,20 @@
             },
             query() {
                 this.loading = true
-                queryMyInfo({}).then(res => {
-                    if (res.success) {
-                        this.data = res.data
+                console.log(this.auth)
+                queryMyInfo({phone: this.auth && this.auth.info.phone}).then(res => {
+                    if (res.succeed) {
+                        this.data = res.data && res.data.data || {}
+                        this.setAuth({
+                            'phone': res.data.data.phone,
+                            'token': this.auth.info.token,
+                            data: res.data.data,
+                            img: '1.png'
+                        })
+                        this.setBean(res.data && res.data.data.bean || 0)
                     } else {
-                        this.$message.warning('网路开小差')
+                        console.log(res)
+                        // this.$message.warning('网路开小差')
                     }
                     this.loading = false
                 }).catch(err => {

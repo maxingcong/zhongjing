@@ -9,7 +9,7 @@ let shoppingMall = [
     },
     {
         name: 'game_hand',
-        path: 'game_hand/:type',
+        path: 'game_hand',
         meta: {
             title: '游戏手办'
         },
@@ -17,7 +17,7 @@ let shoppingMall = [
     },
     {
         name: 'game_skin',
-        path: 'game_skin/:type',
+        path: 'game_skin',
         meta: {
             title: '游戏皮肤'
         },
@@ -25,7 +25,7 @@ let shoppingMall = [
     },
     {
         name: 'bonus_points',
-        path: 'bonus_points/:type',
+        path: 'bonus_points',
         meta: {
             title: '积分红包'
         },
@@ -88,6 +88,14 @@ let myCenter = [
         component: () => import("@/views/personalCenter/MyOrder.vue")
     },
     {
+        name: 'my_room',
+        path: 'my_room',
+        meta: {
+            title: '我的房间'
+        },
+        component: () => import("@/views/personalCenter/MyRoom.vue")
+    },
+    {
         name: 'my_concern',
         path: 'my_concern',
         redirect: 'my_concern/concerned_team',
@@ -134,16 +142,55 @@ let store = [
                     title: "首页",
                     englishTitle: 'Home'
                 },
-                component: () => import("@/views/home")
+                redirect: {
+                    name: "home_list"
+                },
+                component: () => import("@/views/home"),
+                children: [
+                    {
+                        name: 'home_list',
+                        path: '/home/home_list',
+                        meta: {
+                            title: "首页列表",
+                            englishTitle: 'Home'
+                        },
+                        component: () => import("@/views/home/List")
+                    },
+                    {
+                        name: 'guessing_competition_list',
+                        path: '/home/guessing_competition_list',
+                        meta: {
+                            title: "竞猜列表"
+                        },
+                        component: () => import("@/views/home/GuessingCompetitionList")
+                    }
+                ]
             },
             {
                 name: 'consultation',
                 path: '/consultation',
                 meta: {
-                    title: "咨询",
+                    title: "资讯",
                     englishTitle: 'Information'
                 },
-                component: () => import("@/views/consultation")
+                redirect: {
+                    name: "consultation_list"
+                },
+                component: () => import("@/views/consultation"),
+                children: [
+                    {
+                        name: 'consultation_list',
+                        path: 'consultation_list',
+                        meta: {},
+                        component: () => import("@/views/consultation/List")
+                    },
+                    {
+                        name: 'consultation_details',
+                        path: 'consultation_details',
+                        meta: {},
+                        component: () => import("@/views/consultation/components/ConsultationDetails.vue")
+                    }
+                ]
             },
             {
                 name: 'match',
@@ -155,6 +202,15 @@ let store = [
                 component: () => import("@/views/match")
             },
             {
+                name: 'match_details',
+                path: '/match/details',
+                meta: {
+                    hide: true,
+                    title: "赛事详情"
+                },
+                component: () => import("@/views/match/components/Details.vue")
+            },
+            {
                 name: 'combatTeam',
                 path: '/combatTeam',
                 meta: {
@@ -162,6 +218,23 @@ let store = [
                     englishTitle: 'Clan'
                 },
                 component: () => import("@/views/combatTeam")
+            }, {
+                name: 'team_details',
+                path: '/team_details',
+                meta: {
+                    hide: true,
+                    title: "战队详情"
+                },
+                component: () => import("@/views/combatTeam/Details")
+            },
+            {
+                name: 'team_member_details',
+                path: '/team_member_details',
+                meta: {
+                    hide: true,
+                    title: "战队队员详情"
+                },
+                component: () => import("@/views/combatTeam/MemberDetails")
             },
             {
                 name: 'circle',
@@ -205,8 +278,69 @@ let store = [
                 children: [
                     ...myCenter
                 ]
+            },
+            {
+                name: 'shoppinf_cart',
+                path: '/shoppinf_cart',
+                meta: {
+                    hide: true,
+                    title: '购物车'
+                },
+                component: () => import("@/views/shoppingMall/ShoppingCart.vue")
+            },
+            {
+                name: 'edit_address',
+                path: '/edit_address',
+                meta: {
+                    hide: true,
+                    title: '修改地址'
+                },
+                component: () => import("@/views/shoppingMall/EditAddress.vue")
+            }, {
+                name: 'shopping_details',
+                path: '/shopping_details',
+                meta: {
+                    hide: true,
+                    title: '商品详情'
+                },
+                component: () => import("@/views/shoppingMall/ShoppingDetails.vue")
+            },
+            {
+                name: 'forget_password',
+                path: '/forget_password',
+                meta: {
+                    hide: true,
+                    title: '忘记密码'
+                },
+                component: () => import("@/views/ForgetPassword.vue")
+            },
+            {
+                name: 'register',
+                path: '/register',
+                meta: {
+                    hide: true,
+                    title: '注册'
+                },
+                component: () => import("@/views/Register.vue")
+            },
+            {
+                name: 'verify_email',
+                path: '/verify_email',
+                meta: {
+                    hide: true,
+                    title: '验证邮箱'
+                },
+                component: () => import("@/views/VerifyEmail.vue")
+            },
+            {
+                name: 'guessing_competition_details',
+                path: 'guessing_competition_details',
+                meta: {
+                    hide: true,
+                    title: "竞猜详情"
+                },
+                component: () => import("@/views/home/GuessingCompetitionDetails")
             }
-
         ]
     },
     {

@@ -1,8 +1,10 @@
 <template>
     <div>
         <ul>
-            <li v-for="item in list" :key="item.id"><a><img :src="'http://120.24.224.218:8080/'+item.gameName" ></a></li>
-            <li><a><img src="@/assets/images/index/hotgame02.png"></a></li>
+            <li  @click="$router.push({name: 'match_details',query:{id:item.id}}), $emit('switch', item.id)"  v-for="item in list" :key="item.id">
+<!--                <a><img :src="'http://120.24.224.218:8080/'+item.gameIcon"/></a>-->
+                <a><img style="width: 50px;height: 50px;border-radius: 50%;" src="@/assets/images/index/bteam16.png"/></a>
+            </li>
         </ul>
     </div>
 </template>
@@ -14,7 +16,8 @@
         name: "hotGameList",
         data() {
             return {
-                list: []
+                list: [],
+                cont: 0
             }
         },
         mounted() {
@@ -22,15 +25,25 @@
         },
         methods: {
             query() {
+                this.list = []
                 queryHomeGame({}).then(res => {
-                    let data = res.body
+                    // let data = res.body
                     if (res.succeed) {
+                        // debugger
                         console.log(res)
-                        this.list = data || []
+                        this.list = res.data && res.data.rows || []
+                        this.$forceUpdate()
                     } else {
                         this.list = []
                     }
                 }).catch(err => {
+                    this.cont++
+                    if (this.cont < 5) {
+                        this.query()
+                    } else {
+                        this.cont = 0
+                    }
+                    // debugger
                     console.log(err)
                 })
             }

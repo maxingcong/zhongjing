@@ -3,7 +3,7 @@
         <div class="hotgame-overview-box">
             <div class="box-head"><h5>热门游戏<span>Hot Game</span></h5></div>
             <div class="hotgame-list">
-                <HotgameList/>
+                <HotgameList ref="hos"/>
             </div>
         </div>
         <HotMatch/>
@@ -17,30 +17,17 @@
     import AllGame from "./components/AllGame";
 
     export default {
-        name: "home",
         components: {
             HotgameList,
             HotMatch,
             AllGame
         },
-        created() {
-            // this.query()
+        mounted() {
+            this.$nextTick(() => {
+                this.$refs.hos.query()
+            })
         },
-        methods: {
-            // query() {
-            //     queryHomeBanner({}).then(res => {
-            //         if (res.success) {
-            //             this.data = res.data
-            //         } else {
-            //             this.$message.warning('网路开小差')
-            //         }
-            //         this.loading = false
-            //     }).catch(err => {
-            //         this.loading = false
-            //         console.log(err)
-            //     })
-            // }
-        }
+        methods: {}
     }
 </script>
 

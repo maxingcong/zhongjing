@@ -3,7 +3,8 @@
         <div class="swiper-wrapper">
             <div class="swiper-slide"><img src="@/assets/images/index/banner.png"></div>
             <div class="swiper-slide" v-for="item in list" :key="item.id"><img
-                    :src="'http://120.24.224.218:8080/'+item.picture"></div>
+                    src="@/assets/images/index/bteam16.png"></div>
+<!--                    :src="item.picture"></div>-->
         </div>
     </div>
 </template>

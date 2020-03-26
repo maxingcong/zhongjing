@@ -7,15 +7,15 @@
                         <label class="form-label">选择方式</label>
                         <div class="form-content">
                             <ul class="payment-method">
-                                <li><label class="d-radiobox"> <input type="radio" name="tdr7"
+                                <li><label class="d-radiobox"> <input type="radio" name="1"
                                                                       value="nn"><i></i><em></em><b><img
-                                        src="images/icon_wechat01.png">微信支付</b></label></li>
-                                <li><label class="d-radiobox"> <input type="radio" name="tdr7"
+                                        src="@/assets/images/icon_wechat01.png">微信支付</b></label></li>
+                                <li><label class="d-radiobox"> <input type="radio" name="2"
                                                                       value="nn"><i></i><em></em><b><img
-                                        src="images/icon_wechat01.png">微信支付</b></label></li>
-                                <li><label class="d-radiobox"> <input type="radio" name="tdr7"
+                                        src="@/assets/images/icon_wechat01.png">微信支付</b></label></li>
+                                <li><label class="d-radiobox"> <input type="radio" name="3"
                                                                       value="nn"><i></i><em></em><b><img
-                                        src="images/quickpay01.png">银联云闪付</b></label></li>
+                                        src="@/assets/images/quickpay01.png">银联云闪付</b></label></li>
                             </ul>
                         </div>
                     </div>
@@ -59,7 +59,8 @@
                     if (res.success) {
                         this.data = res.data
                     } else {
-                        this.$message.warning('网路开小差')
+                        this.$message.warning(res.data.msg || '')
+                        // this.$message.warning('网路开小差')
                     }
                     this.loading = false
                 }).catch(err => {

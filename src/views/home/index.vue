@@ -6,53 +6,19 @@
                 <HotgameList/>
             </div>
         </div>
-        <Banner/>
-        <div class="page hot-forecast-box">
-            <Forecast/>
-        </div>
-        <Hotspot/>
-        <HotMatch/>
-        <HotConsultation/>
+        <router-view :key="new Date().getTime()"></router-view>
     </div>
 </template>
 
 <script>
-    // import {queryHomeBanner} from '@/api/home'
-    import Banner from "../../components/Banner";
     import HotgameList from "../../components/HotgameList";
-    import Forecast from "./components/Forecast";
-    import Hotspot from "./components/Hotspot";
-    import HotMatch from "./components/HotMatch";
-    import HotConsultation from "./components/HotConsultation";
 
     export default {
         name: "home",
         components: {
-            Banner,
-            HotgameList,
-            Forecast,
-            Hotspot,
-            HotConsultation,
-            HotMatch
+            HotgameList
         },
-        created() {
-            // this.query()
-        },
-        methods: {
-            // query() {
-            //     queryHomeBanner({}).then(res => {
-            //         if (res.success) {
-            //             this.data = res.data
-            //         } else {
-            //             this.$message.warning('网路开小差')
-            //         }
-            //         this.loading = false
-            //     }).catch(err => {
-            //         this.loading = false
-            //         console.log(err)
-            //     })
-            // }
-        }
+        methods: {}
     }
 </script>
 

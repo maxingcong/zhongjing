@@ -112,31 +112,36 @@
 </template>
 
 <script>
-    import {queryInfoTeam} from '@/api/personalCenter'
+    import {getFollowTeam} from '@/api/personalCenter'
 
     export default {
-        name: "infoEdit",
-        props: {
-            isEdit: {
-                default: true
-            }
-        },
+        // name: "infoEdit",
+        // props: {
+        //     isEdit: {
+        //         default: true
+        //     }
+        // },
         data() {
             return {
-                activeName: 'first'
+                activeName: 'first',
+                list: []
             }
         },
         mounted() {
+            debugger
             this.query()
         },
-        methods: {
+        methods: {//关注战队
             query() {
                 this.loading = true
-                queryInfoTeam({}).then(res => {
-                    if (res.success) {
-                        this.data = res.data
+                getFollowTeam({}).then(res => {
+                    debugger
+                    if (res.succeed) {
+                        this.list = res.data && res.data.rows || []
                     } else {
-                        this.$message.warning('网路开小差')
+                        console.log(res);
+                        this.$message.warning(res.data.msg || '')
+                        // this.$message.warning('网路开小差')
                     }
                     this.loading = false
                 }).catch(err => {

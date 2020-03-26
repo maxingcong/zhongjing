@@ -1,13 +1,19 @@
 import http from '@/api/'
 
-
-// eslint-disable-next-line valid-jsdoc
-/**
- * @param {Object} params 参数
- * @param {Function} success 成功
- * @param {Function} failure 失败
- * @param {Function} error 访问异常
+/*游戏赛事
  */
-export const userLogin = (params)=>{
-    return http.post('/auth/login', params)
+export const queryMathList = (params) => {
+    return http.get('/home/match/' + params.gameId, params)
+}
+
+/*赛事详情
+ */
+export const queryMathDetails = (params) => {
+    return http.get('/home/matchDetail', {params})
+}
+
+/*关注赛事
+ */
+export const postMath = (params) => {
+    return http.get('/user/followMatch', {params})
 }

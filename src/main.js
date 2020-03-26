@@ -4,11 +4,15 @@ import router from './router/index'
 import store from './store/'
 import './assets/css/index.css'
 import 'element-ui/lib/theme-chalk/index.css';
+import "./utils";
+import "./utils/filtersUtils"
 
 import ElementUI from 'element-ui'
+
 Vue.use(ElementUI)
 
 Vue.config.productionTip = true
+Vue.prototype.$imgBaseUrl = 'http://120.24.224.218:8600/'
 
 new Vue({
     render: h => h(App),

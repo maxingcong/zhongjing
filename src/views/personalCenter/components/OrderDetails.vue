@@ -7,30 +7,31 @@
                         <ul>
                             <li>
                                 <div class="title">收货人信息</div>
-                                <p><b>瑞文</b><span>浙江省 杭州市 江干区 九环路和平大厦五号302</span><span>13800380056</span></p>
+                                <p><b>{{data.name}}</b><span>{{data.province}}{{data.city}}{{data.region}}
+                                    {{data.detailAddress}}</span><span>{{data.phone}}</span></p>
                             </li>
                             <li>
                                 <div class="title">我的留言</div>
-                                <p>麻烦送到店铺打电话，谢谢。</p>
+                                <p>{{data.message}}</p>
                             </li>
                         </ul>
                     </div>
                 </div>
                 <div class="order-list">
                     <div class="list-head">
-                        <div class="order-number"><b class="mr10">2019-12-09</b>订单号: 787267040447818847</div>
+                        <div class="order-number"><b class="mr10">2019-12-09</b>订单号: {{data.orderSn}}</div>
                         <div class="order-quantity">售价</div>
                         <div class="actual-payment detail-payment">数量</div>
                         <div class="order-time">状态</div>
                     </div>
                     <div class="list-body">
                         <div class="order-number">
-                            <div class="order-img"><img src="images/shangpin01.png"></div>
-                            <p>【现货】武神&幽兰颜究小盒</p>
+                            <div class="order-img"><img :src="data.picture"></div>
+                            <p>{{data.commodityName}}</p>
                         </div>
-                        <div class="order-quantity">￥60+600竞豆</div>
-                        <div class="actual-payment detail-payment">2</div>
-                        <div class="order-time">交易成功</div>
+                        <div class="order-quantity">￥{{data.shippingAmount}}竞豆</div>
+                        <div class="actual-payment detail-payment">{{data.totalAmount}}</div>
+                        <div class="order-time">{{data.payStatus}}</div>
                     </div>
                     <div class="freight-details">
                         <p>运费： <span>商家包邮</span></p>

@@ -124,18 +124,19 @@
                 }
             },
             query() {
-                queryRecharge({}).then(res => {
-                    if (res.success) {
-                        this.list = res.data
-                    } else {
-                        this.$message.warning('网路开小差')
-                    }
+                // queryRecharge({}).then(res => {
+                //     if (res.success) {
+                //         this.list = res.data
+                //     } else {
+                //         console.log(res)
+                //         // this.$message.warning('网路开小差')
+                //     }
                     this.$emit('load')
-                }).catch(err => {
-                    this.$emit('load')
-                    console.log(err)
-                    this.$message.warning('网路开小差')
-                })
+                // }).catch(err => {
+                //     this.$emit('load')
+                //     console.log(err)
+                //     this.$message.warning('网路开小差')
+                // })
             },
             submit() {
                 if (!this.totalSum || !this.paymentType) {

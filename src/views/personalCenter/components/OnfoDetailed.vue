@@ -3,7 +3,7 @@
         <div class="pannel">
             <div class="pannel-head">
                 <ul>
-                    <li class="active"><a href="#">竞豆明细</a></li>
+                    <li class="active"><a>竞豆明细</a></li>
                 </ul>
             </div>
             <div class="pannel-body">
@@ -17,30 +17,10 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>2019-11-30</td>
-                            <td><p>竞猜赚取</p></td>
-                            <td><span class="text-warning"><b>+100</b></span></td>
-                        </tr>
-                        <tr>
-                            <td>2019-11-30</td>
-                            <td><p>竞猜赚取</p></td>
-                            <td><span class="text-warning"><b>+4500</b></span></td>
-                        </tr>
-                        <tr>
-                            <td>2019-11-30</td>
-                            <td><p>兑换</p></td>
-                            <td><span class="text-primary"><b>-100</b></span></td>
-                        </tr>
-                        <tr>
-                            <td>2019-11-30</td>
-                            <td><p>邀请用户成功注册</p></td>
-                            <td><span class="text-warning"><b>+100</b></span></td>
-                        </tr>
-                        <tr>
-                            <td>2019-11-30</td>
-                            <td><p>兑换</p></td>
-                            <td><span class="text-warning"><b>+100</b></span></td>
+                        <tr v-for="item in data" :key="item.id">
+                            <td>{{item.createTime | filterYear}}</td>
+                            <td><p>{{item.describe}}</p></td>
+                            <td><span class="text-warning"><b>{{item.status}}</b></span></td>
                         </tr>
                         </tbody>
                     </table>
@@ -60,13 +40,19 @@
                 default: true
             }
         },
+        data() {
+            return {
+                data: []
+            }
+        },
         methods: {
             query() {
                 queryDetailed({}).then(res => {
-                    if (res.success) {
-                        this.data = res.data
+                    if (res.succeed) {
+                        this.data = res.data && res.data.data || {}
                     } else {
-                        this.$message.warning('网路开小差')
+                        console.log(this.data)
+                        // this.$message.warning('网路开小差')
                     }
                     this.$emit('load')
                 }).catch(err => {

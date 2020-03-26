@@ -1,10 +1,6 @@
 <template>
     <div>
         <div class="follow-list-box">
-            <!--<ul class="nav-sign">-->
-            <!--<li class="nav-sign-item active"><a href="#">英雄联盟</a></li>-->
-            <!--<li class="nav-sign-item"><a href="#">王者荣耀</a></li>-->
-            <!--</ul>-->
             <el-tabs v-model="activeName" type="card" class="nav-sign">
                 <el-tab-pane label="英雄联盟" name="first">
                     <div class="content-item">
@@ -89,31 +85,35 @@
 </template>
 
 <script>
-    import {queryInfoGame} from '@/api/personalCenter'
+    import {getFollowMatch} from '@/api/personalCenter'
 
     export default {
-        name: "infoEdit",
-        props: {
-            isEdit: {
-                default: true
-            }
-        },
+        // name: "infoEdit",
+        // props: {
+        //     isEdit: {
+        //         default: true
+        //     }
+        // },
         data() {
             return {
                 activeName: 'first'
             }
         },
         mounted() {
+            debugger
             this.query()
         },
-        methods: {
+        methods: {//关注比赛
             query() {
                 this.loading = true
-                queryInfoGame({}).then(res => {
-                    if (res.success) {
-                        this.data = res.data
+                getFollowMatch({}).then(res => {
+                    debugger
+                    if (res.succeed) {
+                        this.list = res.data && res.data.rows || []
                     } else {
-                        this.$message.warning('网路开小差')
+                        console.log(res);
+                        this.$message.warning(res.data.msg || '')
+                        // this.$message.warning('网路开小差')
                     }
                     this.loading = false
                 }).catch(err => {

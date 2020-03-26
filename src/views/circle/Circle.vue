@@ -1,43 +1,45 @@
 <template>
     <div class="circle-content">
         <div class="circle-content-wrap">
-            <div class="circle-content-wrap-left">
-                <div class="circle-content-wrap-left-input">
+            <div class="circle-content-wrap-left" :style="{width: (auth.info && auth.info.token ? '777px' : '100%')}">
+                <div class="circle-content-wrap-left-input" v-if="auth.info && auth.info.token">
                     <div ref="editor" class="text"></div>
                     <div style="display: flex;justify-content: space-between;margin-top: 20px">
                         <div ref="toolbar" class="toolbar"></div>
-                        <button class="circle-content-wrap-left-input-handle-btn">发表</button>
+                        <button class="circle-content-wrap-left-input-handle-btn" @click="submitF">发表</button>
                     </div>
                 </div>
-                <DefaultCircle/>
-                <MyFanse/>
-                <MyDynamic/>
-                <MyFollow/>
+                <DefaultCircle ref="defalue" v-if="type == ''"/>
+                <MyFollow v-if="type == 1"/>
+                <MyDynamic v-if="type == 2"/>
+                <MyFanse v-if="type == 3"/>
             </div>
-            <div class="circle-content-wrap-right">
+            <div class="circle-content-wrap-right" v-if="auth.info && auth.info.token">
                 <div class="privatecircleright">
                     <div class="privatecircleright-info">
                         <div class="privatecircleright-info-top">
                             <img class="privatecircleright-info-top-img" src="" alt="">
                         </div>
                         <div class="privatecircleright-info-info">
-                            <img class="privatecircleright-info-info-avatar" src="@/assets/images/circle/avatar.png"
-                                 alt="">
-                            <span class="privatecircleright-info-info-txt">中竞网瑞雯</span>
+                            <img class="privatecircleright-info-info-avatar" :src="data.avatar"
+                                 alt="" @click="type = ''">
+                            <span class="privatecircleright-info-info-txt" style="text-align: center">{{data.nickname}}</span>
                         </div>
                         <div class="privatecircleright-info-bottom">
                             <div class="privatecircleright-info-bottom-item">
-                                <span class="privatecircleright-info-bottom-item-num">50</span>
-                                <span class="privatecircleright-info-bottom-item-desc">关注</span>
+                                <span class="privatecircleright-info-bottom-item-num">{{data.postNum}}</span>
+                                <span class="privatecircleright-info-bottom-item-desc">
+                                    <a @click="type = 1">关注</a></span>
                             </div>
                             <div class="privatecircleright-info-bottom-item">
-                                <span class="privatecircleright-info-bottom-item-num">16</span>
+                                <span class="privatecircleright-info-bottom-item-num">{{data.followUserNum}}</span>
+                                <span class="privatecircleright-info-bottom-item-desc">
+                                    <a @click="type = 2">动态</a></span>
+                            </div>
+                            <div class="privatecircleright-info-bottom-item">
+                                <span class="privatecircleright-info-bottom-item-num">{{data.fansNum}}</span>
                                 <span class="privatecircleright-info-bottom-item-desc"><a
-                                        href="circle-dynamic.html">动态</a></span>
-                            </div>
-                            <div class="privatecircleright-info-bottom-item">
-                                <span class="privatecircleright-info-bottom-item-num">16</span>
-                                <span class="privatecircleright-info-bottom-item-desc"><a href="circle-fans.html">粉丝</a></span>
+                                        @click="type = 3">粉丝</a></span>
                             </div>
                         </div>
                     </div>
@@ -47,12 +49,13 @@
                             <span class="privatecircleright-list-title-desc">recommend</span>
                         </div>
                         <div class="privatecircleright-list-list">
-                            <div class="privatecircleright-list-list-item">
+                            <div class="privatecircleright-list-list-item" v-for="item in Recomlist" :key="item.id">
                                 <img class="privatecircleright-list-list-item-img"
                                      src="@/assets/images/circle/quanzi001.png"
                                      alt="">
                                 <span class="privatecircleright-list-list-item-txt">王者赛事圈</span>
-                                <span class="privatecircleright-list-list-item-follow">关注</span>
+                                <span class="privatecircleright-list-list-item-follow"
+                                      @click="followCircle(item.id)">关注</span>
                             </div>
                         </div>
                     </div>
@@ -68,6 +71,9 @@
     import MyFanse from './components/MyFans'
     import MyFollow from './components/MyFollow'
     import E from 'wangeditor'
+    import {queryMyInfo, queryMyRecommend, posyCircleAll, queryMyFollowCircle, queryCancelCircle} from '@/api/circle'
+    import {mapState} from 'vuex'
+
 
     export default {
         components: {
@@ -79,7 +85,11 @@
         data() {
             return {
                 editor: null,
-                info_: null
+                info_: null,
+                type: '',
+                data: {},
+                list: [],
+                Recomlist: []
             }
         },
         watch: {
@@ -97,16 +107,102 @@
             }
             //value为编辑框输入的内容，这里我监听了一下值，当父组件调用得时候，如果给value赋值了，子组件将会显示父组件赋给的值
         },
+        computed: {
+            ...mapState(['auth'])
+        },
         mounted() {
-            this.seteditor()
-            this.editor.txt.html(this.value)
+            this.query()
+            if (this.auth.info && this.auth.info.token) {
+                this.seteditor()
+                this.editor.txt.html(this.value)
+            }
         },
         methods: {
+            submitF() {
+                posyCircleAll({content: this.editor.txt.html()}).then(res => {
+                    if (res.succeed) {
+                        this.$message.success('发表成功')
+                        this.editor.txt.clear()
+                        this.info_ = null
+                        // debugger
+                        let dom = this.$refs.defalue
+                        dom.$refs.pulic.query()
+                        this.query()
+                    } else {
+                        this.$message.warning(res.data && res.data.msg || '网络错误')
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
+            followCircle(id) {
+                debugger
+                if (true) {
+                    queryMyFollowCircle({circleId: id}).then(res => {
+                        if (res.succeed) {
+                            this.$message.success('关注成功')
+                        } else {
+                            console.log(res);
+                            this.$message.warning(res.data.data.msg || '网络错误')
+                        }
+                        this.loading = false
+                    }).catch(err => {
+                        this.loading = false
+                        console.log(err)
+                    })
+                } else {
+                    this.cancelfollowCircle(id)
+                }
+            },
+            cancelfollowCircle(id) {
+                queryCancelCircle({circle_id: id}).then(res => {
+                    if (res.succeed) {
+                        this.$message.success('取消关注成功')
+                    } else {
+                        console.log(res);
+                        this.$message.warning(res.data.data.msg || '网络错误')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                })
+            },
+            query() {
+                queryMyInfo({}).then(res => {
+                    if (res.succeed) {
+                        this.data = res.data && res.data.data || []
+                    } else {
+                        this.$message.warning(res.data && res.data.msg || '网络错误')
+                        this.list = []
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
+                this.queryList()
+            },
+            queryList() {
+                queryMyRecommend({}).then(res => {
+                    // let data = res.body
+                    if (res.succeed) {
+                        // console.log(res)
+                        this.Recomlist = res.data && res.data.rows || []
+                    } else {
+                        this.$message.warning(res.data && res.data.msg || '网络错误')
+                        this.list = []
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
+            },
             seteditor() {
+                const token = this.auth.info.token
                 this.editor = new E(this.$refs.toolbar, this.$refs.editor)
-                this.editor.customConfig.uploadImgShowBase64 = false // base 64 存储图片
-                this.editor.customConfig.uploadImgServer = 'http://otp.cdinfotech.top/file/upload_images'// 配置服务器端地址
-                this.editor.customConfig.uploadImgHeaders = {}// 自定义 header
+                this.editor.customConfig.uploadImgShowBase64 = true // base 64 存储图片
+                this.editor.customConfig.uploadImgServer = '/api' + '/api/file'// 配置服务器端地址
+                this.editor.customConfig.uploadImgHeaders = {
+                    'Authorization': token
+                }// 自定义 header
                 this.editor.customConfig.uploadFileName = 'file' // 后端接受上传文件的参数名
                 this.editor.customConfig.uploadImgMaxSize = 2 * 1024 * 1024 // 将图片大小限制为 2M
                 this.editor.customConfig.uploadImgMaxLength = 6 // 限制一次最多上传 3 张图片
@@ -163,7 +259,7 @@
                         //循环插入图片
                         // for (let i = 0; i < 1; i++) {
                         // console.log(result)
-                        let url = "http://otp.cdinfotech.top" + result.url
+                        let url = this.$imgBaseUrl + result.data.realFileName
                         insertImg(url)
                         // }
                     }
@@ -194,6 +290,7 @@
     /deep/ .w-e-icon-happy {
         font-size: 28px;
         color: #fff !important;
+
         &:hover {
             color: #ffffff;
         }
@@ -202,6 +299,7 @@
     /deep/ .w-e-icon-image {
         font-size: 28px;
         color: #fff !important;
+
         &:hover {
             color: #ffffff;
         }

@@ -11,117 +11,17 @@
         </div>
         <div class="merchandise-list">
             <ul>
-                <li>
-                    <a href="mall-details.html">
-                        <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                        <div class="merchandise-text">游戏皮肤A款</div>
+                <li v-for="item in list" :key="item.id">
+                    <a @click="$router.push({name: 'shopping_details',query:{'id': item.id}})">
+                        <!--                        <div class="merchandise-img"><img :src="item.picture"></div>-->
+                        <div class="merchandise-img"><img src="@/assets/images/mall/commodity-img1.png"></div>
+                        <div class="merchandise-text">{{item.commodityName}}</div>
                         <div class="merchandise-price">
-                            <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                            <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
+                            <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">{{item.price}}
+                            </div>
+                            <div class="add-to-cart" @click="addCard"><img src="@/assets/images/mall/shop.png"></div>
                         </div>
                     </a>
-                </li>
-                <li>
-                    <a href="mall-details.html">
-                        <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                        <div class="merchandise-text">游戏皮肤A款</div>
-                        <div class="merchandise-price">
-                            <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                            <div class="add-to-cart"><a href=""><img src="@/assets/images/mall/shop.png"></a></div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="mall-details.html">
-                        <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                        <div class="merchandise-text">游戏皮肤A款</div>
-                        <div class="merchandise-price">
-                            <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                            <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="mall-details.html">
-                        <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                        <div class="merchandise-text">游戏皮肤A款</div>
-                        <div class="merchandise-price">
-                            <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                            <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing03.png"></div>
-                    <div class="merchandise-text">游戏手办A款</div>
-                    <div class="merchandise-price">
-                        <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                        <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing05.png"></div>
-                    <div class="merchandise-text">积分红包01</div>
-                    <div class="merchandise-price">
-                        <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                        <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                    <div class="merchandise-text">游戏皮肤A款</div>
-                    <div class="merchandise-price">
-                        <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                        <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                    <div class="merchandise-text">游戏皮肤A款</div>
-                    <div class="merchandise-price">
-                        <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                        <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                    <div class="merchandise-text">游戏皮肤A款</div>
-                    <div class="merchandise-price">
-                        <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                        <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                    <div class="merchandise-text">游戏皮肤A款</div>
-                    <div class="merchandise-price">
-                        <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                        <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                    <div class="merchandise-text">游戏皮肤A款</div>
-                    <div class="merchandise-price">
-                        <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                        <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                    <div class="merchandise-text">游戏皮肤A款</div>
-                    <div class="merchandise-price">
-                        <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                        <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                    </div>
-                </li>
-                <li>
-                    <div class="merchandise-img"><img src="@/assets/images/mall/icon_thing02.png"></div>
-                    <div class="merchandise-text">游戏皮肤A款</div>
-                    <div class="merchandise-price">
-                        <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">1888</div>
-                        <div class="add-to-cart"><img src="@/assets/images/mall/shop.png"></div>
-                    </div>
                 </li>
             </ul>
         </div>
@@ -129,8 +29,86 @@
 </template>
 
 <script>
+    import {getmallList, postMallCard} from '@/api/shoppingMall'
+    import {mapState} from 'vuex'
+
     export default {
-        name: "shoppingList"
+        name: "shoppingList",
+        data() {
+            return {
+                type: '',
+                categoryId: 1,
+                list: []
+            }
+        },
+        computed: {
+            ...mapState(['auth'])
+        },
+        watch: {
+            '$route.name'(e) {
+                switch (e) {
+                    case 'all_merchandise' :
+                        this.type = '';
+                        this.categoryId = 1
+                        break;
+                    case 'game_hand' :
+                        this.type = 'hand';//手办
+                        this.categoryId = 2
+                        break;
+                    case 'game_skin' :
+                        this.categoryId = 3
+                        this.type = 'skin';//皮肤
+                        break;
+                    case 'bonus_points' :
+                        this.categoryId = 4
+                        this.type = 'points';//红包
+                        break;
+                    default:
+                        this.type = ''
+                }
+                this.query()
+            }
+        },
+        mounted() {
+            this.query()
+        },
+        methods: {
+            addCard() {
+                if (this.auth && this.auth.info.token) {
+                    console.log('添加购物车', this.auth);
+                    postMallCard({id: this.id}).then(res => {
+                        if (res.succeed) {
+                            this.$message.success('添加成功')
+                            this.$router.push({name: 'shoppinf_cart'})
+                        } else {
+                            console.log(res);
+                            // this.$message.warning('网路开小差')
+                        }
+                        this.loading = false
+                    }).catch(err => {
+                        this.loading = false
+                        console.log(err)
+                    })
+                } else {
+                    this.$message.warning('请登录')
+                    this.$router.push({name: 'login'})
+                }
+            },
+            query() {
+                getmallList({categoryId: this.categoryId}).then(res => {
+                    if (res.succeed) {
+                        this.list = res.data && res.data.rows || []
+                    } else {
+                        console.log(res)
+                        // this.$message.warning('网路开小差')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                })
+            }
+        }
     }
 </script>
 

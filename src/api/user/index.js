@@ -4,7 +4,9 @@ import http from "../home";
 export const queryPhoneCaptchaImage = (params) => {
     return http.get('/captchaImage', params)
 }
-//获取邮箱验证码
-export const queryEmailCaptchaImage = (params) => {
-    return http.get('/user/emailCheck', params)
+
+//获取手机验证码
+export const queryPhoneCode = (params) => {
+    debugger
+    return http.get('/user/sendCode', {params})
 }

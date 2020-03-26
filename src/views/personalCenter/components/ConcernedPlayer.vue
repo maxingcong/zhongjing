@@ -102,31 +102,36 @@
 </template>
 
 <script>
-    import {queryInfoPlayer} from '@/api/personalCenter'
+    import {getFollowPlayer} from '@/api/personalCenter'
 
     export default {
-        name: "infoEdit",
-        props: {
-            isEdit: {
-                default: true
-            }
-        },
+        // name: "infoEdit",
+        // props: {
+        //     isEdit: {
+        //         default: true
+        //     }
+        // },
         data() {
             return {
-                activeName: 'first'
+                activeName: 'first',
+                list: []
             }
         },
         mounted() {
+            debugger
             this.query()
         },
         methods: {
             query() {
                 this.loading = true
-                queryInfoPlayer({}).then(res => {
-                    if (res.success) {
-                        this.data = res.data
+                getFollowPlayer({}).then(res => {
+                    debugger
+                    if (res.succeed) {
+                        this.list = res.data && res.data.rows || []
                     } else {
-                        this.$message.warning('网路开小差')
+                        console.log(res)
+                        this.$message.warning(res.data.msg || '')
+                        // this.$message.warning('网路开小差')
                     }
                     this.loading = false
                 }).catch(err => {

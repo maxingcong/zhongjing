@@ -123,7 +123,8 @@
                     if (res.success) {
                         this.data = res.data
                     } else {
-                        this.$message.warning('网路开小差')
+                        this.$message.warning(res.data.msg || '')
+                        // this.$message.warning('网路开小差')
                     }
                     this.loading = false
                 }).catch(err => {
