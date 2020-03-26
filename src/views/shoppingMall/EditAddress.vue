@@ -143,8 +143,10 @@
             this.query()
         },
         methods: {
-            handleAreaChange() {
-                console.log(1);
+            handleAreaChange(e) {
+                this.form.address = e[0]
+                this.form.province = e[1]
+                this.form.city = e[2]
             },
             edit(e) {
                 this.isEdit = 'edit'
@@ -163,6 +165,7 @@
                                     this.$message.warning(res.data.msg || '')
                                 }
                                 this.loading = false
+                                this.query()
                             }).catch(err => {
                                 this.loading = false
                                 console.log(err)
@@ -182,6 +185,7 @@
                         // this.$message.warning('网路开小差')
                     }
                     this.loading = false
+                    this.query()
                 }).catch(err => {
                     this.loading = false
                     console.log(err)
@@ -197,6 +201,7 @@
                         console.log(res);
                         // this.$message.warning('网路开小差')
                     }
+                    this.query()
                     this.loading = false
                 }).catch(err => {
                     this.loading = false

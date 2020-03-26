@@ -7,37 +7,37 @@
         </div>
         <div class="page-body">
             <div class="duel-details">
-                <div class="duel-details-list" v-for="item in list.slice(0,1)" :key="item.id">
+                <div class="duel-details-list" v-for="item in list.slice(0,1)" :key="item.matchInfoId">
                     <div class="duel-details-list-head">
-                        <div class="match-name"><img :src="item.picture">{{item.matchName}}</div>
+                        <div class="match-name"><img style="width: 24px;height: 24px" :src="item.picture">{{item.matchName}}</div>
                         <div class="match-time">{{item.matchTime | filterTime}}</div>
                     </div>
                     <div class="duel-details-list-body">
                         <div class="duel-match">
-                            <div class="duel-match-logo"><img :src="item.aicon"></div>
-                            <div class="duel-match-name">{{item.aname}}</div>
+                            <div class="duel-match-logo"><img style="width: 72px;height: 72px" :src="item.aIcon"></div>
+                            <div class="duel-match-name">{{item.aName}}</div>
                         </div>
                         <div class="duel-operation">
                             <img src="@/assets/images/index/pic_vs.png">
-                            <a @click="$router.push({name:'guessing_competition_details',query:{id: item.id}})">参与竞猜</a>
-                            <span>竞猜热度8698</span>
+                            <a @click="$router.push({name:'guessing_competition_details',query:{id: item.matchInfoId}})">参与竞猜</a>
+                            <span>竞猜热度{{item.hotValue}}</span>
                         </div>
                         <div class="duel-match">
-                            <div class="duel-match-logo"><img :src="item.bicon"></div>
-                            <div class="duel-match-name">{{item.bname}}</div>
+                            <div class="duel-match-logo"><img  style="width: 72px;height: 72px" :src="item.bIcon"></div>
+                            <div class="duel-match-name">{{item.bName}}</div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="duel-item">
                 <ul>
-                    <li v-for="item in list.slice(1,5)" :key="item.id"
-                        @click="$router.push({name:'guessing_competition_details',query:{id: item.id}})">
+                    <li v-for="item in list.slice(1,5)" :key="item.matchInfoId"
+                        @click="$router.push({name:'guessing_competition_details',query:{id: item.matchInfoId}})">
                         <div class="match-name">
-                            <img :src="item.picture">
-                            <span class="name1">{{item.aname}}</span>
+                            <img class="img-24" :src="item.picture">
+                            <span class="name1">{{item.aName}}</span>
                             <img class="vs" src="@/assets/images/index/pic_vs.png">
-                            <span class="name2">{{item.bname}}</span>
+                            <span class="name2">{{item.bName}}</span>
                         </div>
                         <div class="match-time">{{item.matchTime | filterTime}}</div>
                     </li>

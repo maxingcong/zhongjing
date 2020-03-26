@@ -14,7 +14,7 @@
                     <ul class="item-list">
                         <li v-for="(t,v) in item.players" :key="v">
                             <a @click="$router.push({name:'team_member_details',query:{id:t.id}})">
-                                <div class="team-logo"><img :src="t.playerPicture"></div>
+                                <div class="team-logo"><img style="width: 154px;height: 154px" :src="t.playerPicture"></div>
                                 <div class="team-name">{{t.playerName}}</div>
                             </a>
                         </li>

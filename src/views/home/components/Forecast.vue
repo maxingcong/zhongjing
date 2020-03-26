@@ -9,13 +9,15 @@
             <div class="hot-forecast-list" v-for="item in list"
                  :key="'guessing_competition_list' + item.id + item.matchInfoId">
                 <div class="match-name">
-                    <div class="name-title"><img :src="item.picture">{{item.matchName}}</div>
+                    <div class="name-title"><img style="width: 24px;height: 24px" :src="item.picture">{{item.matchName}}
+                    </div>
                     <div class="match-time">{{item.matchTime | filterTime}}</div>
                 </div>
                 <div class="match-team">
                     <div class="match-team-innerbox">
-                        <div class="team-name"><img :src="item.aicon"><span>{{item.aname}}</span></div>
-                        <div class="fraction">1.16</div>
+                        <div class="team-name"><img style="width: 36px;height: 36px;border-radius: 50%"
+                                                    :src="item.aIcon"><span>{{item.aName}}</span></div>
+                        <div class="fraction">{{item.aScore}}</div>
                     </div>
                 </div>
                 <div class="match-score">
@@ -30,15 +32,16 @@
                     </div>
                 </div>
                 <div class="match-team right-team">
-                    <div class="match-team-innerbox">
-                        <div class="team-name"><img :src="item.bicon"><span>{{item.bname}}</span></div>
-                        <div class="fraction">1.16</div>
+                    <div class="match-team-innerbox" style="width: 80px">
+                        <div class="team-name"><img style="width:72px;height: 72px" :src="item.bIcon"><span>{{item.bName}}</span>
+                        </div>
+                        <div class="fraction">{{item.bScore}}</div>
                     </div>
                 </div>
                 <div class="match-operation">
                     <div class="operation-text">
                         <a @click="$router.push({name: 'guessing_competition_details',query:{id:item.id,md: item.matchInfoId}})">参与竞猜</a>
-                        <span>竞猜热度15589</span>
+                        <span>竞猜热度{{item.hotValue}}</span>
                     </div>
                 </div>
             </div>
@@ -48,35 +51,35 @@
 </template>
 
 <script>
-    import {queryGuessingCompetition} from '@/api/home'
+  import {queryGuessingCompetition} from '@/api/home'
 
-    export default {
-        name: "Forecast.vue",
-        data() {
-            return {
-                list: []
-            }
-        },
-        mounted() {
-            this.query()
-        },
-        methods: {
-            query() {
-                queryGuessingCompetition({}).then(res => {
-                    if (res.succeed) {
-                        this.list = res.data && res.data.rows || []
-                    } else {
-                        console.log(res.data.msg)
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
-        }
+  export default {
+    name: "Forecast.vue",
+    data() {
+      return {
+        list: []
+      }
+    },
+    mounted() {
+      this.query()
+    },
+    methods: {
+      query() {
+        queryGuessingCompetition({}).then(res => {
+          if (res.succeed) {
+            this.list = res.data && res.data.rows || []
+          } else {
+            console.log(res.data.msg)
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

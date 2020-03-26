@@ -93,6 +93,7 @@
                 if (this.auth && this.auth.info.token) {
                     console.log('添加购物车', this.auth);
                     postMallCard({id: this.id, count: this.quantity}).then(res => {
+                        debugger
                         if (res.succeed) {
                             if (this.isexchange) {
                                 this.$router.push({name: 'shoppinf_cart'})

@@ -12,6 +12,7 @@
                     <li v-for="item in list" :key="item.id"
                         @click="$router.push({name: 'match_details',query:{id:item.gameId}})">
                         <div class="hotmatch-img"><img
+                                style="width: 280px;height: 162px"
                                 :src="item.picture">
                         </div>
                         <div class="hotmatch-name">{{item.matchName}}</div>

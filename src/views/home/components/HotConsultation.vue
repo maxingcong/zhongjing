@@ -83,14 +83,14 @@
                         // console.log(res.data.rows);
                         this.data.forEach(v => {
                             // debugger
-                            if (v.className == '视频') {
+                            if (v.id == 1) {
                                 if (v.picture) {
                                     this.vidioList.push(v)
                                 } else {
                                     // debugger
                                     this.vidioListText.push(v)
                                 }
-                            } else if (v.className == '资讯') {
+                            } else if (v.className == 2) {
                                 this.conList.push(v)
                             } else {//赛事
                                 this.matchList.push(v)

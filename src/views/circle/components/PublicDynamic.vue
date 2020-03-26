@@ -14,9 +14,9 @@
                     </button>
                 </div>
                 <span class="circle-content-wrap-left-list-item-title" v-html="item.content"></span>
-                <div class="circle-content-wrap-left-list-item-content" v-if="isCirle != 4">
+                <div class="circle-content-wrap-left-list-item-content" v-if="isCirle != 4 && item.vidoo">
                     <d-player @play="play" ref="play" class="circle-content-wrap-left-list-item-content-video"
-                              :options="options"/>
+                              :options="{video: {url: item.vidoo}}"/>
                     <!--<img class="circle-content-wrap-left-list-item-content-one-img" src="@/assets/images/circle/demo_img.png" alt="">-->
                 </div>
                 <div class="circle-content-wrap-left-list-item-handle">

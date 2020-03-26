@@ -27,7 +27,7 @@ export const getmallCard = (params) => {
  * @param {Object} params 参数
  */
 export const postMallCard = (params) => {
-    return http.get('/mall/addCart', params)
+    return http.post('/mall/addCart', params)
 }
 
 /*添加收获地址

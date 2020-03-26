@@ -5,13 +5,13 @@
         </div>
         <div class="page-body">
             <div class="hotmatch-list">
-                <ul>
+                <ul style="overflow: scroll">
                     <li v-for="item in list" :key="item.id">
                         <a @click="$router.push({name: 'match_details',query:{id:item.id}})">
                             <div class="status-label"><img src="@/assets/images/index/inProgress.png"></div>
                             <!--                            <div class="hotmatch-img"><img :src="item.picture"></div>-->
-                            <div class="hotmatch-img"><img src="@/assets/images/index/hotgame06.png"></div>
-                            <div class="match-name"><img src="@/assets/images/index/sgame01.png">{{item.matchName}}
+                            <div class="hotmatch-img"><img style="width: 280px;height: 160px" :src="item.picture"></div>
+                            <div class="match-name"><img class="img-24" src="@/assets/images/index/sgame01.png">{{item.matchName}}
                             </div>
                         </a>
                     </li>

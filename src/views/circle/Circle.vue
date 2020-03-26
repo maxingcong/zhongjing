@@ -51,9 +51,10 @@
                         <div class="privatecircleright-list-list">
                             <div class="privatecircleright-list-list-item" v-for="item in Recomlist" :key="item.id">
                                 <img class="privatecircleright-list-list-item-img"
-                                     src="@/assets/images/circle/quanzi001.png"
+                                     :src="item.avatar"
+                                     style="width: 64px;height: 64px"
                                      alt="">
-                                <span class="privatecircleright-list-list-item-txt">王者赛事圈</span>
+                                <span class="privatecircleright-list-list-item-txt">{{item.nickname}}</span>
                                 <span class="privatecircleright-list-list-item-follow"
                                       @click="followCircle(item.id)">关注</span>
                             </div>

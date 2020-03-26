@@ -11,7 +11,7 @@
                     <div class="hotspotDetailsBox-left">
                         <div class="focus-box"
                              @click="$router.push({name:'consultation_details',query:{id:data.one.id}})">
-                            <div class="focus-img"><img :src="data.one && data.one.picture || ''"></div>
+                            <div class="focus-img"><img style="width: 360px;height: 270px" :src="data.one && data.one.picture || ''"></div>
                             <!--{{data.one.picture}}-->
                             <div class="focus-title"><a>{{data.one && data.one.title || ''}}</a></div>
                         </div>
@@ -26,7 +26,7 @@
                                     <li v-for="(item,index) in data.newMatch && data.newMatch.rows && data.newMatch.rows.slice(0,4)"
                                         :key="index"
                                         @click="$router.push({name:'match_details',query:{id:item.id}})">
-                                        <div class="new-match-img"><img :src="item.picture"/>
+                                        <div class="new-match-img"><img style="width: 170px;height: 98px;" :src="item.picture"/>
                                         </div>
                                         <div class="new-match-name"><a>{{item.matchName}}</a></div>
                                     </li>
@@ -39,7 +39,7 @@
                              @click="$router.push({name:'consultation_details',query:{id:item.id}})"
                              v-for="(item,index) in data.informationList && data.informationList.rows && data.informationList.rows.slice(0,5)"
                              :key="index">
-                            <div class="hotspot-list-img"><img :src="item.picture"/></div>
+                            <div class="hotspot-list-img"><img style="width: 136px;height: 86px" :src="item.picture"/></div>
                             <div class="hotspot-list-text">
                                 <h3>{{item.title}}</h3>
                                 <div class="tag">
@@ -64,7 +64,7 @@
                         <li v-for="(item,index) in list" :key="index"
                             @click="$router.push({name:'team_details',query:{id:item.id}})">
                             <div class="hotteam-img">
-                                <img :src="item.combatTeamIcon">
+                                <img style="width: 72px;height: 72px" :src="item.combatTeamIcon">
                             </div>
                             <div class="hotteam-name">{{item.combatTeamName}}</div>
                         </li>

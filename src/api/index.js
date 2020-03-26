@@ -4,7 +4,7 @@ import {addPending, removePending} from './utils'
 import store from './../store'
 import * as filterDate from './apiFilterJson.js'
 
-const baseURL = '/api'
+const baseURL = process.env.NODE_ENV == 'development' ? '/api' : 'http://netdj.com/api'
 // const baseURL = 'http://netdj.com/api'
 //
 console.log(process.env.NODE_ENV);

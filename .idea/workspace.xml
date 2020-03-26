@@ -2,48 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cc570b4-3f8b-4bd8-b84f-5df221d01a87" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/api/user/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/utils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Banner.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/HotgameList.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/consultation/components/HotForecast.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/consultation/components/HotMatch.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/home/components/Forecast.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/home/components/HotConsultation.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/home/components/HotMatch.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/home/components/Hotspot.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/match/components/AllGame.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/match/components/HotMatch.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/shoppingMall/List.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/combatTeam/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/combatTeam/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/home/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/modules/menu.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/modules/menu.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/shoppingMall/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/shoppingMall/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Banner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Banner.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/HotgameList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HotgameList.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/circle/Circle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/circle/Circle.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/circle/components/PublicDynamic.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/circle/components/PublicDynamic.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/combatTeam/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/combatTeam/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/consultation/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/match/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/match/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/AgentPromotion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/AgentPromotion.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/MyGuess.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/MyGuess.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/MyInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/MyInfo.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/MyOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/MyOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/SystemMessage.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/SystemMessage.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/AgentPromotionDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/AgentPromotionDetails.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/AgentPromotionExchange.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/AgentPromotionExchange.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/AgentPromotionFriend.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/AgentPromotionFriend.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedGame.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedGame.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedPlayer.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedTeam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedTeam.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/OnfoDetailed.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/OnfoDetailed.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/Recharge.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/Recharge.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/consultation/components/HotForecast.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/components/HotForecast.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/consultation/components/HotMatch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/components/HotMatch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/components/Forecast.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/Forecast.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/components/HotConsultation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/HotConsultation.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/components/HotMatch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/HotMatch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/components/Hotspot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/Hotspot.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/match/components/AllGame.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/match/components/AllGame.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/match/components/HotMatch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/match/components/HotMatch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/EditAddress.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/EditAddress.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/ShoppingDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/ShoppingDetails.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,8 +49,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/views/shoppingMall" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -125,6 +104,7 @@
       <workItem from="1583119673490" duration="18196000" />
       <workItem from="1583200909166" duration="4727000" />
       <workItem from="1583217223413" duration="11326000" />
+      <workItem from="1585187584373" duration="9209000" />
     </task>
     <servers />
   </component>
@@ -175,7 +155,6 @@
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/views/shoppingMall/List.vue</url>
           <line>1</line>
-          <properties lambdaOrdinal="-1" />
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

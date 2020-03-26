@@ -1,10 +1,9 @@
 <template>
     <div class="swiper-container banner">
         <div class="swiper-wrapper">
-            <div class="swiper-slide"><img src="@/assets/images/index/banner.png"></div>
-            <div class="swiper-slide" v-for="item in list" :key="item.id"><img
-                    src="@/assets/images/index/bteam16.png"></div>
-<!--                    :src="item.picture"></div>-->
+<!--            <div class="swiper-slide"><img src="@/assets/images/index/banner.png"></div>-->
+            <div class="swiper-slide" v-for="item in list" :key="item.id"><img style="width: 1200px;height: 450px"
+                    :src="item.pic"></div>
         </div>
     </div>
 </template>
