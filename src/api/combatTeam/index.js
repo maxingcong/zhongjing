@@ -5,7 +5,7 @@ import http from '@/api/'
  * @param {Object} params 参数
  */
 export const queryTeamList = (params) => {
-    return http.get('/home/combatTeam', params)
+    return http.get('/home/gameCombatTeam', params)
 }
 
 /*战队详情
@@ -33,7 +33,7 @@ export const postCancelTeam = (params) => {
  * @param {Object} params 参数
  */
 export const queryTeamMenber = (params) => {
-    return http.get('/home/teamIntroduction' + params.gameId, params)
+    return http.get('/home/teamIntroduction/' + params.playerId, params)
 }
 
 /*关注战队队员

@@ -366,7 +366,7 @@
                 })
             },
             query() {
-                queryTeamMenber({}).then(res => {
+                queryTeamMenber({playerId: this.id}).then(res => {
                     if (res.succeed) {
                         this.data = res.data && res.data.data || {}
                     } else {

@@ -337,7 +337,7 @@
             },
             handleAvatarSuccess(res) {
                 if (res.code == 200) {
-                    this.imageUrl = this.$imgBaseUrl + res.data.realFileName || ''
+                    this.imageUrl = res.data.realFileName || ''
                 }
             },
             beforeAvatarUpload(file) {

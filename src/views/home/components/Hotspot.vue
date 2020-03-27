@@ -11,7 +11,8 @@
                     <div class="hotspotDetailsBox-left">
                         <div class="focus-box"
                              @click="$router.push({name:'consultation_details',query:{id:data.one.id}})">
-                            <div class="focus-img"><img style="width: 360px;height: 270px" :src="data.one && data.one.picture || ''"></div>
+                            <div class="focus-img"><img style="width: 360px;height: 270px"
+                                                        :src="data.one && data.one.picture || ''"></div>
                             <!--{{data.one.picture}}-->
                             <div class="focus-title"><a>{{data.one && data.one.title || ''}}</a></div>
                         </div>
@@ -24,11 +25,12 @@
                             <div class="new-match-list">
                                 <ul>
                                     <li v-for="(item,index) in data.newMatch && data.newMatch.rows && data.newMatch.rows.slice(0,4)"
-                                        :key="index"
+                                        :key="'new-match-list'+ index"
                                         @click="$router.push({name:'match_details',query:{id:item.id}})">
-                                        <div class="new-match-img"><img style="width: 170px;height: 98px;" :src="item.picture"/>
+                                        <div class="new-match-img"><img style="width: 170px;height: 98px;"
+                                                                        :src="item.picture || ''"/>
                                         </div>
-                                        <div class="new-match-name"><a>{{item.matchName}}</a></div>
+                                        <div class="new-match-name"><a>{{item.matchName || ''}}</a></div>
                                     </li>
                                 </ul>
                             </div>
@@ -38,13 +40,14 @@
                         <div class="hotspot-list"
                              @click="$router.push({name:'consultation_details',query:{id:item.id}})"
                              v-for="(item,index) in data.informationList && data.informationList.rows && data.informationList.rows.slice(0,5)"
-                             :key="index">
-                            <div class="hotspot-list-img"><img style="width: 136px;height: 86px" :src="item.picture"/></div>
+                             :key="'hotspot-list' + index">
+                            <div class="hotspot-list-img"><img style="width: 136px;height: 86px" :src="item.picture"/>
+                            </div>
                             <div class="hotspot-list-text">
                                 <h3>{{item.title}}</h3>
                                 <div class="tag">
                                     <label class="hollowlb lb1">{{item.className}}</label>
-                                    <div class="data">日期：{{item.releaseTime |filterTime}}</div>
+                                    <div class="data">日期：{{item.releaseTime || '' | filterTime}}</div>
                                 </div>
                             </div>
                         </div>
@@ -76,59 +79,59 @@
 </template>
 
 <script>
-    import {queryTodayHot, queryHomeCombatTeam} from '@/api/home'
+  import {queryTodayHot, queryHomeCombatTeam} from '@/api/home'
 
-    export default {
-        name: "Forecast.vue",
-        data() {
-            return {
-                data: {},
-                list: []
-            }
-        },
-        mounted() {
-            this.query()
-        },
-        filters: {
-            filterTime(item) {
-                let arr = item && item.split('T') || [],
-                    a = arr[0] || '',
-                    b = arr[1].split('.')[0] || ''
-                a = a.split('-').slice(1, 3).join('-')
-                b = b.split(':').slice(0, 2).join(':')
-                console.log(b)
-                return a
-            }
-        },
-        methods: {
-            query() {
-                queryTodayHot({}).then(res => {
-                    if (res.succeed) {
-                        this.data = res.data && res.data.data || {}
-                    } else {
-                        console.log(res)
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
+  export default {
+    name: "Forecast.vue",
+    data() {
+      return {
+        data: {},
+        list: []
+      }
+    },
+    mounted() {
+      this.query()
+    },
+    filters: {
+      filterTime(item) {
+        let arr = item && item.split(' ') || [],
+          a = arr[0] || '',
+          b = arr[1].split('.')[0] || ''
+        a = a.split('-').slice(1, 3).join('-')
+        b = b.split(':').slice(0, 2).join(':')
+        console.log(b)
+        return a
+      }
+    },
+    methods: {
+      query() {
+        queryTodayHot({}).then(res => {
+          if (res.succeed) {
+            this.data = res.data && res.data.data || {}
+          } else {
+            console.log(res)
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
 
-                queryHomeCombatTeam({}).then(res => {
-                    if (res.succeed) {
-                        this.list = res.data && res.data.rows || []
-                    } else {
-                        console.log(123)
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
-        }
+        queryHomeCombatTeam({}).then(res => {
+          if (res.succeed) {
+            this.list = res.data && res.data.rows || []
+          } else {
+            console.log(123)
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

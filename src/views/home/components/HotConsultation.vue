@@ -59,55 +59,54 @@
 </template>
 
 <script>
-    import {queryHomeConsultation} from '@/api/home'
+  import {queryInfoClassList} from '@/api/consultation'
 
-    export default {
-        name: "Forecast.vue",
-        data() {
-            return {
-                vidioList: [],
-                matchList: [],
-                conList: [],
-                vidioListText: []
-            }
-        },
-        mounted() {
-            this.query()
-        },
-        methods: {
-            query() {
-                queryHomeConsultation({}).then(res => {
-                    if (res.succeed) {
-                        this.data = res.data && res.data.rows || []
-                        // debugger
-                        // console.log(res.data.rows);
-                        this.data.forEach(v => {
-                            // debugger
-                            if (v.id == 1) {
-                                if (v.picture) {
-                                    this.vidioList.push(v)
-                                } else {
-                                    // debugger
-                                    this.vidioListText.push(v)
-                                }
-                            } else if (v.className == 2) {
-                                this.conList.push(v)
-                            } else {//赛事
-                                this.matchList.push(v)
-                            }
-                        })
-                    } else {
-                        console.log(123)
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
-        }
+  export default {
+    data() {
+      return {
+        vidioList: [],
+        matchList: [],
+        conList: [],
+        vidioListText: []
+      }
+    },
+    mounted() {
+      this.query()
+    },
+    methods: {
+      query() {
+        queryInfoClassList({pageSize: 10, pageNum: 3}).then(res => {
+          if (res.succeed) {
+            this.data = res.data && res.data.rows || []
+            // debugger
+            // console.log(res.data.rows);
+            this.data.forEach(v => {
+              // debugger
+              if (v.id == 1) {
+                if (v.picture) {
+                  this.vidioList.push(v)
+                } else {
+                  // debugger
+                  this.vidioListText.push(v)
+                }
+              } else if (v.className == 2) {
+                this.conList.push(v)
+              } else {//赛事
+                this.matchList.push(v)
+              }
+            })
+          } else {
+            console.log(123)
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

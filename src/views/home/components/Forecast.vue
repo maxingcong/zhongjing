@@ -15,7 +15,7 @@
                 </div>
                 <div class="match-team">
                     <div class="match-team-innerbox">
-                        <div class="team-name"><img style="width: 36px;height: 36px;border-radius: 50%"
+                        <div class="team-name"><img style="width: 36px;height: 36px;;border-radius: 50%"
                                                     :src="item.aIcon"><span>{{item.aName}}</span></div>
                         <div class="fraction">{{item.aScore}}</div>
                     </div>
@@ -33,14 +33,15 @@
                 </div>
                 <div class="match-team right-team">
                     <div class="match-team-innerbox" style="width: 80px">
-                        <div class="team-name"><img style="width:72px;height: 72px" :src="item.bIcon"><span>{{item.bName}}</span>
+                        <div class="team-name"><img style="width:36px;height: 36px;border-radius: 50%"
+                                                    :src="item.bIcon"><span>{{item.bName}}</span>
                         </div>
                         <div class="fraction">{{item.bScore}}</div>
                     </div>
                 </div>
                 <div class="match-operation">
                     <div class="operation-text">
-                        <a @click="$router.push({name: 'guessing_competition_details',query:{id:item.id,md: item.matchInfoId}})">参与竞猜</a>
+                        <a @click="$router.push({name: 'guessing_competition_details',query:{id: item.matchInfoId}})">参与竞猜</a>
                         <span>竞猜热度{{item.hotValue}}</span>
                     </div>
                 </div>
@@ -65,7 +66,7 @@
     },
     methods: {
       query() {
-        queryGuessingCompetition({}).then(res => {
+        queryGuessingCompetition({pageNum: 0, pageSize: 4}).then(res => {
           if (res.succeed) {
             this.list = res.data && res.data.rows || []
           } else {

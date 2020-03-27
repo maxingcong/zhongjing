@@ -17,15 +17,16 @@
                                     :class="{active: isConsultationType == ''}">
                                     <a>全部</a>
                                 </li>
-                                <li @click="getLiType(3)" :class="{active: isConsultationType == 3}"
-                                    class="nav-item"><a>最新资讯 </a>
+                                <li v-for="item in list" :key="item.id" @click="getLiType(item.id)"
+                                    :class="{active: isConsultationType == item.id}"
+                                    class="nav-item"><a>{{item.className}}</a>
                                 </li>
-                                <li @click="getLiType(1)" :class="{active: isConsultationType == 1}"
-                                    class="nav-item"><a>赛事资讯</a>
-                                </li>
-                                <li @click="getLiType(2)" :class="{active: isConsultationType == 2}"
-                                    class="nav-item"><a>视频资讯</a>
-                                </li>
+                                <!--                                <li @click="getLiType(1)" :class="{active: isConsultationType == 1}"-->
+                                <!--                                    class="nav-item"><a>赛事资讯</a>-->
+                                <!--                                </li>-->
+                                <!--                                <li @click="getLiType(2)" :class="{active: isConsultationType == 2}"-->
+                                <!--                                    class="nav-item"><a>视频资讯</a>-->
+                                <!--                                </li>-->
                             </ul>
                         </div>
                         <router-view></router-view>
@@ -42,38 +43,58 @@
 </template>
 
 <script>
-    import HotgameList from "../../components/HotgameList";
-    import HotMatch from "./components/HotMatch";
-    import HotForecast from "./components/HotForecast";
+  import HotgameList from "../../components/HotgameList";
+  import HotMatch from "./components/HotMatch";
+  import HotForecast from "./components/HotForecast";
+  import {queryInfoClass} from '@/api/consultation'
 
-    export default {
-        name: "consultation",
-        components: {
-            HotgameList,
-            HotMatch,
-            HotForecast
-        },
-        computed: {
-            rout() {
-                return this.$route.name
-            }
-        },
-        data() {
-            return {
-                isConsultationType: ''
-            }
-        },
-        methods: {
-            handQuery(e) {
-                console.log(e)
-            },
-            getLiType(item) {
-                this.$router.push({name: 'consultation_list', query: {id: item}})
-                this.isConsultationType = item || ''
-                // this.query()
-            }
-        }
+
+  export default {
+    name: "consultation",
+    components: {
+      HotgameList,
+      HotMatch,
+      HotForecast
+    },
+    computed: {
+      rout() {
+        return this.$route.name
+      }
+    },
+    data() {
+      return {
+        isConsultationType: '',
+        list: []
+      }
+    },
+    mounted() {
+      this.query()
+    },
+    methods: {
+      handQuery(e) {
+        console.log(e)
+      },
+      query() {
+        queryInfoClass({}).then(res => {
+          if (res.succeed) {
+            this.list = res.data && res.data.rows || []
+          } else {
+            console.log(res)
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      },
+      getLiType(item) {
+        this.$router.push({name: 'consultation_list', query: {id: item}})
+        this.isConsultationType = item || ''
+        // this.query()
+      }
     }
+  }
 </script>
 
 <style scoped>

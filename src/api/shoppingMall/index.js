@@ -8,11 +8,18 @@ export const getmallList = (params) => {
     return http.get('/mall/commodity', {params})
 }
 
+/*商品分类列表
+ * @param {Object} params 参数
+ */
+export const getCommodityCategory = (params) => {
+    return http.get('/mall/commodityCategory', {params})
+}
+
 /*商品详情
  * @param {Object} params 参数
  */
 export const getmallDetails = (params) => {
-    return http.get('/mall/detail', params)
+    return http.get('/mall/detail', {params})
 }
 
 /*购物车列表

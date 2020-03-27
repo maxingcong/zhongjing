@@ -8,14 +8,14 @@
         </div>
         <div>
             <div class="page team-box" v-for="(item,index) in list" :key="index">
-                <div class="box-head"><h3 @click="$router.push({name:'team_details',query:{id:item.id}})">
-                    {{item.combatTeamName}}</h3></div>
+                <div class="box-head"><h3>
+                    {{item.gameName}}</h3></div>
                 <div class="box-body">
                     <ul class="item-list">
-                        <li v-for="(t,v) in item.players" :key="v">
-                            <a @click="$router.push({name:'team_member_details',query:{id:t.id}})">
-                                <div class="team-logo"><img style="width: 154px;height: 154px" :src="t.playerPicture"></div>
-                                <div class="team-name">{{t.playerName}}</div>
+                        <li v-for="(t,v) in item.combatTeams" :key="v">
+                            <a @click="$router.push({name:'team_details',query:{id:t.id}})">
+                                <div class="team-logo"><img style="width: 154px;height: 154px" :src="t.combatTeamIcon"></div>
+                                <div class="team-name">{{t.combatTeamName}}</div>
                             </a>
                         </li>
                     </ul>
@@ -26,39 +26,38 @@
 </template>
 
 <script>
-    import HotgameList from "../../components/HotgameList";
-    import {queryTeamList} from '@/api/combatTeam'
+  import HotgameList from "../../components/HotgameList";
+  import {queryTeamList} from '@/api/combatTeam'
 
-    export default {
-        components: {
-            HotgameList
-        },
-        data() {
-            return {
-                list: []
-            }
-        },
-        created() {
-            this.query()
-        },
-        methods: {
-            query() {
-                queryTeamList({gameId: 1}).then(res => {
-                    debugger
-                    if (res.succeed) {
-                        this.list = res.data && res.data.rows || []
-                    } else {
-                        console.log(res)
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
-        }
+  export default {
+    components: {
+      HotgameList
+    },
+    data() {
+      return {
+        list: []
+      }
+    },
+    created() {
+      this.query()
+    },
+    methods: {
+      query() {
+        queryTeamList({}).then(res => {
+          if (res.succeed) {
+            this.list = res.data && res.data.rows || []
+          } else {
+            console.log(res)
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

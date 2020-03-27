@@ -5,9 +5,9 @@
                 <div class="box-head">
                     <div class="box-left"><img src="@/assets/images/mall/commodity-img1.png"></div>
                     <div class="box-right">
-                        <h2>游戏手办A款</h2>
-                        <p>颜究小盒武神幽兰组合迷你手办现货发售中~现购买可享立减20元。</p>
-                        <div class="price">￥100.00 <span>￥118.00</span></div>
+                        <h2>{{data.commodityName}}</h2>
+                        <p>{{data.detail}}</p>
+                        <div class="price">{{data.price}}<span>{{data.conversionPrice}}</span></div>
                         <div class="number">
                             <label>数&nbsp;&nbsp;&nbsp;&nbsp;量</label>
                             <div class="number-emendation">
@@ -46,7 +46,7 @@
                     <div class="title"><h4>商品详情</h4></div>
                     <div class="details-text">
                         <ul>
-                            <li>商品名称：【现货】武神&幽兰颜究小盒</li>
+                            <li>商品名称：{{data.commodityName}}</li>
                             <li>上架时间：2019-12-31</li>
                             <li>商城：剑灵</li>
                             <li>商品毛重：100G</li>
@@ -60,77 +60,81 @@
 </template>
 
 <script>
-    import {getmallDetails, postMallCard} from '@/api/shoppingMall'
-    import {mapState} from 'vuex'
+  import {getmallDetails, postMallCard} from '@/api/shoppingMall'
+  import {mapState} from 'vuex'
 
-    export default {
-        name: "shopping_details",
-        data() {
-            return {
-                type: '',
-                quantity: 0,
-                data: {
-                    // id: this.$route.query.id
-                }
-            }
-        },
-        computed: {
-            ...mapState(['auth']),
-            id: function () {
-                return this.$route.query.id
-            }
-
-        },
-        mounted() {
-            this.query()
-        },
-        methods: {
-            exchange() {
-                this.isexchange = true
-                this.addCard()
-            },
-            addCard() {
-                if (this.auth && this.auth.info.token) {
-                    console.log('添加购物车', this.auth);
-                    postMallCard({id: this.id, count: this.quantity}).then(res => {
-                        debugger
-                        if (res.succeed) {
-                            if (this.isexchange) {
-                                this.$router.push({name: 'shoppinf_cart'})
-                            } else {
-                                this.$message.success('添加成功')
-                            }
-                        } else {
-                            console.log(res);
-                            this.$message.warning(res.data.msg || '')
-                            // this.$message.warning('网路开小差')
-                        }
-                        this.loading = false
-                    }).catch(err => {
-                        this.loading = false
-                        console.log(err)
-                    })
-                } else {
-                    this.$message.warning('请登录')
-                    this.$router.push({name: 'login'})
-                }
-            },
-            query() {
-                getmallDetails({id: this.id}).then(res => {
-                    if (res.succeed) {
-                        this.data = res.data && res.data.data || {}
-                    } else {
-                        console.log(res);
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
+  export default {
+    name: "shopping_details",
+    data() {
+      return {
+        type: '',
+        quantity: 0,
+        data: {
+          // id: this.$route.query.id
         }
+      }
+    },
+    computed: {
+      ...mapState(['auth']),
+      id: function () {
+        return this.$route.query.id
+      }
+
+    },
+    mounted() {
+      this.query()
+    },
+    methods: {
+      exchange() {
+        this.isexchange = true
+        this.addCard()
+      },
+      addCard() {
+        if (this.auth && this.auth.info.token) {
+          console.log('添加购物车', this.auth);
+          if (!this.quantity) {
+            this.$message.warning('当前购买数量小于1')
+            return
+          }
+          postMallCard({id: this.id, count: this.quantity}).then(res => {
+            debugger
+            if (res.succeed) {
+              if (this.isexchange) {
+                this.$router.push({name: 'shoppinf_cart'})
+              } else {
+                this.$message.success('添加成功')
+              }
+            } else {
+              console.log(res);
+              this.$message.warning(res.data.msg || '')
+              // this.$message.warning('网路开小差')
+            }
+            this.loading = false
+          }).catch(err => {
+            this.loading = false
+            console.log(err)
+          })
+        } else {
+          this.$message.warning('请登录')
+          this.$router.push({name: 'login'})
+        }
+      },
+      query() {
+        getmallDetails({id: this.id}).then(res => {
+          if (res.succeed) {
+            this.data = res.data && res.data.data || {}
+          } else {
+            console.log(res);
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped lang="less">

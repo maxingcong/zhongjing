@@ -15,9 +15,9 @@
         <div class="big-screen-content">
             <div class="main-content">
                 <div class="page team-introduce-box">
-                    <div class="box-left"><img :src="data[0].combatTeamIcon || ''"></div>
+                    <div class="box-left"><img style="width: 396px;height: 396px" :src="data[0].combatTeamIcon || ''"></div>
                     <div class="box-right">
-                        <div class="title"><h3></h3><span>{{data[0].fullName}}</span><a @click="queryFollowTeam">关注</a>
+                        <div class="title"><h3></h3><span>{{data[0].combatTeamName}}</span><a @click="queryFollowTeam">关注</a>
                         </div>
                         <div class="label">
                             <span>游戏：{{data[0].gameName}}</span><span>热度：{{data[0].calorificValue}}</span>

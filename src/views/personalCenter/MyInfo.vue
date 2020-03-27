@@ -113,7 +113,7 @@
                             'phone': res.data.data.phone,
                             'token': this.auth.info.token,
                             data: res.data.data,
-                            img: '1.png'
+                            img: res.data.avatar
                         })
                         this.setBean(res.data && res.data.data.bean || 0)
                     } else {

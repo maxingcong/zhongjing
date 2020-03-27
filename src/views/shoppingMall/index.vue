@@ -23,7 +23,7 @@
                         <ul>
                             <li><a @click="$router.push({name: 'shoppinf_cart'})"><img
                                     src="@/assets/images/mall/shoppingCart.png">购物车</a></li>
-                            <li><a href="#"><img src="@/assets/images/mall/icon_shop_exchange.png">兑换记录</a></li>
+                            <li><a @click="''"><img src="@/assets/images/mall/icon_shop_exchange.png">兑换记录</a></li>
                         </ul>
                     </div>
                 </div>
@@ -36,14 +36,31 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
+  import {mapState} from 'vuex'
+  import {getCommodityCategory} from '@/api/shoppingMall'
 
-    export default {
-        name: "shoppingMall",
-        computed: {
-            ...mapState(['menu', 'auth'])
-        }
+  export default {
+    name: "shoppingMall",
+    computed: {
+      ...mapState(['menu', 'auth'])
+    },
+    methods: {
+      query() {
+        getCommodityCategory({id: this.id}).then(res => {
+          if (res.succeed) {
+            this.data = res.data && res.data.data || {}
+          } else {
+            console.log(res);
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

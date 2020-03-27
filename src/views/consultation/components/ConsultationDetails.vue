@@ -7,9 +7,9 @@
                         <img src="@/assets/images/index/palce.png">
                         <ul>
                             <li>当前位置：</li>
-                            <li><a href="#">中竞网首页</a></li>
+                            <li><a>中竞网首页</a></li>
                             <li>></li>
-                            <li><a href="#">资讯</a></li>
+                            <li><a>资讯</a></li>
                             <li>></li>
                             <li>正文</li>
                         </ul>
@@ -27,26 +27,18 @@
                     <div class="box-body">
                         <div class="hotinformation-classification-list">
                             <ul class="hotinformation-text">
-                                <li><span class="circle-icon-text text3"></span><a href="#">iG 宣布 Jackeylove
-                                    合约到期成为自由人正在实施</a></li>
-                                <li><span class="circle-icon-text text3"></span><a href="#">iG 宣布 Jackeylove
-                                    合约到期成为自由人正在实施</a></li>
-                                <li><span class="circle-icon-text text3"></span><a href="#">iG 宣布 Jackeylove
-                                    合约到期成为自由人正在实施</a></li>
-                                <li><span class="circle-icon-text text3"></span><a href="#">iG 宣布 Jackeylove
-                                    合约到期成为自由人正在实施</a></li>
+                                <li v-for="item in list&& list.length && list.slice(0,4)" :key="item.id"><span
+                                        class="circle-icon-text text3"></span><a
+                                        @click="$router.push({name:'consultation_details',query:{id: item.id,rd:rout}})"
+                                        >{{item.title}}</a></li>
                             </ul>
                         </div>
                         <div class="hotinformation-classification-list">
                             <ul class="hotinformation-text">
-                                <li><span class="circle-icon-text text3"></span><a href="#">iG 宣布 Jackeylove
-                                    合约到期成为自由人正在实施</a></li>
-                                <li><span class="circle-icon-text text3"></span><a href="#">iG 宣布 Jackeylove
-                                    合约到期成为自由人正在实施</a></li>
-                                <li><span class="circle-icon-text text3"></span><a href="#">iG 宣布 Jackeylove
-                                    合约到期成为自由人正在实施</a></li>
-                                <li><span class="circle-icon-text text3"></span><a href="#">iG 宣布 Jackeylove
-                                    合约到期成为自由人正在实施</a></li>
+                                <li v-for="item in list&& list.length && list.slice(5,10)" :key="item.id"><span
+                                        class="circle-icon-text text3"></span><a
+                                        @click="$router.push({name:'consultation_details',query:{id: item.id,rd:rout}})"
+                                        >{{item.title}}</a></li>
                             </ul>
                         </div>
                     </div>
@@ -57,37 +49,50 @@
 </template>
 
 <script>
-    import {queryInfoDetails} from '@/api/consultation'
+  import {queryInfoDetails, queryInfoClassList} from '@/api/consultation'
 
-    export default {
-        name: "Forecast.vue",
-        data() {
-            return {
-                id: this.$route.query.id,
-                data: {}
-            }
-        },
-        mounted() {
-            this.query()
-        },
-        methods: {
-            query() {
-                queryInfoDetails({id: this.id}).then(res => {
-                    debugger
-                    if (res.succeed) {
-                        this.data = res.data && res.data.data || {}
-                    } else {
-                        console.log(res)
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
-        }
+  export default {
+    name: "Forecast.vue",
+    data() {
+      return {
+        id: this.$route.query.id,
+        rout: this.$route.query.rd,
+        list: [],
+        data: {}
+      }
+    },
+    mounted() {
+      this.query()
+    },
+    methods: {
+      query() {
+        queryInfoDetails({id: this.id}).then(res => {
+          if (res.succeed) {
+            this.data = res.data && res.data.data || {}
+          } else {
+            console.log(res)
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+        queryInfoClassList({classId: this.rout}).then(res => {
+          if (res.succeed) {
+            this.list = res.data && res.data.rows || []
+          } else {
+            console.log(res)
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

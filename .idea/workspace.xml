@@ -2,26 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cc570b4-3f8b-4bd8-b84f-5df221d01a87" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/combatTeam/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/combatTeam/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/consultation/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/consultation/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/home/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/match/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/match/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/shoppingMall/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/shoppingMall/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Banner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Banner.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HotgameList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HotgameList.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/circle/Circle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/circle/Circle.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/circle/components/PublicDynamic.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/circle/components/PublicDynamic.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/combatTeam/Details.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/combatTeam/Details.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/combatTeam/MemberDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/combatTeam/MemberDetails.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/combatTeam/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/combatTeam/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/consultation/components/HotForecast.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/components/HotForecast.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/consultation/components/HotMatch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/components/HotMatch.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/consultation/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/List.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/consultation/components/ConsultationDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/components/ConsultationDetails.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/consultation/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/GuessingCompetitionDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/GuessingCompetitionDetails.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/GuessingCompetitionList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/GuessingCompetitionList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/home/components/Forecast.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/Forecast.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/home/components/HotConsultation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/HotConsultation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home/components/HotMatch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/HotMatch.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/home/components/Hotspot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/Hotspot.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/match/components/AllGame.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/match/components/AllGame.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/match/components/HotMatch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/match/components/HotMatch.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/EditAddress.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/EditAddress.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/MyInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/MyInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/InfoEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/InfoEdit.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/ShoppingCart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/ShoppingCart.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/ShoppingDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/ShoppingDetails.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/index.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +45,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1YYVmFfGoINKHbeb88Zu6JJVxFv" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -51,7 +63,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/vue.config.js" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -61,6 +73,8 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.webpack" />
+    <property name="ts.external.directory.path" value="D:\webstorm\WebStorm 2019.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -104,7 +118,8 @@
       <workItem from="1583119673490" duration="18196000" />
       <workItem from="1583200909166" duration="4727000" />
       <workItem from="1583217223413" duration="11326000" />
-      <workItem from="1585187584373" duration="9209000" />
+      <workItem from="1585187584373" duration="9263000" />
+      <workItem from="1585273045622" duration="16168000" />
     </task>
     <servers />
   </component>
@@ -112,10 +127,14 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1583221226728">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585299196341">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1583221226728" />
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585299196341" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1585299199376">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585299199376" />
     <state x="597" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583221853372">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -124,6 +143,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="636" y="253" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583217964791" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585298773284">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585298773284" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

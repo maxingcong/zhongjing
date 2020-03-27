@@ -3,7 +3,7 @@ import http from '@/api/'
 /*游戏赛事
  */
 export const queryMathList = (params) => {
-    return http.get('/home/match/' + params.gameId, params)
+    return http.get('/home/match/' + params.gameId, {params})
 }
 
 /*赛事详情

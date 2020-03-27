@@ -148,7 +148,7 @@
                                     'phone': phone,
                                     'token': res.data.token,
                                     data: res1.data.data,
-                                    img: '1.png'
+                                    img: res1.data.avatar
                                 })
                                 this.setBean(res1.data && res1.data.data.bean || 0)
                                 this.$router.push({name: '/'})

@@ -7,9 +7,9 @@
                         <div class="send-address">
                             <img src="@/assets/images/mall/address.png">
                             <span>寄送至</span>
-                            <h4>瑞文</h4>
-                            <p>浙江省 杭州市 江干区 九环路和平大厦五号302 </p>
-                            <p>13800380056</p>
+                            <h4>{{address.createTime}}</h4>
+                            <p>{{地址数据缺失</p>
+                            <p>{{电话号码</p>
                         </div>
                     </div>
                     <div class="head-right">
@@ -27,7 +27,7 @@
                             <div class="commodity-information">商品信息</div>
                             <div class="selling-price">售价</div>
                             <div class="quantity">数量</div>
-                            <div class="payment-method">支付方式</div>
+<!--                            <div class="payment-method">支付方式</div>-->
                             <div class="operation">操作</div>
                         </div>
                         <div class="shoppingCart-list" v-for="item in list" :key="item.id">
@@ -46,18 +46,15 @@
                                     <div class="icon">+</div>
                                 </div>
                             </div>
-                            <div class="payment-method">
-                                <ul>
-                                    <li><label class="ma-radio"><input type="radio" name="tr"
-                                                                       value="2"><i></i><span>￥60</span></label></li>
-                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"
-                                                                       disabled=""><i></i><span>1200竞豆</span></label>
-                                    </li>
-                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"
-                                                                       disabled=""><i></i><span>￥60+600竞豆</span></label>
-                                    </li>
-                                </ul>
-                            </div>
+<!--                            <div class="payment-method">-->
+<!--                                <ul>-->
+<!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>￥60</span></label></li>-->
+<!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>1200竞豆</span></label>-->
+<!--                                    </li>-->
+<!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>￥60+600竞豆</span></label>-->
+<!--                                    </li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
                             <div class="operation"><a href="#">删除</a></div>
                         </div>
                         <div class="selectAll-box">
@@ -76,14 +73,21 @@
                                 <div class="title">支付</div>
                                 <ul>
                                     <li><label class="d-radiobox"> <input type="radio" name="tdr7"
-                                                                          value="nn"><i></i><em></em><b><img
-                                            src="@/assets/images/icon_wechat01.png">微信支付</b></label></li>
+                                                                          value="nn"><i></i><em></em><b>
+                                        <!--                                        <img src="@/assets/images/icon_wechat01.png">-->
+                                        竞豆兑换<b>120</b>竞豆</b></label></li>
                                     <li><label class="d-radiobox"> <input type="radio" name="tdr7"
-                                                                          value="nn"><i></i><em></em><b><img
-                                            src="@/assets/images/icon_wechat01.png">微信支付</b></label></li>
-                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7"
-                                                                          value="nn"><i></i><em></em><b><img
-                                            src="@/assets/images/quickpay01.png">银联云闪付</b></label></li>
+                                                                          value="nn"><i></i><em></em><b>
+                                        <!--                                        <img src="@/assets/images/icon_wechat01.png">-->
+                                        现金兑换<b>￥100</b> 竞豆</b></label></li>
+<!--                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7"-->
+<!--                                                                          value="nn"/>-->
+<!--                                        <i></i><em></em><b>-->
+<!--                                            &lt;!&ndash;                                        <img src="@/assets/images/quickpay01.png">&ndash;&gt;-->
+<!--                                            现金+竞豆<b>￥60+60竞豆</b>-->
+<!--                                        </b>-->
+<!--                                    </label>-->
+<!--                                    </li>-->
                                 </ul>
                             </div>
                             <div class="box-right"><a href="#">确认付款</a></div>
@@ -96,42 +100,44 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
-    import {getmallCard} from '@/api/shoppingMall'
+  import {mapState} from 'vuex'
+  import {getmallCard} from '@/api/shoppingMall'
 
-    export default {
-        data() {
-            return {
-                type: '',
-                list: [],
-                ads: {}
-            }
-        },
-        watch: {},
-        mounted() {
-            this.query()
-        },
-        computed: {
-            ...mapState(['auth'])
-        },
-        methods: {
-            query() {
-                getmallCard({}).then(res => {
-                    if (res.succeed) {
-                        debugger
-                        this.list = res.data && res.data.rows || []
-                    } else {
-                        console.log(res);
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
-        }
+  export default {
+    data() {
+      return {
+        type: '',
+        list: [],
+        ads: {},
+        address: {}
+      }
+    },
+    watch: {},
+    mounted() {
+      this.query()
+    },
+    computed: {
+      ...mapState(['auth'])
+    },
+    methods: {
+      query() {
+        getmallCard({}).then(res => {
+          if (res.succeed) {
+            this.list = res.data && res.data.data.cart || []
+            debugger
+            this.address = res.data.data.address.rows[0] || {}
+          } else {
+            console.log(res);
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

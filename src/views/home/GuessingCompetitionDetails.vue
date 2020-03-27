@@ -170,12 +170,12 @@
         },
         components: {},
         computed: {
-            id() {
+            matchInfoId() {
                 return this.$route.query.id || ''
             },
-            matchInfoId() {
-                return this.$route.query.md || ''
-            },
+            // matchInfoId() {
+          //     return this.$route.query.md || ''
+          // },
             ...mapState(['auth'])
         },
         mounted() {
@@ -188,10 +188,6 @@
                 }
             ),
             queryDate(e, item) {
-                // if (!this.auth.info || !this.auth.info.token) {
-                //     this.$router.push({name: 'login'})
-                //     return
-                // }
                 this.dialogData = Object.assign({}, e, item)
                 this.quantity = ''
                 this.dialogVisible = true
