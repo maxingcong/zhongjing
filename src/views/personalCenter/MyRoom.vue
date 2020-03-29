@@ -10,17 +10,18 @@
                 <div class="guessing-competition-box">
                     <div class="box" v-for="item in data" :key="item.id">
                         <div class="box-head">
-                            <div class="head-data-list time">2019-11-28 23:09</div>
-                            <div class="head-data-list game"><img :src="item.picture" class="mr10">{{item.matchName}}
+                            <div class="head-data-list time">{{item.matchTime}}</div>
+                            <div class="head-data-list game"><img style="border-radius: 50%"
+                                                                  :src="item.gameIcon" class="mr10 img-24">{{item.matchName}}
                             </div>
                             <div class="head-data-list states"><span
                                     class="mr10 text-success"> {{item.status || ''}}</span><label
-                                    class="lbl lbl-c1">{{item.bettingResult || '已结算'}}</label></div>
+                                    class="lbl lbl-c1">{{emumObj.foreast[item.status]}}</label></div>
                         </div>
                         <div class="box-body">
                             <div class="detail-data">
                                 <span>房主次数</span>
-                                <p class="text-danger">测胜利</p>
+                                <p class="text-danger">{{item.ownerNumber}}</p>
                             </div>
                             <div class="detail-data">
                                 <span>共计投注</span>
@@ -42,7 +43,7 @@
                     </div>
                     <el-pagination
                             layout="prev, pager, next"
-                            @current-change="query"
+                            @current-change="currentChange"
                             :total="total">
                     </el-pagination>
                 </div>
@@ -59,17 +60,25 @@
         data() {
             return {
                 data: [],
-                total: 0
+                total: 0,
+                pageNum: 0,
+                pageSize: 10
             }
         },
         created() {
             this.query()
         },
         methods: {
+            currentChange(v) {
+                this.pageNum = v
+                this.query()
+            },
             query() {
                 this.loading = true
-                queryMyRoom({}).then(res => {
-                    debugger
+                queryMyRoom({
+                    pageNum: this.pageNum,
+                    pageSize: this.pageSize
+                }).then(res => {
                     if (res.succeed) {
                         this.data = (res.data && res.data.rows) || []
                         this.total = (res.data && res.data.total) || 0

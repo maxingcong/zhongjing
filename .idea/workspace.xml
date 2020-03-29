@@ -2,37 +2,64 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6cc570b4-3f8b-4bd8-b84f-5df221d01a87" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/enum.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/circle/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/circle/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/combatTeam/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/combatTeam/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/consultation/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/consultation/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/home/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/home/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/match/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/match/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/shoppingMall/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/shoppingMall/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/combatTeam/Details.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/combatTeam/Details.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/personalCenter/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/personalCenter/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/combatTeam/MemberDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/combatTeam/MemberDetails.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/combatTeam/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/combatTeam/index.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/consultation/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/List.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/consultation/components/ConsultationDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/components/ConsultationDetails.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/consultation/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/index.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/consultation/components/HotForecast.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/components/HotForecast.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/consultation/components/HotMatch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/consultation/components/HotMatch.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/home/GuessingCompetitionDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/GuessingCompetitionDetails.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/home/GuessingCompetitionList.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/GuessingCompetitionList.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/home/components/Forecast.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/Forecast.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home/components/HotConsultation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/HotConsultation.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/home/components/Hotspot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/components/Hotspot.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/match/components/AllGame.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/match/components/AllGame.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/match/components/DetailsLeft.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/match/components/DetailsLeft.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/match/components/HotMatch.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/match/components/HotMatch.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/MyInfo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/MyInfo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/AgentPromotion.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/AgentPromotion.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/MyGuess.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/MyGuess.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/MyRoom.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/MyRoom.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedGame.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedGame.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedPlayer.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedPlayer.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedTeam.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedTeam.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/personalCenter/components/InfoEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/personalCenter/components/InfoEdit.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/ShoppingCart.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/ShoppingCart.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/List.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/List.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/ShoppingDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/ShoppingDetails.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/shoppingMall/index.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/shoppingMall/index.vue" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="AgentPromotion.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/views/personalCenter/AgentPromotion.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="317">
+              <caret line="179" column="18" selection-start-line="179" selection-start-column="18" selection-end-line="179" selection-end-column="18" />
+              <folding>
+                <element signature="e#5720#5790#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/api/personalCenter/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="445">
+              <caret line="226" column="36" selection-start-line="226" selection-start-column="36" selection-end-line="226" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -42,8 +69,62 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>postMyInfoImg</find>
+      <find>handleAvatarSuccess</find>
+      <find>newCode</find>
+      <find>$enum</find>
+      <find>matchVideo</find>
+      <find>list</find>
+      <find>el-pagination</find>
+      <find>picture</find>
+      <find>postHouseOwner</find>
+      <find>queryTeamMenber</find>
+      <find>playerPicture</find>
+      <find>Lists</find>
+      <find>item</find>
+      <find>followInfo</find>
+      <find>关注</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/views/personalCenter/components/InfoEdit.vue" />
+        <option value="$PROJECT_DIR$/src/enum.js" />
+        <option value="$PROJECT_DIR$/src/main.js" />
+        <option value="$PROJECT_DIR$/src/views/consultation/components/HotForecast.vue" />
+        <option value="$PROJECT_DIR$/src/views/match/components/HotMatch.vue" />
+        <option value="$PROJECT_DIR$/src/views/shoppingMall/List.vue" />
+        <option value="$PROJECT_DIR$/src/api/match/index.js" />
+        <option value="$PROJECT_DIR$/src/views/match/components/DetailsLeft.vue" />
+        <option value="$PROJECT_DIR$/src/views/personalCenter/MyGuess.vue" />
+        <option value="$PROJECT_DIR$/src/views/home/GuessingCompetitionDetails.vue" />
+        <option value="$PROJECT_DIR$/src/api/home/index.js" />
+        <option value="$PROJECT_DIR$/src/views/home/GuessingCompetitionList.vue" />
+        <option value="$PROJECT_DIR$/src/views/personalCenter/MyRoom.vue" />
+        <option value="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedList.vue" />
+        <option value="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedTeam.vue" />
+        <option value="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedGame.vue" />
+        <option value="$PROJECT_DIR$/src/views/personalCenter/components/ConcernedPlayer.vue" />
+        <option value="$PROJECT_DIR$/src/api/combatTeam/index.js" />
+        <option value="$PROJECT_DIR$/src/views/combatTeam/MemberDetails.vue" />
+        <option value="$PROJECT_DIR$/src/views/consultation/components/HotMatch.vue" />
+        <option value="$PROJECT_DIR$/src/views/shoppingMall/ShoppingDetails.vue" />
+        <option value="$PROJECT_DIR$/src/api/circle/index.js" />
+        <option value="$PROJECT_DIR$/src/views/home/components/Forecast.vue" />
+        <option value="$PROJECT_DIR$/src/api/personalCenter/index.js" />
+        <option value="$PROJECT_DIR$/src/views/personalCenter/AgentPromotion.vue" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -51,9 +132,111 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="30" />
+    <option name="width" value="1400" />
+    <option name="height" value="772" />
+  </component>
   <component name="ProjectId" id="1YYVmFfGoINKHbeb88Zu6JJVxFv" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="circle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="combatTeam" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="match" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="personalCenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="personalCenter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="zhongjing" type="b2602c69:ProjectViewProjectNode" />
+              <item name="zhongjing" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="shoppingMall" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -63,7 +246,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/vue.config.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -90,6 +273,18 @@
       <recent name="$PROJECT_DIR$/src/store/module" />
       <recent name="$PROJECT_DIR$/src/store" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -120,11 +315,43 @@
       <workItem from="1583217223413" duration="11326000" />
       <workItem from="1585187584373" duration="9263000" />
       <workItem from="1585273045622" duration="16168000" />
+      <workItem from="1585380139131" duration="20751000" />
     </task>
     <servers />
   </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="20751000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="30" width="1400" height="772" extended-state="0" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info id="npm" side_tool="true" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.18222222" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2496318" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585299196341">
@@ -182,5 +409,370 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/views/personalCenter/components/InfoEdit.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="533">
+          <caret line="382" column="46" selection-start-line="382" selection-start-column="46" selection-end-line="382" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/App.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="66" column="19" selection-start-line="66" selection-start-column="15" selection-end-line="66" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#25#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#22#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/local.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/filtersUtils.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-545" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/validator/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/validator/validateCardNo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-632" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utils/validator/validPositiveRealNumber.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-530" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/store/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Login.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/home/List.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/enum.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="11" selection-start-line="1" selection-start-column="4" selection-end-line="1" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="21" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/consultation/components/HotForecast.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/consultation/components/ConsultationDetails.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/match/components/AllGame.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-199" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/match/components/Details.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/shoppingMall/List.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="91" selection-start-line="16" selection-start-column="91" selection-end-line="16" selection-end-column="91" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#a#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/combatTeam/index.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-40" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/match/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="51" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/home/components/HotConsultation.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/Register.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="34" column="46" selection-start-line="34" selection-start-column="37" selection-end-line="34" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/personalCenter/MyConcern.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-20" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/home/GuessingCompetitionList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="167" column="43" lean-forward="true" selection-start-line="166" selection-start-column="20" selection-end-line="167" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#2;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#div#3;n#div#0;n#div#2;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/home/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="526">
+          <caret line="87" column="52" selection-start-line="87" selection-start-column="52" selection-end-line="87" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/home/GuessingCompetitionDetails.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="37" column="91" selection-start-line="37" selection-start-column="53" selection-end-line="37" selection-end-column="91" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#2;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/personalCenter/MyRoom.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="46">
+          <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/personalCenter/components/ConcernedTeam.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="46" column="14" lean-forward="true" selection-start-line="40" selection-start-column="11" selection-end-line="46" selection-end-column="14" />
+          <folding>
+            <element signature="e#1114#1178#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/personalCenter/components/ConcernedPlayer.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="34" selection-start-line="6" selection-start-column="34" selection-end-line="6" selection-end-column="34" />
+          <folding>
+            <element signature="e#654#721#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/personalCenter/components/ConcernedGame.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/combatTeam/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="35" column="50" selection-start-line="35" selection-start-column="50" selection-end-line="35" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/combatTeam/MemberDetails.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1530">
+          <caret line="102" column="54" selection-start-line="102" selection-start-column="54" selection-end-line="102" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/personalCenter/components/ConcernedList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="96" selection-start-line="4" selection-start-column="96" selection-end-line="4" selection-end-column="96" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/combatTeam/Details.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/personalCenter/MyGuess.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="12" column="78" selection-start-line="12" selection-start-column="78" selection-end-line="12" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/match/components/DetailsFooter.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-421" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/match/components/HotMatch.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="43" lean-forward="true" selection-start-line="7" selection-start-column="43" selection-end-line="7" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#script#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/match/components/DetailsRight.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="64" selection-start-line="9" selection-start-column="64" selection-end-line="9" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/consultation/components/HotMatch.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="40" selection-start-line="12" selection-start-column="40" selection-end-line="12" selection-end-column="40" />
+          <folding>
+            <element signature="n#style#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#li#0;n#ul#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/shoppingMall/ShoppingDetails.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="17" column="94" selection-start-line="17" selection-start-column="94" selection-end-line="17" selection-end-column="94" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/circle/components/MyFollow.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-271" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/circle/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="56" column="8" selection-start-line="56" selection-start-column="6" selection-end-line="56" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/home/components/Forecast.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="19" column="113" selection-start-line="19" selection-start-column="113" selection-end-line="19" selection-end-column="113" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#1;n#div#2;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#0;n#div#3;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/match/components/DetailsLeft.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="571">
+          <caret line="95" column="37" selection-start-line="95" selection-start-column="37" selection-end-line="95" selection-end-column="37" />
+          <folding>
+            <element signature="e#2974#3010#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/api/personalCenter/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="445">
+          <caret line="226" column="36" selection-start-line="226" selection-start-column="36" selection-end-line="226" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/views/personalCenter/AgentPromotion.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="179" column="18" selection-start-line="179" selection-start-column="18" selection-end-line="179" selection-end-column="18" />
+          <folding>
+            <element signature="e#5720#5790#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

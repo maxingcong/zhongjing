@@ -18,7 +18,7 @@ export const getCircleDynamic = (params) => {
  * @param {Object} params 参数
  */
 export const getCircleFollow = (params) => {
-    return http.get('/circle/follow', params)
+    return http.get('/circle/followInfo', params)
 }
 /*发布动态
  * @param {Object} params 参数

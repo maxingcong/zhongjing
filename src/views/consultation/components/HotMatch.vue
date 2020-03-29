@@ -8,8 +8,9 @@
         </div>
         <div class="page-body">
             <div class="hotmatch-list">
-                <ul>
+                <ul style="flex-wrap: wrap;justify-content: left">
                     <li v-for="item in list" :key="item.id"
+                        style="flex: 0 0 46%"
                         @click="$router.push({name: 'match_details',query:{id:item.id}})">
                         <div class="hotmatch-img"><img
                                 style="width: 160px;height: 92px"

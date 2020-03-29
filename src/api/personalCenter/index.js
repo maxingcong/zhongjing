@@ -7,7 +7,7 @@ import http from '@/api'
  * @return fn  promise
  */
 export const queryMyInfo = (params) => {
-    return http.get('/user/info',{params})
+    return http.get('/user/info', {params})
 }
 
 /*个人信息修改  修改手机号
@@ -187,7 +187,7 @@ export const getFollowMatch = (params) => {
  *  * @return fn  promise
  */
 export const getFollowTeam = (params) => {
-    return http.get('/user/followTeam', params)
+    return http.get('/user/followTeam', {params})
 }
 
 
@@ -206,5 +206,23 @@ export const getFollowPlayer = (params) => {
  *  * @return fn  promise
  */
 export const queryMyRoom = (params) => {
-    return http.get('/user/myRoom', params)
+    return http.get('/user/myRoom', {params})
+}
+
+/*
+*关注游戏（个人中心我的关注）
+ * @param {Object} params 参数
+ *  * @return fn  promise
+ */
+export const getfollowGame = (params) => {
+    return http.get('/user/followGame', {params})
+}
+
+/*
+*获取推广吗
+ * @param {Object} params 参数
+ *  * @return fn  promise
+ */
+export const queryAgentCode = (params) => {
+    return http.get('/user/promoCode', {params})
 }

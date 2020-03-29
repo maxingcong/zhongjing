@@ -123,20 +123,20 @@
                                                placeholder="输入原绑定邮箱">
                                     </div>
                                 </div>
-                                <div class="form-group validation-code">
-                                    <div class="form-content">
-                                        <input type="email" class="form-control" v-model="email.code"
-                                               placeholder="输入验证码"/>
-                                        <countdown v-if="!isEmailCode" :end-time="new Date().getTime()+60*1000"
-                                                   @finish="finishEmail">
-                                            <template slot="process" slot-scope="{timeObj}">
-                                                <a class="sumbit-btn"><span>重新获取</span>
-                                                    ({{timeObj.s}}s)</a>
-                                            </template>
-                                        </countdown>
-                                        <a v-if="isEmailCode" @click="queryCode('email')" class="sumbit-btn">获取验证码</a>
-                                    </div>
-                                </div>
+                                <!--<div class="form-group validation-code">-->
+                                <!--<div class="form-content">-->
+                                <!--<input type="email" class="form-control" v-model="email.code"-->
+                                <!--placeholder="输入验证码"/>-->
+                                <!--<countdown v-if="!isEmailCode" :end-time="new Date().getTime()+60*1000"-->
+                                <!--@finish="finishEmail">-->
+                                <!--<template slot="process" slot-scope="{timeObj}">-->
+                                <!--<a class="sumbit-btn"><span>重新获取</span>-->
+                                <!--({{timeObj.s}}s)</a>-->
+                                <!--</template>-->
+                                <!--</countdown>-->
+                                <!--<a v-if="isEmailCode" @click="queryCode('email')" class="sumbit-btn">获取验证码</a>-->
+                                <!--</div>-->
+                                <!--</div>-->
                                 <div class="form-group">
                                     <div class="form-content">
                                         <input type="text" class="form-control" v-model="email.newEmail"
@@ -195,7 +195,7 @@
                 isNewEmailCode: true,
                 email: {
                     email: '',
-                    code: '',
+                    // code: '',
                     newEmail: '',
                     newCode: ''
                 },
@@ -240,7 +240,9 @@
             editImg() {
                 postMyInfoImg({avatar: this.imageUrl}).then(res => {
                     console.log(res)
+                    debugger
                     if (res.succeed) {
+                        debugger
                         this.$message.success('头像修改成功')
                     } else {
                         this.$message.warning(res.data.msg || '')
@@ -336,8 +338,11 @@
                 })
             },
             handleAvatarSuccess(res) {
+                debugger
                 if (res.code == 200) {
-                    this.imageUrl = res.data.realFileName || ''
+                    this.imageUrl = res.data.picture || ''
+                    // this.$message.success('头像修改成功')
+                    // this.$emit('success')
                 }
             },
             beforeAvatarUpload(file) {
@@ -367,13 +372,15 @@
             submitEmail() {
                 postMyInfoEmail({
                     email: this.email.email,
-                    code: this.email.code,
+                    // code: this.email.code,
                     newEmail: this.email.newEmail,
                     newCode: this.email.newCode
                 }).then(res => {
                     console.log(res)
                     if (res.succeed) {
                         this.$message.success('邮箱修改成功')
+                        this.email.newEmail = ''
+                        this.email.newCode = ''
                     } else {
                         this.$message.warning(res.data.msg || '')
                     }

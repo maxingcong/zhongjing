@@ -15,5 +15,5 @@ export const queryMathDetails = (params) => {
 /*关注赛事
  */
 export const postMath = (params) => {
-    return http.get('/user/followMatch', {params})
+    return http.post('/user/addFollowMatch', params)
 }

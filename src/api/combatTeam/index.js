@@ -33,7 +33,7 @@ export const postCancelTeam = (params) => {
  * @param {Object} params 参数
  */
 export const queryTeamMenber = (params) => {
-    return http.get('/home/teamIntroduction/' + params.playerId, params)
+    return http.get('/home/playerDetail', {params})
 }
 
 /*关注战队队员

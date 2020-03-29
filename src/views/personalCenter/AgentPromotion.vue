@@ -103,7 +103,7 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                    <div class="QR-code-img"><img src="@/assets/images/QR-code-img.png"></div>
+                    <el-input v-model="url"/>
                 </div>
             </div>
         </div>
@@ -114,7 +114,7 @@
     import AgentPromotionDetails from './components/AgentPromotionDetails'
     import AgentPromotionFriend from './components/AgentPromotionFriend'
     import AgentPromotionExchange from './components/AgentPromotionExchange'
-    import {queryAgent} from '@/api/personalCenter'
+    import {queryAgent, queryAgentCode} from '@/api/personalCenter'
 
     export default {
         name: "agent_promotion",
@@ -126,7 +126,8 @@
         data() {
             return {
                 switchNum: 1,
-                type: ''
+                type: '',
+                url: ''
             }
         },
         watch: {
@@ -167,6 +168,18 @@
                 this.loading = true
                 queryAgent({}).then(res => {
                     if (res.success) {
+                        this.data = res.data.data || {}
+                    } else {
+                        console.log(1)
+                        // this.$message.warning(res.data.msg || '')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                })
+                queryAgentCode({}).then(res => {
+                    if (res.succeed) {
                         this.data = res.data.data || {}
                     } else {
                         console.log(1)

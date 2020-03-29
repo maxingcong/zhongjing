@@ -4,9 +4,12 @@
             <div class="box-head">
                 <div class="head-left">
                     <h3>赛事视频</h3>
-                    <p>{{data.data.matchVideo.gameName || ''}} <a @click="handFollow">+关注</a></p>
+                    <p>{{data.data && data.data.matchVideo && data.data.matchVideo && data.data.matchVideo.gameName ||
+                        ''}} <a @click="handFollow">+关注</a></p>
                 </div>
-                <div class="head-right">开赛时间：{{data.data.matchVideo.matchTime | filterTimeDate}}</div>
+                <div class="head-right">开赛时间：{{data.data && data.data.matchVideo && data.data.matchVideo.matchTime || ''
+                    | filterTimeDate}}
+                </div>
             </div>
             <div class="box-body">
                 <div class="video-content">
@@ -18,7 +21,8 @@
         <div class="match-schedule-box">
             <div class="box-head"><h3>比赛赛程</h3></div>
             <div class="box-body">
-                <div class="schedule-list" v-for="(item,index) in data.data.guessingCompetition.rows || []" :key="index">
+                <div class="schedule-list"
+                     v-for="(item,index) in data && data.data&& data.data.guessingCompetition.rows || []" :key="index">
                     <div class="schedule-time">11-27 19:00</div>
                     <div class="schedule-match-name">
                         <img src="@/assets/images/index/steam011.png">
@@ -37,6 +41,9 @@
                     <div class="schedule-operation">
                         <a><label class="bdcolorlb lb1" @click="console.log(1)">视频</label></a>
                         <label class="bdcolorlb lb2"
+                               v-if="item.status !== 1"
+                               @click="$message.warning('当前赛事'+ emumObj.foreast[item.status] + '，暂时无法预测')">{{emumObj.foreast[item.status]}}</label>
+                        <label v-else class="bdcolorlb lb2"
                                @click="$router.push({name: 'guessing_competition_details',query:{id: item.id}})">预测中</label>
                         <!--                        <label class="bdcolorlb lb2" @click="$router.push({name: 'guessing_competition_details',query:{id: 1 //item.id,md: item.matchInfoId}})">预测中</label>-->
                     </div>
@@ -86,7 +93,7 @@
             },
             handFollow() {
                 if (this.auth.info.token) {
-                    postMath({gameId: this.data.data.matchVideo.id}).then(res => {
+                    postMath({matchId: this.data.data.matchVideo.id}).then(res => {
                         if (res.succeed) {
                             this.$message.success('关注成功')
                         } else {

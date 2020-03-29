@@ -18,8 +18,12 @@
             <div class="match-details-box">
                 <div class="box-head">
                     <div class="match-details-time">比赛时间 {{data.match && data.match.matchTime | filterTime}}</div>
-                    <div class="match-details-name"><img src="@/assets/images/index/sgame01.png">KPL职业赛</div>
-                    <div class="match-details-heat"><img src="@/assets/images/index/hotfire.png">预测热度：1566953</div>
+                    <div class="match-details-name"><img style="width: 32px;height: 32px;border-radius: 50%"
+                                                         :src="data.match.picture">{{data.match.matchName}}
+                    </div>
+                    <div class="match-details-heat"><img src="@/assets/images/index/hotfire.png">预测热度：{{data.match.hotValue
+                        || 0}}
+                    </div>
                 </div>
                 <div class="box-body">
                     <div class="match-team-details">
@@ -31,7 +35,7 @@
                         </div>
                     </div>
                     <div class="match-score">
-                        <label class="bgcolorlb lb2">比赛中</label>
+                        <label class="bgcolorlb lb2">{{emumObj.foreast[data.match.status]}}</label>
                         <h4>VS</h4>
                     </div>
                     <div class="match-team-details right-team">
@@ -44,7 +48,12 @@
                     </div>
                 </div>
                 <div class="ranking-box" style="text-align: center;">
-                    <label class="ranking-lb1" :style="{'margin-right': 0,background: data ? 'rgb(78, 171, 62)' : '#ccc' }"
+                    <!--<label class="ranking-lb1"-->
+                           <!--v-if="data.match.status !== 0"-->
+                           <!--:style="{'margin-right': 0,background: '#ccc' }">申请房主</label>-->
+                    <!--@click="$message.warning('当前赛事'+ emumObj.foreast[data.match.status] + '，暂时无法成为房主')"-->
+                    <label class="ranking-lb1"
+                           :style="{'margin-right': 0,background: 'rgb(78, 171, 62)'}"
                            @click="submitHouseOwner">申请房主</label>
                     <!--                    <label class="ranking-lb2">NO.2房主:中竞网提莫</label>-->
                     <!--                    <label class="ranking-lb3">NO.3房主:中竞网寒冰</label>-->
@@ -65,7 +74,8 @@
                         </div>
                         <div class="box-body">
                             <ul style="position: relative;left: 16px;">
-                                <label :style="{flex: '0 0 31%', 'margin-right': '20px','box-sizing': 'border-box'}" v-for="v in item.bettings"
+                                <label :style="{flex: '0 0 31%', 'margin-right': '20px','box-sizing': 'border-box'}"
+                                       v-for="v in item.bettings"
                                        :key="v.id" @click="queryDate(item,v)">
                                     <input type="radio" style="visibility: hidden" name="mode" v-model="guessingType"
                                            :value="v"/>
@@ -174,8 +184,8 @@
                 return this.$route.query.id || ''
             },
             // matchInfoId() {
-          //     return this.$route.query.md || ''
-          // },
+            //     return this.$route.query.md || ''
+            // },
             ...mapState(['auth'])
         },
         mounted() {
@@ -234,7 +244,8 @@
             },
             submitHouseOwner() {
                 if (true) {
-                    postHouseOwner({matchInfoId: this.id}).then(res => {
+                    debugger
+                    postHouseOwner({matchInfoId: this.matchInfoId}).then(res => {
                         if (res.succeed) {
                             this.$message.success('申请成功')
                             this.$router.push({name: 'my_room'})

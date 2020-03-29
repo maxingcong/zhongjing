@@ -1,82 +1,12 @@
 <template>
     <div>
         <div class="follow-list-box">
-            <el-tabs v-model="activeName" type="card" class="nav-sign">
-                <el-tab-pane label="英雄联盟" name="first">
+            <el-tabs v-model="activeName" type="card" @tab-click="tabclick" class="nav-sign">
+                <el-tab-pane :label="item.gameName" :name="item.gameName + index" v-for="(item,index) in list"
+                             :key="index" :id="item.id">
                     <div class="content-item">
-                        <ul class="match-list">
-                            <li>
-                                <div class="match-img"><img src="@/assets/images/lplsaishi.png"></div>
-                                <div class="match-detail">
-                                    <p>LPL职业联赛</p>
-                                    <p>下一场 11-27 14:00</p>
-                                </div>
-                                <div class="match-states">
-                                    <p>直播中</p>
-                                    <label class="lbl lbl-c2">才艺竞猜</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="match-img"><img src="@/assets/images/kplsais.png"></div>
-                                <div class="match-detail">
-                                    <p>LPL职业联赛</p>
-                                    <p>下一场 11-27 14:00</p>
-                                </div>
-                                <div class="match-states">
-                                    <label class="lbl lbl-c1">计算中</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="match-img"><img src="@/assets/images/lplsaishi.png"></div>
-                                <div class="match-detail">
-                                    <p>LPL职业联赛</p>
-                                    <p>下一场 11-27 14:00</p>
-                                </div>
-                                <div class="match-states">
-                                    <p>直播中</p>
-                                    <label class="lbl lbl-c2">才艺竞猜</label>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="match-img"><img src="@/assets/images/kplsais.png"></div>
-                                <div class="match-detail">
-                                    <p>LPL职业联赛</p>
-                                    <p>下一场 11-27 14:00</p>
-                                </div>
-                                <div class="match-states">
-                                    <label class="lbl lbl-c1">计算中</label>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </el-tab-pane>
-                <el-tab-pane label="王者荣耀" name="second">
-                    <div class="content-item">
-                        <div class="content-item">
-                            <ul class="match-list">
-                                <li>
-                                    <div class="match-img"><img src="@/assets/images/lplsaishi.png"></div>
-                                    <div class="match-detail">
-                                        <p>LPL职业联赛</p>
-                                        <p>下一场 11-27 14:00</p>
-                                    </div>
-                                    <div class="match-states">
-                                        <p>直播中</p>
-                                        <label class="lbl lbl-c2">才艺竞猜</label>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="match-img"><img src="@/assets/images/kplsais.png"></div>
-                                    <div class="match-detail">
-                                        <p>LPL职业联赛</p>
-                                        <p>下一场 11-27 14:00</p>
-                                    </div>
-                                    <div class="match-states">
-                                        <label class="lbl lbl-c1">计算中</label>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
+                        <List v-if="activeName == (item.gameName + index)" :key="index"
+                              :datas="lists[activeName]"></List>
                     </div>
                 </el-tab-pane>
             </el-tabs>
@@ -85,31 +15,57 @@
 </template>
 
 <script>
-    import {getFollowMatch} from '@/api/personalCenter'
+    import {
+        getFollowMatch,
+        getfollowGame
+    } from '@/api/personalCenter'
+    import List from './ConcernedList'
 
     export default {
-        // name: "infoEdit",
-        // props: {
-        //     isEdit: {
-        //         default: true
-        //     }
-        // },
         data() {
             return {
-                activeName: 'first'
+                activeName: '',
+                list: [],
+                lists: {}
             }
         },
+        components: {List},
         mounted() {
-            debugger
-            this.query()
+            this.queryType()
         },
         methods: {//关注比赛
-            query() {
+            tabclick(e) {
+                if (e.$attrs && e.$attrs.id) {
+                    this.activeName = e.paneName
+                    this.query(e.$attrs.id)
+                }
+                // debugger
+            },
+            queryType() {
+                getfollowGame({type: 1}).then(res => {
+                    if (res.succeed) {
+                        this.list = res.data && res.data.data || []
+                        let item = this.list[0] && this.list[0]
+                        if (item.id) {
+                            this.activeName = item.gameName + 0
+                            this.query(item.id)
+                        }
+                    } else {
+                        console.log(res);
+                        this.$message.warning(res.data.msg || '')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                })
+            },
+            query(id) {
                 this.loading = true
-                getFollowMatch({}).then(res => {
+                getFollowMatch({id: id}).then(res => {
                     debugger
                     if (res.succeed) {
-                        this.list = res.data && res.data.rows || []
+                        this.lists[this.activeName] = res.data && res.data.rows || []
                     } else {
                         console.log(res);
                         this.$message.warning(res.data.msg || '')

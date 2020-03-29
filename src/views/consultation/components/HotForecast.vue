@@ -19,7 +19,9 @@
                         </div>
                         <div class="duel-operation">
                             <img src="@/assets/images/index/pic_vs.png">
-                            <a @click="$router.push({name:'guessing_competition_details',query:{id: item.matchInfoId}})">参与竞猜</a>
+                            <a v-if="item.status !== 1"
+                               @click="$message.warning('当前赛事'+ emumObj.foreast[item.status] + '，暂时无法预测')">{{emumObj.foreast[item.status]}}</a>
+                            <a v-else @click="$router.push({name:'guessing_competition_details',query:{id: item.matchInfoId}})">参与竞猜</a>
                             <span>竞猜热度{{item.hotValue}}</span>
                         </div>
                         <div class="duel-match">

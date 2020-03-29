@@ -1,99 +1,14 @@
 <template>
     <div>
         <div class="follow-list-box">
-            <el-tabs v-model="activeName" type="card" class="nav-sign">
-                <el-tab-pane label="英雄联盟" name="first">
-                    <div class="content-item">
-                        <ul class="team-list">
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/001.png"></div>
-                                <div class="team-name">教练BLG.J</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/002.png"></div>
-                                <div class="team-name">EDG.Y</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/003.png"></div>
-                                <div class="team-name">辅助FPB</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/004.png"></div>
-                                <div class="team-name">IGY</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/005.png"></div>
-                                <div class="team-name">JDM</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/001.png"></div>
-                                <div class="team-name">教练BLG.J</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/002.png"></div>
-                                <div class="team-name">EDG.Y</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/003.png"></div>
-                                <div class="team-name">辅助FPB</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/004.png"></div>
-                                <div class="team-name">IGY</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/005.png"></div>
-                                <div class="team-name">JDM</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/001.png"></div>
-                                <div class="team-name">教练BLG.J</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/002.png"></div>
-                                <div class="team-name">EDG.Y</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/003.png"></div>
-                                <div class="team-name">辅助FPB</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/004.png"></div>
-                                <div class="team-name">IGY</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/005.png"></div>
-                                <div class="team-name">JDM</div>
-                            </li>
-                        </ul>
-                    </div>
-                </el-tab-pane>
-                <el-tab-pane label="王者荣耀" name="second">
-                    <div class="content-item">
-                        <div class="content-item">
-                            <ul class="team-list">
-                                <li>
-                                    <div class="team-logo"><img src="@/assets/images/001.png"></div>
-                                    <div class="team-name">教练BLG.J</div>
-                                </li>
-                                <li>
-                                    <div class="team-logo"><img src="@/assets/images/002.png"></div>
-                                    <div class="team-name">EDG.Y</div>
-                                </li>
-                                <li>
-                                    <div class="team-logo"><img src="@/assets/images/003.png"></div>
-                                    <div class="team-name">辅助FPB</div>
-                                </li>
-                                <li>
-                                    <div class="team-logo"><img src="@/assets/images/004.png"></div>
-                                    <div class="team-name">IGY</div>
-                                </li>
-                                <li>
-                                    <div class="team-logo"><img src="@/assets/images/005.png"></div>
-                                    <div class="team-name">JDM</div>
-                                </li>
-                            </ul>
-                        </div>
+            <el-tabs v-model="activeName" type="card" @tab-click="tabclick" class="nav-sign">
+                <el-tab-pane :label="item && item.gameName" :name="item && item.gameName + index"
+                             v-for="(item,index) in list"
+                             v-if="item"
+                             :key="index" :id="item && item.id">
+                    <div class="content-item" v-if="item">
+                        <List v-if="activeName == (item && item.gameName + index)" :key="index"
+                              :datas="lists[activeName]"></List>
                     </div>
                 </el-tab-pane>
             </el-tabs>
@@ -102,34 +17,57 @@
 </template>
 
 <script>
-    import {getFollowPlayer} from '@/api/personalCenter'
+    import {getFollowPlayer, getfollowGame} from '@/api/personalCenter'
+    import List from './ConcernedList'
 
     export default {
-        // name: "infoEdit",
-        // props: {
-        //     isEdit: {
-        //         default: true
-        //     }
-        // },
         data() {
             return {
-                activeName: 'first',
-                list: []
+                activeName: '',
+                list: [],
+                lists: {}
             }
         },
         mounted() {
-            debugger
-            this.query()
+            this.queryType()
         },
+        components: {List},
         methods: {
-            query() {
+            tabclick(e) {
+                if (e.$attrs && e.$attrs.id) {
+                    this.activeName = e.paneName
+                    this.query(e.$attrs.id)
+                }
+                // debugger
+            },
+            queryType() {
+                getfollowGame({type: 2}).then(res => {
+                    if (res.succeed) {
+                        this.list = res.data && res.data.data || []
+                        let item = this.list[0] && this.list[0]
+                        if (item.id) {
+                            this.activeName = item.gameName + 0
+                            this.query(item.id)
+                        }
+                    } else {
+                        console.log(res);
+                        this.$message.warning(res.data.msg || '')
+                        // this.$message.warning('网路开小差')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                })
+            },
+            query(id) {
                 this.loading = true
-                getFollowPlayer({}).then(res => {
+                getFollowPlayer({id: id}).then(res => {
                     debugger
                     if (res.succeed) {
-                        this.list = res.data && res.data.rows || []
+                        this.lists[this.activeName] = res.data && res.data.rows || []
                     } else {
-                        console.log(res)
+                        console.log(res);
                         this.$message.warning(res.data.msg || '')
                         // this.$message.warning('网路开小差')
                     }

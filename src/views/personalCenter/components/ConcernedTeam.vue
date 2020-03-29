@@ -1,109 +1,12 @@
 <template>
     <div>
         <div class="follow-list-box">
-            <!--<ul >-->
-            <!--<li class="nav-sign-item active"><a href="#"></a></li>-->
-            <!--<li class="nav-sign-item"><a href="#">王者荣耀</a></li>-->
-            <!--</ul>-->
-            <el-tabs v-model="activeName" type="card" class="nav-sign">
-                <el-tab-pane label="英雄联盟" name="first">
+            <el-tabs v-model="activeName" type="card" @tab-click="tabclick" class="nav-sign">
+                <el-tab-pane :label="item.gameName" :name="item.gameName + index" v-for="(item,index) in list"
+                             :key="index" :id="item.id">
                     <div class="content-item">
-                        <ul class="team-list">
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameblg.png"></div>
-                                <div class="team-name">BLG.J</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameedg.png"></div>
-                                <div class="team-name">EDG.Y</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gamefpb.png"></div>
-                                <div class="team-name">FPB</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameigy.png"></div>
-                                <div class="team-name">IGY</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gamejdm.png"></div>
-                                <div class="team-name">JDM</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameblg.png"></div>
-                                <div class="team-name">BLG.J</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameedg.png"></div>
-                                <div class="team-name">EDG.Y</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gamefpb.png"></div>
-                                <div class="team-name">FPB</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameigy.png"></div>
-                                <div class="team-name">IGY</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gamejdm.png"></div>
-                                <div class="team-name">JDM</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameblg.png"></div>
-                                <div class="team-name">BLG.J</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameedg.png"></div>
-                                <div class="team-name">EDG.Y</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gamefpb.png"></div>
-                                <div class="team-name">FPB</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameigy.png"></div>
-                                <div class="team-name">IGY</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gamejdm.png"></div>
-                                <div class="team-name">JDM</div>
-                            </li>
-                        </ul>
-                    </div>
-                </el-tab-pane>
-                <el-tab-pane label="王者荣耀" name="second">
-                    <div class="content-item">
-                        <ul class="team-list">
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameblg.png"></div>
-                                <div class="team-name">BLG.J</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameedg.png"></div>
-                                <div class="team-name">EDG.Y</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gamefpb.png"></div>
-                                <div class="team-name">FPB</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameigy.png"></div>
-                                <div class="team-name">IGY</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gamejdm.png"></div>
-                                <div class="team-name">JDM</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="@/assets/images/gameblg.png"></div>
-                                <div class="team-name">BLG.J</div>
-                            </li>
-                            <li>
-                                <div class="team-logo"><img src="images/gameedg.png"></div>
-                                <div class="team-name">EDG.Y</div>
-                            </li>
-                        </ul>
+                        <List v-if="activeName == (item.gameName + index)" :key="index"
+                              :datas="lists[activeName]"></List>
                     </div>
                 </el-tab-pane>
             </el-tabs>
@@ -112,7 +15,8 @@
 </template>
 
 <script>
-    import {getFollowTeam} from '@/api/personalCenter'
+    import {getFollowTeam, getfollowGame} from '@/api/personalCenter'
+    import List from './ConcernedList'
 
     export default {
         // name: "infoEdit",
@@ -121,23 +25,51 @@
         //         default: true
         //     }
         // },
+        components: {List},
         data() {
             return {
-                activeName: 'first',
-                list: []
+                activeName: '',
+                list: [],
+                lists: {}
             }
         },
         mounted() {
-            debugger
-            this.query()
+            // this.query()
+            this.queryType()
         },
         methods: {//关注战队
-            query() {
-                this.loading = true
-                getFollowTeam({}).then(res => {
-                    debugger
+            tabclick(e) {
+                if (e.$attrs && e.$attrs.id) {
+                    this.activeName = e.paneName
+                    this.query(e.$attrs.id)
+                }
+                // debugger
+            },
+            queryType() {
+                getfollowGame({type: 0}).then(res => {
                     if (res.succeed) {
-                        this.list = res.data && res.data.rows || []
+                        this.list = res.data && res.data.data || []
+                        let item = this.list[0] && this.list[0]
+                        if (item.id) {
+                            this.activeName = item.gameName + 0
+                            this.query(item.id)
+                        }
+
+                    } else {
+                        console.log(res);
+                        this.$message.warning(res.data.msg || '')
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                })
+            },
+            query(id) {
+                this.loading = true
+                getFollowTeam({id: id}).then(res => {
+                    if (res.succeed) {
+                        this.lists[this.activeName] = res.data && res.data.rows || []
                     } else {
                         console.log(res);
                         this.$message.warning(res.data.msg || '')

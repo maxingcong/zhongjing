@@ -17,15 +17,17 @@
                 <div class="page team-member-introduce-box">
                     <div class="box-left">
                         <div class="team-logo"><img src="@/assets/images/index/logo0101.png"></div>
-                        <div class="team-member-img"><img src="@/assets/images/index/duiyuan00.png"></div>
+                        <div class="team-member-img"><img :src="data.player && data.player.playerPicture"></div>
                     </div>
                     <div class="box-right">
                         <div class="title">
-                            <h3>Kuro</h3><a @click="queryFollowTeam">关注</a>
-                            <p>宋义进</p>
+                            <h3>{{data.player && data.player.playerName}}</h3><a @click="queryFollowTeam">关注</a>
+                            <p>中文名称暂缺</p>
                         </div>
-                        <div class="label"><span>InvictusGaming</span><span class="main-attack">中单</span></div>
+                        <div class="label"><span>InvictusGaming</span><span class="main-attack">{{data.player && data.player.position}}</span>
+                        </div>
                         <div class="match-data">
+                            比赛信息缺失
                             <div class="head">2019职业联赛</div>
                             <div class="body">
                                 <table>
@@ -55,99 +57,15 @@
                 <div class="box-head"><h3>常用英雄</h3></div>
                 <div class="box-body">
                     <ul class="hero-list">
-                        <li>
+                        <li v-for="item in hero" :key="item.id">
                             <div class="hero-img">
-                                <img src="@/assets/images/index/pp1.png">
-                                <div class="hero-img-text">发条魔灵</div>
+                                <img :src="item.heroIcon">
+                                <div class="hero-img-text">{{item.heroName || '数据缺失'}}</div>
                             </div>
                             <div class="user-data">
                                 <ul>
-                                    <li><span>使用</span><label>53%</label></li>
-                                    <li><span>胜率</span><label>89%</label></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="hero-img">
-                                <img src="@/assets/images/index/pp2.png">
-                                <div class="hero-img-text">发条魔灵</div>
-                            </div>
-                            <div class="user-data">
-                                <ul>
-                                    <li><span>使用</span><label>53%</label></li>
-                                    <li><span>胜率</span><label>89%</label></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="hero-img">
-                                <img src="@/assets/images/index/pp3.png">
-                                <div class="hero-img-text">发条魔灵</div>
-                            </div>
-                            <div class="user-data">
-                                <ul>
-                                    <li><span>使用</span><label>53%</label></li>
-                                    <li><span>胜率</span><label>89%</label></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="hero-img">
-                                <img src="@/assets/images/index/pp4.png">
-                                <div class="hero-img-text">发条魔灵</div>
-                            </div>
-                            <div class="user-data">
-                                <ul>
-                                    <li><span>使用</span><label>53%</label></li>
-                                    <li><span>胜率</span><label>89%</label></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="hero-img">
-                                <img src="@/assets/images/index/pp5.png">
-                                <div class="hero-img-text">发条魔灵</div>
-                            </div>
-                            <div class="user-data">
-                                <ul>
-                                    <li><span>使用</span><label>53%</label></li>
-                                    <li><span>胜率</span><label>89%</label></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="hero-img">
-                                <img src="@/assets/images/index/pp1.png">
-                                <div class="hero-img-text">发条魔灵</div>
-                            </div>
-                            <div class="user-data">
-                                <ul>
-                                    <li><span>使用</span><label>53%</label></li>
-                                    <li><span>胜率</span><label>89%</label></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="hero-img">
-                                <img src="@/assets/images/index/pp1.png">
-                                <div class="hero-img-text">发条魔灵</div>
-                            </div>
-                            <div class="user-data">
-                                <ul>
-                                    <li><span>使用</span><label>53%</label></li>
-                                    <li><span>胜率</span><label>89%</label></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="hero-img">
-                                <img src="@/assets/images/index/pp1.png">
-                                <div class="hero-img-text">发条魔灵</div>
-                            </div>
-                            <div class="user-data">
-                                <ul>
-                                    <li><span>使用</span><label>53%</label></li>
-                                    <li><span>胜率</span><label>89%</label></li>
+                                    <li><span>使用</span><label>{{item.use}}%</label></li>
+                                    <li><span>胜率</span><label>{{item.winRate}}%</label></li>
                                 </ul>
                             </div>
                         </li>
@@ -174,131 +92,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td width="12%">2018德玛西亚杯珠海站淘汰赛</td>
-                                <td>48</td>
-                                <td>219<span>4.56</span></td>
-                                <td>309<span>4.56</span></td>
-                                <td>93<span>4.56</span></td>
-                                <td>5.63</td>
-                                <td>1273</td>
-                                <td>265</td>
-                                <td>14.00</td>
-                                <td>5.00</td>
-                                <td>71.70%</td>
-                                <td>71.70%</td>
-                            </tr>
-                            <tr>
-                                <td width="12%">2018德玛西亚杯珠海站淘汰赛</td>
-                                <td>48</td>
-                                <td>219<span>4.56</span></td>
-                                <td>309<span>4.56</span></td>
-                                <td>93<span>4.56</span></td>
-                                <td>5.63</td>
-                                <td>1273</td>
-                                <td>265</td>
-                                <td>14.00</td>
-                                <td>5.00</td>
-                                <td>71.70%</td>
-                                <td>71.70%</td>
-                            </tr>
-                            <tr>
-                                <td width="12%">2018德玛西亚杯珠海站淘汰赛</td>
-                                <td>48</td>
-                                <td>219<span>4.56</span></td>
-                                <td>309<span>4.56</span></td>
-                                <td>93<span>4.56</span></td>
-                                <td>5.63</td>
-                                <td>1273</td>
-                                <td>265</td>
-                                <td>14.00</td>
-                                <td>5.00</td>
-                                <td>71.70%</td>
-                                <td>71.70%</td>
-                            </tr>
-                            <tr>
-                                <td width="12%">2018德玛西亚杯珠海站淘汰赛</td>
-                                <td>48</td>
-                                <td>219<span>4.56</span></td>
-                                <td>309<span>4.56</span></td>
-                                <td>93<span>4.56</span></td>
-                                <td>5.63</td>
-                                <td>1273</td>
-                                <td>265</td>
-                                <td>14.00</td>
-                                <td>5.00</td>
-                                <td>71.70%</td>
-                                <td>71.70%</td>
-                            </tr>
-                            <tr>
-                                <td width="12%">2018德玛西亚杯珠海站淘汰赛</td>
-                                <td>48</td>
-                                <td>219<span>4.56</span></td>
-                                <td>309<span>4.56</span></td>
-                                <td>93<span>4.56</span></td>
-                                <td>5.63</td>
-                                <td>1273</td>
-                                <td>265</td>
-                                <td>14.00</td>
-                                <td>5.00</td>
-                                <td>71.70%</td>
-                                <td>71.70%</td>
-                            </tr>
-                            <tr>
-                                <td width="12%">2018德玛西亚杯珠海站淘汰赛</td>
-                                <td>48</td>
-                                <td>219<span>4.56</span></td>
-                                <td>309<span>4.56</span></td>
-                                <td>93<span>4.56</span></td>
-                                <td>5.63</td>
-                                <td>1273</td>
-                                <td>265</td>
-                                <td>14.00</td>
-                                <td>5.00</td>
-                                <td>71.70%</td>
-                                <td>71.70%</td>
-                            </tr>
-                            <tr>
-                                <td width="12%">2018德玛西亚杯珠海站淘汰赛</td>
-                                <td>48</td>
-                                <td>219<span>4.56</span></td>
-                                <td>309<span>4.56</span></td>
-                                <td>93<span>4.56</span></td>
-                                <td>5.63</td>
-                                <td>1273</td>
-                                <td>265</td>
-                                <td>14.00</td>
-                                <td>5.00</td>
-                                <td>71.70%</td>
-                                <td>71.70%</td>
-                            </tr>
-                            <tr>
-                                <td width="12%">2018德玛西亚杯珠海站淘汰赛</td>
-                                <td>48</td>
-                                <td>219<span>4.56</span></td>
-                                <td>309<span>4.56</span></td>
-                                <td>93<span>4.56</span></td>
-                                <td>5.63</td>
-                                <td>1273</td>
-                                <td>265</td>
-                                <td>14.00</td>
-                                <td>5.00</td>
-                                <td>71.70%</td>
-                                <td>71.70%</td>
-                            </tr>
-                            <tr>
-                                <td width="12%">2018德玛西亚杯珠海站淘汰赛</td>
-                                <td>48</td>
-                                <td>219<span>4.56</span></td>
-                                <td>309<span>4.56</span></td>
-                                <td>93<span>4.56</span></td>
-                                <td>5.63</td>
-                                <td>1273</td>
-                                <td>265</td>
-                                <td>14.00</td>
-                                <td>5.00</td>
-                                <td>71.70%</td>
-                                <td>71.70%</td>
+                            <tr v-for="item in personalData" :key="item.id">
+                                <td width="12%">{{item.matchName}}</td>
+                                <td>{{item.appearanceNum}}</td>
+                                <td>{{item.sumKill}}<span>缺</span></td>
+                                <td>{{item.sumAssists}}<span>缺</span></td>
+                                <td>{{item.sumDeath}}<span>缺</span></td>
+                                <td>{{item.kda}}</td>
+                                <td>{{item.money}}</td>
+                                <td>{{item.knifeRepair}}</td>
+                                <td>{{item.plugEye}}</td>
+                                <td>{{item.rowEye}}</td>
+                                <td>{{item.teamRate}}%</td>
+                                <td>{{item.mvpNum}}0%</td>
                             </tr>
                             </tbody>
                         </table>
@@ -318,12 +124,14 @@
         components: {
             // HotgameList
         },
-        created() {
+        mounted() {
             this.query()
         },
         data() {
             return {
-                data: {}
+                data: {},
+                personalData: [],
+                hero: []
             }
         },
         computed: {
@@ -369,6 +177,8 @@
                 queryTeamMenber({playerId: this.id}).then(res => {
                     if (res.succeed) {
                         this.data = res.data && res.data.data || {}
+                        this.hero = this.data.hero.rows || []
+                        this.personalData = this.data.personalData
                     } else {
                         console.log(res)
                         // this.$message.warning('网路开小差')

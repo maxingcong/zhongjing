@@ -10,7 +10,7 @@
                 <div class="guessing-competition-box">
                     <div class="box" v-for="item in data" :key="item.id">
                         <div class="box-head">
-                            <div class="head-data-list time">2019-11-28 23:09</div>
+                            <div class="head-data-list time">{{item.createTime}}</div>
                             <div class="head-data-list game"><img :src="item.picture" class="mr10">{{item.matchName}}
                             </div>
                             <div class="head-data-list states"><span
@@ -20,15 +20,15 @@
                         <div class="box-body">
                             <div class="detail-data">
                                 <span>项目</span>
-                                <p class="text-danger">测胜利</p>
+                                <p class="text-danger">{{item.className || ''}}</p>
                             </div>
                             <div class="detail-data">
                                 <span>投注竞豆</span>
-                                <p class="text-warning">{{item.beanNumber}}</p>
+                                <p class="text-warning">{{item.bean}}</p>
                             </div>
                             <div class="detail-data">
                                 <span>已投</span>
-                                <p class="small-size">QGhappy胜出（1.26）</p>
+                                <p class="small-size">{{item.bettingName}}（{{item.odds}}）</p>
                             </div>
                             <div class="detail-data">
                                 <span>赛果</span>
@@ -43,6 +43,7 @@
                 </div>
                 <el-pagination
                         layout="prev, pager, next"
+                        @current-change="currentChange"
                         :total="total">
                 </el-pagination>
             </div>
@@ -58,17 +59,24 @@
         data() {
             return {
                 data: [],
-                total: 0
+                total: 0,
+                pageNum: 0,
+                pageSize: 10
             }
         },
         created() {
             this.query()
         },
         methods: {
+            currentChange(v) {
+                this.pageNum = v
+                this.query()
+            },
             query() {
                 this.loading = true
-                queryGuess({}).then(res => {
+                queryGuess({pageNum: this.pageNum, pageSize: this.pageSize}).then(res => {
                     if (res.succeed) {
+                        debugger
                         this.data = res.data && res.data.rows || []
                         this.total = res.data && res.data.total || 0
                     } else {
