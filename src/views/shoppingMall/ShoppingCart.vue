@@ -8,8 +8,8 @@
                             <img src="@/assets/images/mall/address.png">
                             <span>寄送至</span>
                             <h4>{{address.createTime}}</h4>
-                            <p>{{地址数据缺失</p>
-                            <p>{{电话号码</p>
+                            <p>{{address.province}}|{{address.city}}|{{address.region}} | {{address.detailAddress}}</p>
+                            <p>{{address.phone}}</p>
                         </div>
                     </div>
                     <div class="head-right">
@@ -27,7 +27,7 @@
                             <div class="commodity-information">商品信息</div>
                             <div class="selling-price">售价</div>
                             <div class="quantity">数量</div>
-<!--                            <div class="payment-method">支付方式</div>-->
+                            <!--                            <div class="payment-method">支付方式</div>-->
                             <div class="operation">操作</div>
                         </div>
                         <div class="shoppingCart-list" v-for="item in list" :key="item.id">
@@ -46,15 +46,15 @@
                                     <div class="icon">+</div>
                                 </div>
                             </div>
-<!--                            <div class="payment-method">-->
-<!--                                <ul>-->
-<!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>￥60</span></label></li>-->
-<!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>1200竞豆</span></label>-->
-<!--                                    </li>-->
-<!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>￥60+600竞豆</span></label>-->
-<!--                                    </li>-->
-<!--                                </ul>-->
-<!--                            </div>-->
+                            <!--                            <div class="payment-method">-->
+                            <!--                                <ul>-->
+                            <!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>￥60</span></label></li>-->
+                            <!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>1200竞豆</span></label>-->
+                            <!--                                    </li>-->
+                            <!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>￥60+600竞豆</span></label>-->
+                            <!--                                    </li>-->
+                            <!--                                </ul>-->
+                            <!--                            </div>-->
                             <div class="operation"><a href="#">删除</a></div>
                         </div>
                         <div class="selectAll-box">
@@ -80,14 +80,14 @@
                                                                           value="nn"><i></i><em></em><b>
                                         <!--                                        <img src="@/assets/images/icon_wechat01.png">-->
                                         现金兑换<b>￥100</b> 竞豆</b></label></li>
-<!--                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7"-->
-<!--                                                                          value="nn"/>-->
-<!--                                        <i></i><em></em><b>-->
-<!--                                            &lt;!&ndash;                                        <img src="@/assets/images/quickpay01.png">&ndash;&gt;-->
-<!--                                            现金+竞豆<b>￥60+60竞豆</b>-->
-<!--                                        </b>-->
-<!--                                    </label>-->
-<!--                                    </li>-->
+                                    <!--                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7"-->
+                                    <!--                                                                          value="nn"/>-->
+                                    <!--                                        <i></i><em></em><b>-->
+                                    <!--                                            &lt;!&ndash;                                        <img src="@/assets/images/quickpay01.png">&ndash;&gt;-->
+                                    <!--                                            现金+竞豆<b>￥60+60竞豆</b>-->
+                                    <!--                                        </b>-->
+                                    <!--                                    </label>-->
+                                    <!--                                    </li>-->
                                 </ul>
                             </div>
                             <div class="box-right"><a href="#">确认付款</a></div>

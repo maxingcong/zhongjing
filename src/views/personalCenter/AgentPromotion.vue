@@ -65,15 +65,17 @@
                     <a @click="type = ''" class="modal-remove"><i class="mdi-set mdi-close el-icon-close"></i></a>
                     <!--<a href="javascript:;" class="modal-remove"><i class="mdi-set mdi-close mr5"></i></a>-->
                     <div class="user-info">
-                        <div class="head-sculpture"><img src="@/assets/images/myicon.png"></div>
+                        <div class="head-sculpture"><img class="img-72" :src="auth.info.data.avatar"></div>
                         <div class="info-text">
-                            <p>中竞网瑞雯</p>
-                            <p>ID:23569331311</p>
+                            <p>{{auth.info.data.nickname}}</p>
+                            <p>ID:{{auth.info.data.id}}</p>
                         </div>
                     </div>
                 </div>
                 <div class="modal-body">
-                    <div class="QR-code-img"><img src="@/assets/images/QR-code-img.png"></div>
+                    <div class="QR-code-img">
+                        <canvas width="500" height="500" ref="QeCodeCanvas"></canvas>
+                    </div>
                 </div>
             </div>
         </div>
@@ -85,7 +87,7 @@
                             class="mdi-set mdi-close el-icon-close"></i></a>
                     <div class="invitation-link-box">
                         <h5>推广链接复制成功！</h5>
-                        <a href="#" class="determination" @click="type = ''">确定</a>
+                        <a class="determination" @click="type = ''">确定</a>
                     </div>
                 </div>
             </div>
@@ -96,14 +98,16 @@
                 <div class="modal-head">
                     <a @click="type = ''" class="modal-remove"><i class="mdi-set mdi-close el-icon-close"></i></a>
                     <div class="user-info">
-                        <div class="head-sculpture"><img src="@/assets/images/myicon.png"></div>
-                        <p>中竞网瑞雯</p>
+                        <div class="head-sculpture"><img class="img-72" :src="auth.info.data.avatar"></div>
+                        <p>中竞网{{auth.info.data.nickname}}</p>
                         <h2>这里真的太好玩了！注册即送188竞豆！</h2>
                         <h2>和我一起竞猜赢大奖吧！</h2>
                     </div>
                 </div>
                 <div class="modal-body">
-                    <el-input v-model="url"/>
+                    <div style="width: 100%;height: 50px;line-height: 50px;text-align: center">
+                        {{auth.info.data.invitationCode}}
+                    </div>
                 </div>
             </div>
         </div>
@@ -111,88 +115,98 @@
 </template>
 
 <script>
-    import AgentPromotionDetails from './components/AgentPromotionDetails'
-    import AgentPromotionFriend from './components/AgentPromotionFriend'
-    import AgentPromotionExchange from './components/AgentPromotionExchange'
-    import {queryAgent, queryAgentCode} from '@/api/personalCenter'
+  import AgentPromotionDetails from './components/AgentPromotionDetails'
+  import AgentPromotionFriend from './components/AgentPromotionFriend'
+  import AgentPromotionExchange from './components/AgentPromotionExchange'
+  import {queryAgent} from '@/api/personalCenter'
+  import {mapState} from 'vuex'
+  import QRCode from 'qrcode'
 
-    export default {
-        name: "agent_promotion",
-        components: {
-            AgentPromotionDetails,
-            AgentPromotionFriend,
-            AgentPromotionExchange
-        },
-        data() {
-            return {
-                switchNum: 1,
-                type: '',
-                url: ''
-            }
-        },
-        watch: {
-            switchNum() {
-                // this.$nextTick(() => {
-                switch (this.type) {
-                    case 1:
-                        this.query();
-                        break;
-                    case 2:
-                        this.$refs.agentPromotionDetails.query();
-                        break;
-                    case 3:
-                        this.$refs.agentPromotionFriend.query();
-                        break;
-                    case 4:
-                        this.$refs.agentPromotionExchange.query();
-                        break;
-                    default:
-                        this.query();
-                }
-                this.loading = true
-                // })
-            }
-        },
-        created() {
-            this.query()
-        },
-        methods: {
-            cope() {
-                this.type = ''
-                document.execCommand('Copy');
-            },
-            editType(e) {
-                this.type = e
-            },
-            query() {//代理推广
-                this.loading = true
-                queryAgent({}).then(res => {
-                    if (res.success) {
-                        this.data = res.data.data || {}
-                    } else {
-                        console.log(1)
-                        // this.$message.warning(res.data.msg || '')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-                queryAgentCode({}).then(res => {
-                    if (res.succeed) {
-                        this.data = res.data.data || {}
-                    } else {
-                        console.log(1)
-                        // this.$message.warning(res.data.msg || '')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
+  export default {
+    name: "agent_promotion",
+    components: {
+      AgentPromotionDetails,
+      AgentPromotionFriend,
+      AgentPromotionExchange
+    },
+    data() {
+      return {
+        switchNum: 1,
+        type: '',
+        url: ''
+      }
+    },
+    watch: {
+      switchNum() {
+        // this.$nextTick(() => {
+        switch (this.type) {
+          case 1:
+            this.query();
+            break;
+          case 2:
+            this.$refs.agentPromotionDetails.query();
+            break;
+          case 3:
+            this.$refs.agentPromotionFriend.query();
+            break;
+          case 4:
+            this.$refs.agentPromotionExchange.query();
+            break;
+          default:
+            this.query();
         }
+        this.loading = true
+        // })
+      },
+      type: function (e) {
+        let code = 'http://netdj.com/pc/#/login/?Code' + this.auth.info.data.invitationCode
+        if (e == 'qrcode') {
+          this.$nextTick(() => {
+            QRCode.toCanvas(this.$refs.QeCodeCanvas, code, function (error) {
+              console.error(error)
+            })
+          })
+        } else {
+          let dom = document.createElement('textarea')
+          document.body.appendChild(dom)
+          dom.value = code
+          dom.select(); // 选择对象
+          document.execCommand("Copy");
+          document.body.removeChild(dom)
+        }
+      }
+    },
+    created() {
+      this.query()
+    },
+    computed: {
+      ...mapState(['auth'])
+    },
+    methods: {
+      cope() {
+        this.type = ''
+        // document.execCommand(this.auth.info.data.invitationCode);
+      },
+      editType(e) {
+        this.type = e
+      },
+      query() {//代理推广
+        this.loading = true
+        queryAgent({}).then(res => {
+          if (res.success) {
+            this.data = res.data.data || {}
+          } else {
+            console.log(1)
+            // this.$message.warning(res.data.msg || '')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped lang="less">

@@ -29,87 +29,67 @@
 </template>
 
 <script>
-    import {getmallList, postMallCard} from '@/api/shoppingMall'
-    import {mapState} from 'vuex'
+  import {getmallList, postMallCard} from '@/api/shoppingMall'
+  import {mapState} from 'vuex'
 
-    export default {
-        name: "shoppingList",
-        data() {
-            return {
-                type: '',
-                categoryId: 1,
-                list: []
+  export default {
+    name: "shoppingList",
+    data() {
+      return {
+        categoryId: 1,
+        list: []
+      }
+    },
+    computed: {
+      ...mapState(['auth'])
+    },
+    watch: {
+      '$route'(e) {
+        this.categoryId = e.params.post_id || ''
+        this.query()
+      }
+    },
+    mounted() {
+      this.query()
+    },
+    methods: {
+      addCard() {
+        if (this.auth && this.auth.info.token) {
+          console.log('添加购物车', this.auth);
+          postMallCard({id: this.id}).then(res => {
+            if (res.succeed) {
+              this.$message.success('添加成功')
+              this.$router.push({name: 'shoppinf_cart'})
+            } else {
+              console.log(res);
+              // this.$message.warning('网路开小差')
             }
-        },
-        computed: {
-            ...mapState(['auth'])
-        },
-        watch: {
-            '$route.name'(e) {
-                switch (e) {
-                    case 'all_merchandise' :
-                        this.type = '';
-                        this.categoryId = 1
-                        break;
-                    case 'game_hand' :
-                        this.type = 'hand';//手办
-                        this.categoryId = 2
-                        break;
-                    case 'game_skin' :
-                        this.categoryId = 3
-                        this.type = 'skin';//皮肤
-                        break;
-                    case 'bonus_points' :
-                        this.categoryId = 4
-                        this.type = 'points';//红包
-                        break;
-                    default:
-                        this.type = ''
-                }
-                this.query()
-            }
-        },
-        mounted() {
-            this.query()
-        },
-        methods: {
-            addCard() {
-                if (this.auth && this.auth.info.token) {
-                    console.log('添加购物车', this.auth);
-                    postMallCard({id: this.id}).then(res => {
-                        if (res.succeed) {
-                            this.$message.success('添加成功')
-                            this.$router.push({name: 'shoppinf_cart'})
-                        } else {
-                            console.log(res);
-                            // this.$message.warning('网路开小差')
-                        }
-                        this.loading = false
-                    }).catch(err => {
-                        this.loading = false
-                        console.log(err)
-                    })
-                } else {
-                    this.$message.warning('请登录')
-                    this.$router.push({name: 'login'})
-                }
-            },
-            query() {
-                getmallList({categoryId: this.categoryId}).then(res => {
-                    if (res.succeed) {
-                        this.list = res.data && res.data.rows || []
-                    } else {
-                        console.log(res)
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
+            this.loading = false
+          }).catch(err => {
+            this.loading = false
+            console.log(err)
+          })
+        } else {
+          this.$message.warning('请登录')
+          this.$router.push({name: 'login'})
         }
+      },
+      query() {
+        getmallList({categoryId: this.categoryId || ''}).then(res => {
+          if (res.succeed) {
+            this.list = res.data && res.data.rows || []
+          } else {
+            console.log(res)
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

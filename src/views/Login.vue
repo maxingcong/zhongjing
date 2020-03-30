@@ -47,141 +47,145 @@
 </template>
 
 <script>
-    import {userLogin} from '@/api/user/login'
-    import {queryMyInfo} from '@/api/personalCenter'
+  import {userLogin} from '@/api/user/login'
+  import {queryMyInfo} from '@/api/personalCenter'
 
-    // import md5 from 'js-md5'
-    import {validMobile} from '@/utils/validator'
-    import {queryImgCode} from '@/api/common'
-    import {mapMutations} from 'vuex'
-    import {getAuth} from '@/utils/local'
+  // import md5 from 'js-md5'
+  import {validMobile} from '@/utils/validator'
+  import {queryImgCode} from '@/api/common'
+  import {mapMutations} from 'vuex'
+  import {getAuth} from '@/utils/local'
 
-    export default {
-        data() {
-            return {
-                submitting: false,
-                isForget: false,
-                rememberMe: true,
-                imgSrc: '',
-                isAutomatic: 1,
-                form: {
-                    userName: '',
-                    password: '',
-                    code: '',
-                    uuid: ''
-                },
-                rules: {
-                    userName: [
-                        {
-                            required: true,
-                            validator: validMobile(),
-                            trigger: 'blur'
-                        }
-                    ],
-                    password: [
-                        {required: true, message: '请输入密码', trigger: 'blur'}
-                    ],
-                    code: [
-                        {required: false, message: '请输入验证码', trigger: 'blur'},
-                        {required: false, min: 4, max: 8, message: '验证码不正确', trigger: 'blur'}
-                    ]
-                }
-            }
+  export default {
+    data() {
+      return {
+        submitting: false,
+        isForget: false,
+        rememberMe: true,
+        imgSrc: '',
+        isAutomatic: 1,
+        form: {
+          userName: '',
+          password: '',
+          code: '',
+          uuid: ''
         },
-        mounted() {
-            this.getCode()
-            let auth = getAuth()
-            if (auth && auth !== 'undefined') {
-                this.$router.push('home')
+        rules: {
+          userName: [
+            {
+              required: true,
+              validator: validMobile(),
+              trigger: 'blur'
             }
-        },
-        methods: {
-            ...mapMutations(
-                {
-                    setAuth: 'SET_AUTH',
-                    setBean: 'setBean'
-                }
-            ),
-            /**
-             * 用户登录
-             */
-            onSubmit() {
-                this.$refs.form.validate(valid => {
-                    if (valid) {
-                        this.login()
-                    }
-                })
-            },
-            getCode() {
-                queryImgCode({}).then(res => {
-                    console.log(res)
-                    let data = res.data
-                    if (res.succeed) {
-                        this.imgCode = data.code || ''
-                        this.imgSrc = data.img || ''
-                        this.form.uuid = data.uuid || ''
-                    } else {
-                        this.$message.warning(data.msg || '请求失败，请重试')
-                    }
-                }).catch(err => {
-                    console.log(err)
-                })
-            },
-            login() {
-                const that = this
-                const {phone, password, code, uuid} = that.form
-                let params = {
-                    phone: phone,
-                    password: password,//md5(password),
-                    code,
-                    uuid
-                }
-                that.submitting = true
-                userLogin(params).then(res => {
-                    if (res.succeed) {
-                        that.setAuth({
-                            'token': res.data.token
-                        })
-                        queryMyInfo({phone: phone}).then(res1 => {
-                            if (res.succeed) {
-                                that.setAuth({
-                                    'phone': phone,
-                                    'token': res.data.token,
-                                    data: res1.data.data,
-                                    img: res1.data.avatar
-                                })
-                                this.setBean(res1.data && res1.data.data.bean || 0)
-                                this.$router.push({name: '/'})
-                            } else {
-                                this.$message.warning(res1.data.data.msg || '')
-                            }
-                            this.loading = false
-                        }).catch(err => {
-                            this.loading = false
-                            console.log(err)
-                        })
-                        console.log(params);
-                    } else {
-                        this.$message.warning(res.data.msg)
-                    }
-                    that.submitting = false
-                }).catch(err => {
-                    console.log(err);
-                    that.submitting = false
-                })
-            },
-            /**
-             * 忘记密码
-             */
-            forget() {
-                this.isForget = true
-                this.$refs.forgetPassword.load(this.form.userName)
-            },
-            setLocalUserName() {
-                console.log(123)
-            }
+          ],
+          password: [
+            {required: true, message: '请输入密码', trigger: 'blur'}
+          ],
+          code: [
+            {required: false, message: '请输入验证码', trigger: 'blur'},
+            {required: false, min: 4, max: 8, message: '验证码不正确', trigger: 'blur'}
+          ]
         }
+      }
+    },
+    mounted() {
+      this.getCode()
+      let auth = getAuth()
+      if (auth && auth !== 'undefined') {
+        this.$router.push('home')
+      }
+    },
+    methods: {
+      ...mapMutations(
+        {
+          setAuth: 'SET_AUTH',
+          setBean: 'setBean'
+        }
+      ),
+      /**
+       * 用户登录
+       */
+      onSubmit() {
+        this.$refs.form.validate(valid => {
+          if (valid) {
+            this.login()
+          }
+        })
+      },
+      getCode() {
+        queryImgCode({}).then(res => {
+          console.log(res)
+          let data = res.data
+          if (res.succeed) {
+            this.imgCode = data.code || ''
+            this.imgSrc = data.img || ''
+            this.form.uuid = data.uuid || ''
+          } else {
+            this.$message.warning(data.msg || '请求失败，请重试')
+          }
+        }).catch(err => {
+          console.log(err)
+        })
+      },
+      login() {
+        const that = this
+        const {phone, password, code, uuid} = that.form
+        let params = {
+          phone: phone,
+          password: password,//md5(password),
+          code,
+          uuid
+        }
+        that.submitting = true
+        userLogin(params).then(res => {
+          if (res.succeed) {
+            that.setAuth({
+              'token': res.data.token
+            })
+            queryMyInfo({phone: phone}).then(res1 => {
+              if (res.succeed) {
+                that.setAuth({
+                  'phone': phone,
+                  'token': res.data.token,
+                  data: res1.data.data,
+                  img: res1.data.avatar
+                })
+                this.setBean(res1.data && res1.data.data.bean || 0)
+                this.$router.push({name: '/'})
+              } else {
+                this.getCode()
+                this.$message.warning(res1.data.data.msg || '')
+              }
+              this.loading = false
+            }).catch(err => {
+              this.getCode()
+              this.loading = false
+              console.log(err)
+            })
+            console.log(params);
+          } else {
+            this.getCode()
+            this.$message.warning(res.data.msg)
+          }
+          that.submitting = false
+        }).catch(err => {
+          this.getCode()
+          console.log(err);
+          that.submitting = false
+        })
+      },
+      /**
+       * 忘记密码
+       */
+      forget() {
+        this.isForget = true
+        this.$refs.forgetPassword.load(this.form.userName)
+      },
+      setLocalUserName() {
+        console.log(123)
+      }
     }
+  }
 </script>
 
 <style lang="less" scoped>

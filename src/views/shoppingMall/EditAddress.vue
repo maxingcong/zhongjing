@@ -34,7 +34,10 @@
                     </el-form>
                 </div>
                 <div class="saved-address" v-loading="loading">
-                    <div class="title"><h5>已保存收货地址</h5><a @click="isAdd = true">+新增收货地址</a>
+                    <div class="title">
+                        <div @click="$router.back()" style="border: 1px solid #ccc ;margin-right: 20px;padding: 0 20px"> 返回</div>
+                        <h5>已保存收货地址</h5>
+                        <a @click="isAdd = true">+新增收货地址</a>
                     </div>
                     <table class="table-primary">
                         <thead>
@@ -69,163 +72,167 @@
 </template>
 
 <script>
-    import {getAddressList, postyAddress, removeAddress, defaultAddress} from '@/api/shoppingMall'
+  import {getAddressList, postyAddress, removeAddress, defaultAddress} from '@/api/shoppingMall'
 
-    export default {
-        name: "edit_address",
-        data() {
-            const addressList = this.$location.data(3).options
-            return {
-                list: [],
-                isAdd: false,
-                loading: false,
-                isEdit: '',
-                addressList,
-                form: {
-                    name: '',
-                    phone: '',
-                    defaultStatus: '',
-                    postCode: '',
-                    region: [],
-                    address: '',
-                    province: '',
-                    city: '',
-                    detailAddress: ''
-                },
-                props: {
-                    expandTrigger: 'hover'
-                },
-                rules: {
-                    name: [{
-                        required: true,
-                        message: '请输入联系人姓名',
-                        trigger: 'blur'
-                    }],
-                    phone: [{
-                        required: true,
-                        pattern: /^1[3456789]\d{9}$/,
-                        message: "请输入正确的手机号",
-                        transform(value) {
-                            return String(value).trim();
-                        },
-                        trigger: "blur"
-                    }],
-                    region: [{
-                        required: true,
-                        message: '请选择省市区',
-                        trigger: 'blur'
-                    }],
-                    detailAddress: [{
-                        required: true,
-                        message: '请输入详细地址',
-                        trigger: 'blur'
-                    }]
-                }
-            }
+  export default {
+    name: "edit_address",
+    data() {
+      const addressList = this.$location.data(3).options
+      return {
+        list: [],
+        isAdd: false,
+        loading: false,
+        isEdit: '',
+        addressList,
+        form: {
+          name: '',
+          phone: '',
+          defaultStatus: '',
+          postCode: '',
+          region: [],
+          address: '',
+          province: '',
+          city: '',
+          detailAddress: ''
         },
-        computed: {
-            type: function () {
-                return this.$route.params.type || ''
-            },
-            ads: function () {
-                return this.$route.params.ads || {}
-            }
+        props: {
+          expandTrigger: 'hover'
         },
-        watch: {
-            ads: function (e) {
-                this.form = {...e}
+        rules: {
+          name: [{
+            required: true,
+            message: '请输入联系人姓名',
+            trigger: 'blur'
+          }],
+          phone: [{
+            required: true,
+            pattern: /^1[3456789]\d{9}$/,
+            message: "请输入正确的手机号",
+            transform(value) {
+              return String(value).trim();
             },
-            type: function () {
-                this.isEdit = 'edit'
-            }
-        },
-        mounted() {
-            this.query()
-        },
-        methods: {
-            handleAreaChange(e) {
-                this.form.address = e[0]
-                this.form.province = e[1]
-                this.form.city = e[2]
-            },
-            edit(e) {
-                this.isEdit = 'edit'
-                this.form = {...e}
-            },
-            handAddress() {
-                if (!this.loading) {
-                    this.$refs.form.validate(valid => {
-                        if (valid) {
-                            postyAddress(this.form).then(res => {
-                                if (res.succeed) {
-                                    debugger
-                                    this.$message.success(this.isEdit ? '修改成功' : '添加成功')
-                                } else {
-                                    console.log(res);
-                                    this.$message.warning(res.data.msg || '')
-                                }
-                                this.loading = false
-                                this.query()
-                            }).catch(err => {
-                                this.loading = false
-                                console.log(err)
-                            })
-                        }
-                    })
-                }
-            },
-            remove(e) {
-                removeAddress({id: e.id}).then(res => {
-                    if (res.succeed) {
-                        // debugger
-                        this.$message.success('删除成功')
-                    } else {
-                        console.log(res);
-                        this.$message.warning(res.data.msg || '')
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                    this.query()
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            },
-            defaultAddress(e) {
-                defaultAddress({id: e.id}).then(res => {
-                    if (res.succeed) {
-                        // debugger
-                        this.$message.success('设置成功')
-                    } else {
-                        this.$message.warning(res.data.msg || '')
-                        console.log(res);
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.query()
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            },
-            query() {
-                getAddressList({}).then(res => {
-                    if (res.succeed) {
-                        // debugger
-                        this.list = res.data && res.data.rows || []
-                    } else {
-                        console.log(res);
-                        this.$message.warning(res.data.msg || '')
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
+            trigger: "blur"
+          }],
+          region: [{
+            required: true,
+            message: '请选择省市区',
+            trigger: 'blur'
+          }],
+          detailAddress: [{
+            required: true,
+            message: '请输入详细地址',
+            trigger: 'blur'
+          }]
         }
+      }
+    },
+    computed: {
+      type: function () {
+        return this.$route.params.type || ''
+      },
+      ads: function () {
+        return this.$route.params.ads || {}
+      }
+    },
+    watch: {
+      ads: function (e) {
+        this.form = {...e}
+        this.form.region = [e.province, e.city, e.region]
+      },
+      type: function () {
+        this.isEdit = 'edit'
+      }
+    },
+    mounted() {
+      this.query()
+    },
+    methods: {
+      handleAreaChange(e) {
+        this.form.province = e[0]
+        this.form.city = e[1]
+        this.form.address = e[2]
+      },
+      edit(e) {
+        this.isEdit = 'edit'
+        this.form = {...e}
+        this.form.region = [e.province, e.city, e.region]
+      },
+      handAddress() {
+        if (!this.loading) {
+          this.$refs.form.validate(valid => {
+            if (valid) {
+              let data = Object.assign({}, this.form)
+              data.region = this.form.address
+              postyAddress(data).then(res => {
+                if (res.succeed) {
+                  debugger
+                  this.$message.success(this.isEdit ? '修改成功' : '添加成功')
+                } else {
+                  console.log(res);
+                  this.$message.warning(res.data.msg || '')
+                }
+                this.loading = false
+                this.query()
+              }).catch(err => {
+                this.loading = false
+                console.log(err)
+              })
+            }
+          })
+        }
+      },
+      remove(e) {
+        removeAddress({id: e.id}).then(res => {
+          if (res.succeed) {
+            // debugger
+            this.$message.success('删除成功')
+          } else {
+            console.log(res);
+            this.$message.warning(res.data.msg || '')
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+          this.query()
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      },
+      defaultAddress(e) {
+        defaultAddress({id: e.id}).then(res => {
+          if (res.succeed) {
+            // debugger
+            this.$message.success('设置成功')
+          } else {
+            this.$message.warning(res.data.msg || '')
+            console.log(res);
+            // this.$message.warning('网路开小差')
+          }
+          this.query()
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      },
+      query() {
+        getAddressList({}).then(res => {
+          if (res.succeed) {
+            // debugger
+            this.list = res.data && res.data.rows || []
+          } else {
+            console.log(res);
+            this.$message.warning(res.data.msg || '')
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>

@@ -137,15 +137,26 @@
     .privateheader-wrap-login-warn-wrap {
         border: none;
         background: linear-gradient(to right, #2BAEB9, #7BC661) no-repeat;
-        -webkit-mask-image: linear-gradient(to right, #000 6px, transparent 6px), linear-gradient(to bottom, #000 6px, transparent 6px), linear-gradient(to right, #000 6px, transparent 6px), linear-gradient(to bottom, #000 6px, transparent 6px);
+        -webkit-mask-image: linear-gradient(to right, #000 3px, transparent 3px),
+        linear-gradient(to bottom, #000 3px, transparent 3px),
+        linear-gradient(to right, #000 3px, transparent 3px),
+        linear-gradient(to bottom, #000 3px, transparent 3px),
+        linear-gradient(to left, #000 3px, transparent 3px) repeat-x,
+        linear-gradient(to top, #000 3px, transparent 3px) repeat-y,
+        linear-gradient(to left, #000 3px, transparent 3px) repeat-x 0 100%,
+        linear-gradient(to top, #000 3px, transparent 3px) repeat-y 100% 0;
         -webkit-mask-repeat: repeat-x, repeat-y, repeat-x, repeat-y;
         -webkit-mask-position: 0 0, 0 0, 0 100%, 100% 0;
         -webkit-mask-size: 12px 3px, 3px 12px, 12px 3px, 3px 12px;
         /* 合并写法 */
-        mask: linear-gradient(to right, #000 6px, transparent 6px) repeat-x,
-        linear-gradient(to bottom, #000 6px, transparent 6px) repeat-y,
-        linear-gradient(to right, #000 6px, transparent 6px) repeat-x 0 100%,
-        linear-gradient(to bottom, #000 6px, transparent 6px) repeat-y 100% 0;
+        mask: linear-gradient(to right, #000 3px, transparent 3px) repeat-x,
+        linear-gradient(to bottom, #000 3px, transparent 3px) repeat-y,
+        linear-gradient(to right, #000 3px, transparent 3px) repeat-x 0 100%,
+        linear-gradient(to bottom, #000 3px, transparent 3px) repeat-y 100% 0,
+        linear-gradient(to left, #000 3px, transparent 3px) repeat-x,
+        linear-gradient(to top, #000 3px, transparent 3px) repeat-y,
+        linear-gradient(to left, #000 3px, transparent 3px) repeat-x 0 100%,
+        linear-gradient(to top, #000 3px, transparent 3px) repeat-y 100% 0;
         mask-size: 12px 3px, 3px 12px, 12px 3px, 3px 12px;
     }
 }

@@ -2,15 +2,15 @@
     <div class="main-content">
         <div class="page mall-content">
             <div class="left-sidebar">
-                <ul>
+                <ul v-if="list && list.length">
                     <router-link
                             class="menu-item"
-                            v-for="(item, index) in menu.shoppingMall"
+                            v-for="(item, index) in list"
                             :key="index"
                             tag="li"
-                            :to="{path: item.path}"
+                            :to="{params: {post_id : item.id}}"
                             active-class="active">
-                        <a>{{item.meta.title}}</a>
+                        <a>{{item.categoryName}}</a>
                     </router-link>
                 </ul>
             </div>
@@ -44,11 +44,24 @@
     computed: {
       ...mapState(['menu', 'auth'])
     },
+    data() {
+      return {
+        list: []
+      }
+    },
+    mounted() {
+      this.query()
+    },
     methods: {
       query() {
         getCommodityCategory({id: this.id}).then(res => {
           if (res.succeed) {
-            this.data = res.data && res.data.data || {}
+            this.list = res.data && res.data.rows || []
+            this.list.unshift({
+              categoryName: '全部商品',
+              id: 0
+            })
+            console.log(this.data)
           } else {
             console.log(res);
             // this.$message.warning('网路开小差')

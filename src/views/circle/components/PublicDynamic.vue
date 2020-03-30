@@ -55,145 +55,130 @@
 </template>
 
 <script>
-    import VueDPlayer from 'vue-dplayer'
-    import '@/assets/css/vue-dplayer.css'
-    import mp4File from '@/assets/video/demo_video.mp4'
-    import {
-        getCircleAll,
-        getCircleFollow,
-        queryMyFollowCircle,
-        queryCancelCircle,
-        getCircleDynamic
-    } from '@/api/circle'
-    import {mapState} from 'vuex'
+  import VueDPlayer from 'vue-dplayer'
+  import '@/assets/css/vue-dplayer.css'
+  import mp4File from '@/assets/video/demo_video.mp4'
+  import {
+    getCircleAll,
+    getCircleFollow,
+    queryMyFollowCircle,
+    queryCancelCircle,
+    getCircleDynamic
+  } from '@/api/circle'
+  import {mapState} from 'vuex'
 
-    export default {
-        name: 'publicDynamic',//动态
-        components: {
-            'd-player': VueDPlayer
+  export default {
+    name: 'publicDynamic',//动态
+    components: {
+      'd-player': VueDPlayer
+    },
+    data() {
+      return {
+        options: {
+          video: {
+            url: mp4File
+          }
         },
-        data() {
-            return {
-                options: {
-                    video: {
-                        url: mp4File
-                    }
-                },
-                list: []
+        list: []
+      }
+    },
+    props: {
+      isCirle: {
+        type: String,
+        default: ''
+      }
+    },
+    watch: {
+      isCirle() {
+        this.query()
+      }
+    },
+    mounted() {
+      this.query()
+    },
+    computed: {
+      ...mapState(['auth'])
+    },
+    methods: {
+      play() {
+        console.log('play callback')
+      },
+      thumbsUp() {
+        // queryMyFollowCircle({id: e.id}).then(res => {
+        //     if (res.succeed) {
+        this.$message.success('点赞成功')
+        //     } else {
+        //         this.$message.warning(res.data.msg)
+        //     }
+        // }).catch(err => {
+        //     console.log(err)
+        // })
+      },
+      followCircle(e) {
+        debugger
+        if (true) {
+          queryMyFollowCircle({circleId: e.id}).then(res => {
+            if (res.succeed) {
+              this.$message.success('关注成功')
+            } else {
+              console.log(res);
+              this.$message.warning(res.data.data.msg || '网络错误')
             }
-        },
-        props: {
-            isCirle: {
-                type: String,
-                default: ''
-            }
-        },
-        watch: {
-            isCirle() {
-                this.query()
-            }
-        },
-        mounted() {
-            this.query()
-        },
-        computed: {
-            ...mapState(['auth'])
-        },
-        methods: {
-            play() {
-                console.log('play callback')
-            },
-            thumbsUp() {
-                // queryMyFollowCircle({id: e.id}).then(res => {
-                //     if (res.succeed) {
-                this.$message.success('点赞成功')
-                //     } else {
-                //         this.$message.warning(res.data.msg)
-                //     }
-                // }).catch(err => {
-                //     console.log(err)
-                // })
-            },
-            followCircle(e) {
-                debugger
-                if (true) {
-                    queryMyFollowCircle({circleId: e.id}).then(res => {
-                        if (res.succeed) {
-                            this.$message.success('关注成功')
-                        } else {
-                            console.log(res);
-                            this.$message.warning(res.data.data.msg || '网络错误')
-                        }
-                        this.loading = false
-                    }).catch(err => {
-                        this.loading = false
-                        console.log(err)
-                    })
-                } else {
-                    this.cancelfollowCircle(e)
-                }
-            },
-            cancelfollowCircle(e) {
-                queryCancelCircle({circle_id: e.id}).then(res => {
-                    if (res.succeed) {
-                        this.$message.success('关注成功')
-                    } else {
-                        console.log(res);
-                        this.$message.warning(res.data.data.msg || '网络错误')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            },
-            query() {
-                debugger
-                if (this.isCirle == 2) {
-                    // getCircleDynamic({}).then(res => {
-                    getCircleFollow({}).then(res => {
-                        // let data = res.body
-                        // debugger
-                        if (res.succeed) {
-                            // console.log(res)
-                            this.list = res.data && res.data.rows || []
-                        } else {
-                            this.list = []
-                        }
-                    }).catch(err => {
-                        console.log(err)
-                    })
-                } else if (this.isCirle == 4) {
-                    getCircleDynamic({}).then(res => {
-                        // let data = res.body
-                        // debugger
-                        if (res.succeed) {
-                            // console.log(res)
-                            this.list = res.data && res.data.rows || []
-                        } else {
-                            this.list = []
-                        }
-                    }).catch(err => {
-                        console.log(err)
-                    })
-
-                } else {
-                    getCircleAll({}).then(res => {
-                        // let data = res.body
-                        // debugger
-                        if (res.succeed) {
-                            // console.log(res)
-                            this.list = res.data && res.data.rows || []
-                        } else {
-                            this.list = []
-                        }
-                    }).catch(err => {
-                        console.log(err)
-                    })
-                }
-            }
+            this.loading = false
+          }).catch(err => {
+            this.loading = false
+            console.log(err)
+          })
+        } else {
+          this.cancelfollowCircle(e)
         }
+      },
+      cancelfollowCircle(e) {
+        queryCancelCircle({circle_id: e.id}).then(res => {
+          if (res.succeed) {
+            this.$message.success('关注成功')
+          } else {
+            console.log(res);
+            this.$message.warning(res.data.data.msg || '网络错误')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      },
+      query() {
+        debugger
+        if (this.isCirle == 2) {
+          getCircleFollow({}).then(res => {
+            // let data = res.body
+            // debugger
+            if (res.succeed) {
+              // console.log(res)
+              this.list = res.data && res.data.rows || []
+            } else {
+              this.list = []
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        } else {
+          getCircleDynamic({}).then(res => {
+            // let data = res.body
+            // debugger
+            if (res.succeed) {
+              // console.log(res)
+              this.list = res.data && res.data.rows || []
+            } else {
+              this.list = []
+            }
+          }).catch(err => {
+            console.log(err)
+          })
+        }
+      }
     }
+  }
 </script>
 
 <style scoped>

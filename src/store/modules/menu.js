@@ -8,29 +8,28 @@ let shoppingMall = [
         component: () => import("@/views/shoppingMall/List.vue")
     },
     {
-        name: 'game_hand',
-        path: 'game_hand',
+        path: ':post_id',
         meta: {
             title: '游戏手办'
         },
         component: () => import("@/views/shoppingMall/List.vue")
-    },
-    {
-        name: 'game_skin',
-        path: 'game_skin',
-        meta: {
-            title: '游戏皮肤'
-        },
-        component: () => import("@/views/shoppingMall/List.vue")
-    },
-    {
-        name: 'bonus_points',
-        path: 'bonus_points',
-        meta: {
-            title: '积分红包'
-        },
-        component: () => import("@/views/shoppingMall/List.vue")
     }
+    // {
+    //     name: 'game_skin',
+    //     path: 'game_skin',
+    //     meta: {
+    //         title: '游戏皮肤'
+    //     },
+    //     component: () => import("@/views/shoppingMall/List.vue")
+    // },
+    // {
+    //     name: 'bonus_points',
+    //     path: 'bonus_points',
+    //     meta: {
+    //         title: '积分红包'
+    //     },
+    //     component: () => import("@/views/shoppingMall/List.vue")
+    // }
 ]
 
 //我的关注
@@ -248,7 +247,7 @@ let store = [
             {
                 name: 'shoppingMall',
                 path: '/shoppingMall',
-                redirect: '/shoppingMall/all_merchandise',
+                redirect: '/shoppingMall/0',
                 meta: {
                     title: "商城",
                     englishTitle: 'Mall'
