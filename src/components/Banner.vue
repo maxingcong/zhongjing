@@ -40,10 +40,15 @@
               setWrapperSize: true,
               observer: true,//修改swiper自己或子元素时，自动初始化swiper
               observeParents: false,//修改swiper的父元素时，自动初始化swiper
+              autoplayDisableOnInteraction: false,
               onSlideChangeEnd: function (swiper) {
                 swiper.update();
-                this.mySwiper.startAutoplay();
-                this.mySwiper.reLoop();
+                try {
+                  this.mySwiper.startAutoplay();
+                  this.mySwiper.reLoop();
+                } catch (e) {
+                  console.log(e)
+                }
               }
               // direction: 'vertical'
             })

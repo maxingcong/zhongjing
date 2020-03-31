@@ -14,10 +14,10 @@ Vue.use(ElementUI)
 
 Vue.config.productionTip = true
 Vue.prototype.$imgBaseUrl = 'http://120.24.224.218:8600/'
-Vue.prototype.emumObj= emums
+Vue.prototype.emumObj = emums
 
 new Vue({
-    render: h => h(App),
-    router,
-    store
+  render: h => h(App),
+  router,
+  store
 }).$mount('#app')

@@ -19,40 +19,40 @@
                 <div class="box-head">
                     <div class="match-details-time">比赛时间 {{data.match && data.match.matchTime | filterTime}}</div>
                     <div class="match-details-name"><img style="width: 32px;height: 32px;border-radius: 50%"
-                                                         :src="data.match.picture">{{data.match.matchName}}
+                                                         :src="data.match && data.match.picture || ''">{{data.match &&
+                        data.match.matchName || ''}}
                     </div>
-                    <div class="match-details-heat"><img src="@/assets/images/index/hotfire.png">预测热度：{{data.match.hotValue
+                    <div class="match-details-heat"><img src="@/assets/images/index/hotfire.png">预测热度：{{data.match &&
+                        data.match.hotValue
                         || 0}}
                     </div>
                 </div>
                 <div class="box-body">
                     <div class="match-team-details">
                         <div class="match-team-details-box">
-                            <!--<div class="match-team-name">AS仙阁</div>-->
                             <div class="match-team-name">{{data.match && data.match.aName}}</div>
-                            <!--<div class="match-team-logo"><img :src="data.match && data.match.aicon"></div>-->
-                            <div class="match-team-logo"><img src="@/assets/images/index/bteam01.png"></div>
+                            <div class="match-team-logo"><img class="img-72" style="border-radius: 50%"
+                                                              :src="data.match && data.match.aIcon || ''"></div>
                         </div>
                     </div>
                     <div class="match-score">
-                        <label class="bgcolorlb lb2">{{emumObj.foreast[data.match.status]}}</label>
+                        <label class="bgcolorlb lb2">{{emumObj.foreast[data.match && data.match.status]}}</label>
                         <h4>VS</h4>
                     </div>
                     <div class="match-team-details right-team">
                         <div class="match-team-details-box">
-                            <!--<div class="match-team-logo"><img :src="data.match && data.match.bicon"></div>-->
-                            <div class="match-team-logo"><img src="@/assets/images/index/bteam02.png"></div>
+                            <div class="match-team-logo"><img class="img-72" style="border-radius: 50%"
+                                                              :src="data.match && data.match.bIcon || ''"></div>
                             <div class="match-team-name">{{data.match && data.match.bName}}</div>
-                            <!--<div class="match-team-name">BIU</div>-->
                         </div>
                     </div>
                 </div>
                 <div class="ranking-box" style="text-align: center;">
-                    <!--<label class="ranking-lb1"-->
-                           <!--v-if="data.match.status !== 0"-->
-                           <!--:style="{'margin-right': 0,background: '#ccc' }">申请房主</label>-->
-                    <!--@click="$message.warning('当前赛事'+ emumObj.foreast[data.match.status] + '，暂时无法成为房主')"-->
                     <label class="ranking-lb1"
+                           v-if="data.match && data.match.status !== 0"
+                           @click="$message.warning('当前赛事'+ emumObj.foreast[data.match.status] + '，暂时无法成为房主')"
+                           :style="{'margin-right': 0,background: '#ccc' }">申请房主</label>
+                    <label v-else class="ranking-lb1"
                            :style="{'margin-right': 0,background: 'rgb(78, 171, 62)'}"
                            @click="submitHouseOwner">申请房主</label>
                     <!--                    <label class="ranking-lb2">NO.2房主:中竞网提莫</label>-->
@@ -61,7 +61,6 @@
             </div>
             <div class="guessing-wrap">
                 <div v-for="item in data.betting || []" :key="item.id">
-                    <!--<img src="@/assets/images/index/lb.png">-->
                     <div style="width: 100%;height: 10px"></div>
                     <div class="guessing-data-box">
                         <div class="box-head" style="margin-bottom: 10px">
@@ -69,7 +68,11 @@
                                 <label>{{item.className}}</label>
                                 <h5>{{item.title}}</h5>
                             </div>
-                            <div class="head-right">剩余 <img src="@/assets/images/index/miaobiao.png"> <b>24:50:24</b>
+                            <div class="head-right" v-if="data.match.status == 1">剩余 <img
+                                    src="@/assets/images/index/miaobiao.png"> <b>{{dateText}}</b>
+                            </div>
+                            <div class="head-right" style="color: #000;background: #ccc" v-if="data.match.status == 3">
+                                {{ emumObj.foreast[data.match.status]}}
                             </div>
                         </div>
                         <div class="box-body">
@@ -150,120 +153,143 @@
 </template>
 
 <script>
-    import {queryGuessingDetails, postGuessing, postHouseOwner} from '@/api/home'
-    import {mapMutations, mapState} from 'vuex'
+  import {queryGuessingDetails, postGuessing, postHouseOwner} from '@/api/home'
+  import {mapMutations, mapState} from 'vuex'
 
-    export default {
-        name: "guessing-competition-details",
-        data() {
-            return {
-                data: {},
-                guessingType: '',
-                dialogVisible: false,
-                dialogData: {},
-                quantity: '',
-                money: 0
-            }
-        },
-        watch: {
-            quantity(newName) {
-                // debugger
-                if (!(/(^[1-9]\d*$)/.test(Number(newName)))) {
-                    this.quantity = ''
-                } else {
-                    this.quantity = newName
-                }
-                let money = this.quantity * this.dialogData.odds
-                console.log(money);
-                this.money = money && Number(money).toFixed(2)
-            }
-        },
-        components: {},
-        computed: {
-            matchInfoId() {
-                return this.$route.query.id || ''
-            },
-            // matchInfoId() {
-            //     return this.$route.query.md || ''
-            // },
-            ...mapState(['auth'])
-        },
-        mounted() {
-            this.query()
-        },
-        methods: {
-            ...mapMutations(
-                {
-                    setBean: 'setBean'
-                }
-            ),
-            queryDate(e, item) {
-                this.dialogData = Object.assign({}, e, item)
-                this.quantity = ''
-                this.dialogVisible = true
-            },
-            submit() {
-                if (!this.quantity) {
-                    this.$message.warning('请填入竞猜数量')
-                } else {
-                    console.log(this.dialogData);
-                    postGuessing({
-                        bean: this.quantity,
-                        bettingId: this.dialogData.bettingId,
-                        matchInfoId: this.id
-                    }).then(res => {
-                        if (res.succeed) {
-                            this.$message.success('竞猜成功')
-                            this.setBean((this.auth.bean - this.quantity))
-                            this.query()
-                            // this.data = res.data && res.data.data || {}
-                        } else {
-                            this.$message.warning(res.data.msg || '网络请求错误')
-                            // console.log(res)
-                        }
-                        this.loading = false
-                    }).catch(err => {
-                        this.loading = false
-                        console.log(err)
-                    })
-                }
-                console.log(1);
-            },
-            query() {
-                queryGuessingDetails({id: this.id, matchInfoId: this.matchInfoId}).then(res => {
-                    if (res.succeed) {
-                        this.data = res.data && res.data.data || {}
-                    } else {
-                        console.log(res)
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            },
-            submitHouseOwner() {
-                if (true) {
-                    debugger
-                    postHouseOwner({matchInfoId: this.matchInfoId}).then(res => {
-                        if (res.succeed) {
-                            this.$message.success('申请成功')
-                            this.$router.push({name: 'my_room'})
-                        } else {
-                            this.$message.warning(res.data.msg || '网络失败')
-                            console.log(res)
-                        }
-                        this.loading = false
-                    }).catch(err => {
-                        this.loading = false
-                        console.log(err)
-                    })
-                } else {
-                    this.$message.warning('当前房主已存在，或当前竞猜状态不对')
-                }
-            }
+  export default {
+    name: "guessing-competition-details",
+    data() {
+      return {
+        data: {},
+        guessingType: '',
+        dialogVisible: false,
+        dialogData: {},
+        quantity: '',
+        money: 0,
+        dateText: ''
+      }
+    },
+    watch: {
+      quantity(newName) {
+        // debugger
+        if (!(/(^[1-9]\d*$)/.test(Number(newName)))) {
+          this.quantity = ''
+        } else {
+          this.quantity = newName
         }
+        let money = this.quantity * this.dialogData.odds
+        console.log(money);
+        this.money = money && Number(money).toFixed(2)
+      }
+    },
+    components: {},
+    computed: {
+      matchInfoId() {
+        return this.$route.query.id || ''
+      },
+      // matchInfoId() {
+      //     return this.$route.query.md || ''
+      // },
+      ...mapState(['auth'])
+    },
+    mounted() {
+      this.query()
+    },
+    beforeDestroy() {
+      clearInterval(this.timeVal)
+    },
+    methods: {
+      ...mapMutations(
+        {
+          setBean: 'setBean'
+        }
+      ),
+      queryDate(e, item) {
+        this.dialogData = Object.assign({}, e, item)
+        this.quantity = ''
+        this.dialogVisible = true
+      },
+      submit() {
+        if (!this.quantity) {
+          this.$message.warning('请填入竞猜数量')
+        } else {
+          console.log(this.dialogData);
+          postGuessing({
+            bean: this.quantity,
+            bettingId: this.dialogData.bettingId,
+            matchInfoId: this.id
+          }).then(res => {
+            if (res.succeed) {
+              this.$message.success('竞猜成功')
+              this.setBean((this.auth.bean - this.quantity))
+              this.query()
+              // this.data = res.data && res.data.data || {}
+            } else {
+              this.$message.warning(res.data.msg || '网络请求错误')
+              // console.log(res)
+            }
+            this.loading = false
+          }).catch(err => {
+            this.loading = false
+            console.log(err)
+          })
+        }
+        console.log(1);
+      },
+      query() {
+        if (this.timeVal) {
+          clearInterval(this.timeVal)
+        }
+        queryGuessingDetails({id: this.id, matchInfoId: this.matchInfoId}).then(res => {
+          if (res.succeed) {
+            this.data = res.data && res.data.data || {}
+            if (this.data.match && this.data.match.gcEndTime) {
+              let time = new Date(this.data.match.gcEndTime).getTime()
+              let addZero = (i) => {
+                return i < 10 ? "0" + i : i + "";
+              }
+              this.timeVal = setInterval(() => {
+                let newTime = new Date().getTime(),
+                  cha = parseInt((time - newTime) / 1000),
+                  day = parseInt(cha / (24 * 60 * 60)),//天数
+                  hour = addZero(parseInt(cha / (60 * 60) % 24)),//小时
+                  minutes = addZero(parseInt(cha / 60 % 60)),
+                  seconds = addZero(parseInt(cha % 60));
+                this.dateText = (day + day ? day + ' 天' : '') + hour + ':' + minutes + ':' + seconds
+                // console.log(this.dateText)
+              }, 1000)
+            }
+          } else {
+            console.log(res)
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      },
+      submitHouseOwner() {
+        if (true) {
+          debugger
+          postHouseOwner({matchInfoId: this.matchInfoId}).then(res => {
+            if (res.succeed) {
+              this.$message.success('申请成功')
+              this.$router.push({name: 'my_room'})
+            } else {
+              this.$message.warning(res.data.msg || '网络失败')
+              console.log(res)
+            }
+            this.loading = false
+          }).catch(err => {
+            this.loading = false
+            console.log(err)
+          })
+        } else {
+          this.$message.warning('当前房主已存在，或当前竞猜状态不对')
+        }
+      }
     }
+  }
 </script>
 
 <style scoped lang="less">

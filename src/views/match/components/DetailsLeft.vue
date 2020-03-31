@@ -23,7 +23,7 @@
             <div class="box-body">
                 <div class="schedule-list"
                      v-for="(item,index) in data && data.data&& data.data.guessingCompetition.rows || []" :key="index">
-                    <div class="schedule-time">11-27 19:00</div>
+                    <div class="schedule-time">{{item.matchTime || '' | filterTime}}</div>
                     <div class="schedule-match-name">
                         <img src="@/assets/images/index/steam011.png">
                         <div class="name-text">{{item.aName}}</div>
@@ -54,63 +54,63 @@
 </template>
 
 <script>
-    import {postMath} from '@/api/match'
-    import mp4File from '@/assets/video/demo_video.mp4'
-    import VueDPlayer from 'vue-dplayer'
-    import '@/assets/css/vue-dplayer.css'
-    import {mapState} from 'vuex'
+  import {postMath} from '@/api/match'
+  import mp4File from '@/assets/video/demo_video.mp4'
+  import VueDPlayer from 'vue-dplayer'
+  import '@/assets/css/vue-dplayer.css'
+  import {mapState} from 'vuex'
 
-    export default {
-        components: {
-            'd-player': VueDPlayer
-        },
-        props: {
-            data: {
-                type: Object,
-                default: () => {
-                    return {}
-                }
-            }
-        },
-        data() {
-            return {
-                options: {
-                    video: {
-                        url: mp4File
-                    }
-                }
-            }
-        },
-        computed: {
-            ...mapState(['auth'])
-        },
-        mounted() {
-            this.query()
-        },
-        methods: {
-            play() {
-                console.log('play callback')
-            },
-            handFollow() {
-                if (this.auth.info.token) {
-                    postMath({matchId: this.data.data.matchVideo.id}).then(res => {
-                        if (res.succeed) {
-                            this.$message.success('关注成功')
-                        } else {
-                            this.$message.success('关注失败', res.data.msg)
-                        }
-                    }).catch(err => {
-                        console.log(err);
-                    })
-                } else {
-                    this.$router.push({name: 'login'})
-                }
-            },
-            query() {
-                console.log(123)
-            }
+  export default {
+    components: {
+      'd-player': VueDPlayer
+    },
+    props: {
+      data: {
+        type: Object,
+        default: () => {
+          return {}
         }
+      }
+    },
+    data() {
+      return {
+        options: {
+          video: {
+            url: mp4File
+          }
+        }
+      }
+    },
+    computed: {
+      ...mapState(['auth'])
+    },
+    mounted() {
+      this.query()
+    },
+    methods: {
+      play() {
+        console.log('play callback')
+      },
+      handFollow() {
+        if (this.auth.info.token) {
+          postMath({matchId: this.data.data.matchVideo.id}).then(res => {
+            if (res.succeed) {
+              this.$message.success('关注成功')
+            } else {
+              this.$message.success('关注失败', res.data.msg)
+            }
+          }).catch(err => {
+            console.log(err);
+          })
+        } else {
+          this.$router.push({name: 'login'})
+        }
+      },
+      query() {
+        console.log(123)
+      }
     }
+  }
 </script>
 
 <style scoped>

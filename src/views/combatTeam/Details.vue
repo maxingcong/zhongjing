@@ -15,7 +15,8 @@
         <div class="big-screen-content">
             <div class="main-content">
                 <div class="page team-introduce-box">
-                    <div class="box-left"><img style="width: 396px;height: 396px" :src="data[0].combatTeamIcon || ''"></div>
+                    <div class="box-left"><img style="width: 396px;height: 396px" :src="data[0].combatTeamIcon || ''">
+                    </div>
                     <div class="box-right">
                         <div class="title"><h3></h3><span>{{data[0].combatTeamName}}</span><a @click="queryFollowTeam">关注</a>
                         </div>
@@ -31,11 +32,14 @@
             <div class="page team-member-box">
                 <div class="box-head"><h3>队员介绍</h3></div>
                 <div class="box-body">
-                    <ul class="item-list">
+                    <ul class="item-list" style="display: flex;flex-wrap: wrap;">
                         <li v-for="item in data[0].players" :key="item.id">
                             <a @click="$router.push({name: 'team_member_details',query:{id:item.id}})">
                                 <div class="team-member-img"><img :src="item.playerPicture"></div>
-                                <div class="team-member-name">{{item.playerName}}<label>{{item.introduce}}</label></div>
+                                <div class="team-member-name">
+                                    <div>{{item.playerName}}</div>
+                                    <div style="width: 100%;text-align: center"><label>{{item.introduce}}</label></div>
+                                </div>
                             </a>
                         </li>
                     </ul>
@@ -46,82 +50,82 @@
 </template>
 
 <script>
-    // import HotgameList from "../../components/HotgameList";
-    import {queryTeamDetails} from '@/api/combatTeam'
-    import {postTeam, postCancelTeam} from '@/api/combatTeam'
+  // import HotgameList from "../../components/HotgameList";
+  import {queryTeamDetails} from '@/api/combatTeam'
+  import {postTeam, postCancelTeam} from '@/api/combatTeam'
 
-    export default {
-        name: "team_details",
-        components: {
-            // HotgameList
-        },
-        created() {
-            if (!this.id) {
-                this.$router.go(-1)
-                return
+  export default {
+    name: "team_details",
+    components: {
+      // HotgameList
+    },
+    created() {
+      if (!this.id) {
+        this.$router.go(-1)
+        return
+      }
+      this.query()
+    },
+    computed: {
+      id() {
+        return this.$route.query.id
+      }
+    },
+    data() {
+      return {
+        data: []
+      }
+    },
+    methods: {
+      queryFollowTeam() {
+        if (true) {
+          postTeam({combatTeamId: this.id}).then(res => {
+            if (res.succeed) {
+              this.$message.success('关注成功')
+            } else {
+              console.log(res);
+              this.$message.warning(res.data.data.msg || '网络错误')
             }
-            this.query()
-        },
-        computed: {
-            id() {
-                return this.$route.query.id
-            }
-        },
-        data() {
-            return {
-                data: []
-            }
-        },
-        methods: {
-            queryFollowTeam() {
-                if (true) {
-                    postTeam({combatTeamId: this.id}).then(res => {
-                        if (res.succeed) {
-                            this.$message.success('关注成功')
-                        } else {
-                            console.log(res);
-                            this.$message.warning(res.data.data.msg || '网络错误')
-                        }
-                        this.loading = false
-                    }).catch(err => {
-                        this.loading = false
-                        console.log(err)
-                    })
-                } else {
-                    this.queryCancelTeam()
-                }
-            },
-            queryCancelTeam() {
-                postCancelTeam({combatTeamId: this.id}).then(res => {
-                    if (res.succeed) {
-                        this.$message.success('关注成功')
-                    } else {
-                        console.log(res);
-                        this.$message.warning(res.data.data.msg || '网络错误')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            },
-            query() {
-                queryTeamDetails({id: this.id}).then(res => {
-                    debugger
-                    if (res.succeed) {
-                        this.data = res.data && res.data.data || {}
-                    } else {
-                        console.log(res);
-                        // this.$message.warning('网路开小差')
-                    }
-                    this.loading = false
-                }).catch(err => {
-                    this.loading = false
-                    console.log(err)
-                })
-            }
+            this.loading = false
+          }).catch(err => {
+            this.loading = false
+            console.log(err)
+          })
+        } else {
+          this.queryCancelTeam()
         }
+      },
+      queryCancelTeam() {
+        postCancelTeam({combatTeamId: this.id}).then(res => {
+          if (res.succeed) {
+            this.$message.success('关注成功')
+          } else {
+            console.log(res);
+            this.$message.warning(res.data.data.msg || '网络错误')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      },
+      query() {
+        queryTeamDetails({id: this.id}).then(res => {
+          debugger
+          if (res.succeed) {
+            this.data = res.data && res.data.data || {}
+          } else {
+            console.log(res);
+            // this.$message.warning('网路开小差')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      }
     }
+  }
 </script>
 
 <style scoped>
