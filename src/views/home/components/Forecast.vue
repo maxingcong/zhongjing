@@ -19,7 +19,7 @@
                         <div class="team-name">
                             <span style="display: inline-block;width: 200px;text-align: right;padding-right: 10px">{{item.aName}}</span>
                             <img style="width: 56px;height: 56px;border-radius: 50%"
-                                                    :src="item.aIcon"></div>
+                                 :src="item.aIcon"></div>
                         <!--<div class="fraction">{{// item.aScore}}</div>-->
                     </div>
                 </div>
@@ -36,8 +36,9 @@
                 </div>
                 <div class="match-team right-team" style="text-align: left">
                     <div class="match-team-innerbox" style="width: 80px;float: left;margin-left: 50px">
-                        <div class="team-name"><img style="width:56px;height: 56px;border-radius: 50%"
-                                                    :src="item.bIcon"><span>{{item.bName}}</span>
+                        <div class="team-name" style="width: 200px"><img
+                                style="width:56px;height: 56px;border-radius: 50%"
+                                :src="item.bIcon"><span style="margin-left: 0">{{item.bName}}</span>
                         </div>
                         <!--<div class="fraction">{{// item.bScore}}</div>-->
                     </div>
