@@ -15,7 +15,7 @@
                             <button v-if="isCodeGeting" @click="queryEmail" class="btn btn-default">
                                 获取验证码
                             </button>
-                            <button v-else class="btn btn-default" size="small">
+                            <button v-if="!isCodeGeting" class="btn btn-default" size="small">
                                 <countdown :end-time="new Date().getTime()+60*1000" @finish="isCodeGeting = true">
                                     <template slot="process" slot-scope="{timeObj}">
                                         <span>重新获取</span>

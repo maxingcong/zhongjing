@@ -14,7 +14,7 @@
                 <li v-for="item in list" :key="item.id">
                     <a @click="$router.push({name: 'shopping_details',query:{'id': item.id}})">
                         <!--                        <div class="merchandise-img"><img :src="item.picture"></div>-->
-                        <div class="merchandise-img"><img style="width: 208px;height: 138px" :src="item.picture"></div>
+                        <div class="merchandise-img" style="overflow: hidden"><img style="width: 208px;height: 138px" :src="item.picture"></div>
                         <div class="merchandise-text">{{item.commodityName}}</div>
                         <div class="merchandise-price">
                             <div class="beans-number"><img src="@/assets/images/mall/icon_bean02.png">{{item.price}}

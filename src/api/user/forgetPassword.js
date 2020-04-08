@@ -8,5 +8,5 @@ import http from '@/api/index'
  * @param {Function} error 访问异常
  */
 export const postForget = (params)=>{
-    return http.post('/auth/login', params)
+    return http.post('/user/emailCheck', params)
 }
