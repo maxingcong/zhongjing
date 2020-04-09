@@ -35,7 +35,7 @@
                                     <countdown :end-time="new Date().getTime()+60*1000" @finish="finish">
                                         <template slot="process" slot-scope="{timeObj}">
                                             <span>重新获取</span>
-                                            ({{timeObj.s}}s)
+                                            {{timeObj.s}}s
                                         </template>
                                     </countdown>
                                 </button>

@@ -6,7 +6,7 @@
                     <div class="information-img"><img style="width: 260px;height: 164px" :src="item.picture"></div>
                     <div class="information-text">
                         <h3>{{item.title}}</h3>
-                        <p>这里字段空缺</p>
+                        <p>{{item.briefIntroduction}}</p>
                         <div class="tag">
                             <span>日期：{{item.releaseTime}}</span>
                             <div class="goto">

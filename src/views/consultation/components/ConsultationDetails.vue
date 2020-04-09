@@ -16,7 +16,7 @@
                     </div>
                     <h1>{{data.title}}</h1>
                     <div class="source-information">
-                        <div class="source"><span>来源：{{data.source}}</span><span>作者：{{data.author}}</span></div>
+                        <div class="source"><span>来源：{{data.source}}</span>  <span>作者：{{data.author}}</span></div>
                         <div class="time">时间：{{data.releaseTime | filterYear}}</div>
                     </div>
                     <h2>苏州场15点 BLG vs DMO FoFo和xiye新队正名战 </h2>

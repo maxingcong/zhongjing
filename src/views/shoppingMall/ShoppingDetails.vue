@@ -96,7 +96,7 @@
                         this.$message.warning('当前购买数量小于1')
                         return
                     }
-                    postMallCard({id: this.id, count: this.quantity}).then(res => {
+                    postMallCard({commodityId: this.id, count: this.quantity}).then(res => {
                         debugger
                         if (res.succeed) {
                             if (this.isexchange) {

@@ -153,143 +153,147 @@
 </template>
 
 <script>
-  import {queryGuessingDetails, postGuessing, postHouseOwner} from '@/api/home'
-  import {mapMutations, mapState} from 'vuex'
+    import {queryGuessingDetails, postGuessing, postHouseOwner} from '@/api/home'
+    import {mapMutations, mapState} from 'vuex'
 
-  export default {
-    name: "guessing-competition-details",
-    data() {
-      return {
-        data: {},
-        guessingType: '',
-        dialogVisible: false,
-        dialogData: {},
-        quantity: '',
-        money: 0,
-        dateText: ''
-      }
-    },
-    watch: {
-      quantity(newName) {
-        // debugger
-        if (!(/(^[1-9]\d*$)/.test(Number(newName)))) {
-          this.quantity = ''
-        } else {
-          this.quantity = newName
-        }
-        let money = this.quantity * this.dialogData.odds
-        console.log(money);
-        this.money = money && Number(money).toFixed(2)
-      }
-    },
-    components: {},
-    computed: {
-      matchInfoId() {
-        return this.$route.query.id || ''
-      },
-      // matchInfoId() {
-      //     return this.$route.query.md || ''
-      // },
-      ...mapState(['auth'])
-    },
-    mounted() {
-      this.query()
-    },
-    beforeDestroy() {
-      clearInterval(this.timeVal)
-    },
-    methods: {
-      ...mapMutations(
-        {
-          setBean: 'setBean'
-        }
-      ),
-      queryDate(e, item) {
-        this.dialogData = Object.assign({}, e, item)
-        this.quantity = ''
-        this.dialogVisible = true
-      },
-      submit() {
-        if (!this.quantity) {
-          this.$message.warning('请填入竞猜数量')
-        } else {
-          console.log(this.dialogData);
-          postGuessing({
-            bean: this.quantity,
-            bettingId: this.dialogData.bettingId,
-            matchInfoId: this.id
-          }).then(res => {
-            if (res.succeed) {
-              this.$message.success('竞猜成功')
-              this.setBean((this.auth.bean - this.quantity))
-              this.query()
-              // this.data = res.data && res.data.data || {}
-            } else {
-              this.$message.warning(res.data.msg || '网络请求错误')
-              // console.log(res)
+    export default {
+        name: "guessing-competition-details",
+        data() {
+            return {
+                data: {},
+                guessingType: '',
+                dialogVisible: false,
+                dialogData: {},
+                quantity: '',
+                money: 0,
+                dateText: ''
             }
-            this.loading = false
-          }).catch(err => {
-            this.loading = false
-            console.log(err)
-          })
-        }
-        console.log(1);
-      },
-      query() {
-        if (this.timeVal) {
-          clearInterval(this.timeVal)
-        }
-        queryGuessingDetails({id: this.id, matchInfoId: this.matchInfoId}).then(res => {
-          if (res.succeed) {
-            this.data = res.data && res.data.data || {}
-            if (this.data.match && this.data.match.gcEndTime) {
-              let time = new Date(this.data.match.gcEndTime).getTime()
-              let addZero = (i) => {
-                return i < 10 ? "0" + i : i + "";
-              }
-              this.timeVal = setInterval(() => {
-                let newTime = new Date().getTime(),
-                  cha = parseInt((time - newTime) / 1000),
-                  day = parseInt(cha / (24 * 60 * 60)),//天数
-                  hour = addZero(parseInt(cha / (60 * 60) % 24)),//小时
-                  minutes = addZero(parseInt(cha / 60 % 60)),
-                  seconds = addZero(parseInt(cha % 60));
-                this.dateText = (day + day ? day + ' 天' : '') + hour + ':' + minutes + ':' + seconds
-                // console.log(this.dateText)
-              }, 1000)
+        },
+        watch: {
+            quantity(newName) {
+                // debugger
+                if (!(/(^[1-9]\d*$)/.test(Number(newName)))) {
+                    this.quantity = ''
+                } else {
+                    this.quantity = newName
+                }
+                let money = this.quantity * this.dialogData.odds
+                console.log(money);
+                this.money = money && Number(money).toFixed(2)
             }
-          } else {
-            console.log(res)
-          }
-          this.loading = false
-        }).catch(err => {
-          this.loading = false
-          console.log(err)
-        })
-      },
-      submitHouseOwner() {
-        if (true) {
-          debugger
-          postHouseOwner({matchInfoId: this.matchInfoId}).then(res => {
-            if (res.succeed) {
-              this.$message.success('申请成功')
-              this.$router.push({name: 'my_room'})
-            } else {
-              this.$message.warning(res.data.msg || '网络失败')
-              console.log(res)
+        },
+        components: {},
+        computed: {
+            matchInfoId() {
+                return this.$route.query.id || ''
+            },
+            // matchInfoId() {
+            //     return this.$route.query.md || ''
+            // },
+            ...mapState(['auth'])
+        },
+        mounted() {
+            this.query()
+        },
+        beforeDestroy() {
+            clearInterval(this.timeVal)
+        },
+        methods: {
+            ...mapMutations(
+                {
+                    setBean: 'setBean'
+                }
+            ),
+            queryDate(e, item) {
+                this.dialogData = Object.assign({}, e, item)
+                this.quantity = ''
+                this.dialogVisible = true
+            },
+            submit() {
+                if (!this.quantity) {
+                    this.$message.warning('请填入竞猜数量')
+                } else {
+                    console.log(this.dialogData);
+                    postGuessing({
+                        bean: this.quantity,
+                        bettingId: this.dialogData.bettingId,
+                        matchInfoId: this.id
+                    }).then(res => {
+                        if (res.succeed) {
+                            this.$message.success('竞猜成功')
+                            this.setBean((this.auth.bean - this.quantity))
+                            this.query()
+                            // this.data = res.data && res.data.data || {}
+                        } else {
+                            this.$message.warning(res.data.msg || '网络请求错误')
+                            // console.log(res)
+                        }
+                        this.loading = false
+                    }).catch(err => {
+                        this.loading = false
+                        console.log(err)
+                    })
+                }
+                console.log(1);
+            },
+            query() {
+                if (this.timeVal) {
+                    clearInterval(this.timeVal)
+                }
+                queryGuessingDetails({id: this.id, matchInfoId: this.matchInfoId}).then(res => {
+                    if (res.succeed) {
+                        this.data = res.data && res.data.data || {}
+                        if (this.data.match && this.data.match.gcEndTime) {
+                            let time = new Date(this.data.match.gcEndTime).getTime()
+                            let addZero = (i) => {
+                                return i < 10 ? "0" + i : i + "";
+                            }
+                            this.timeVal = setInterval(() => {
+                                let newTime = new Date().getTime(),
+                                    cha = parseInt((time - newTime) / 1000),
+                                    day = parseInt(cha / (24 * 60 * 60)),//天数
+                                    hour = addZero(parseInt(cha / (60 * 60) % 24)),//小时
+                                    minutes = addZero(parseInt(cha / 60 % 60)),
+                                    seconds = addZero(parseInt(cha % 60));
+                                this.dateText = (day + day ? day + ' 天' : '') + hour + ':' + minutes + ':' + seconds
+                                if (cha < 0) {
+                                    clearInterval(this.timeVal)
+                                    this.dateText = '比赛结束'
+                                }
+                                // console.log(this.dateText)
+                            }, 1000)
+                        }
+                    } else {
+                        console.log(res)
+                    }
+                    this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                })
+            },
+            submitHouseOwner() {
+                if (true) {
+                    debugger
+                    postHouseOwner({matchInfoId: this.matchInfoId}).then(res => {
+                        if (res.succeed) {
+                            this.$message.success('申请成功')
+                            this.$router.push({name: 'my_room'})
+                        } else {
+                            this.$message.warning(res.data.msg || '网络失败')
+                            console.log(res)
+                        }
+                        this.loading = false
+                    }).catch(err => {
+                        this.loading = false
+                        console.log(err)
+                    })
+                } else {
+                    this.$message.warning('当前房主已存在，或当前竞猜状态不对')
+                }
             }
-            this.loading = false
-          }).catch(err => {
-            this.loading = false
-            console.log(err)
-          })
-        } else {
-          this.$message.warning('当前房主已存在，或当前竞猜状态不对')
         }
-      }
     }
-  }
 </script>
 
 <style scoped lang="less">
