@@ -65,3 +65,11 @@ export const defaultAddress = (params) => {
 export const getAddressList = (params) => {
     return http.get('/mall/address', params)
 }
+
+
+/*移除商品
+ * @param {Object} params 参数
+ */
+export const deleteCard = (params) => {
+    return http.post('/api/deleteCart', params)
+}

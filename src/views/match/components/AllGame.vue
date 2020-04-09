@@ -49,7 +49,7 @@
       return {
         list: [],
         allList: [],
-        id: 1,
+        id: '',
         pageNum: 0
       }
     },

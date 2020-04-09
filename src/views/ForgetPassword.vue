@@ -42,7 +42,8 @@
 <script>
     import {postForget} from '@/api/user/forgetPassword'
     import {validMobile} from '@/utils/validator'
-    import {queryPhotoCode} from '@/api/common'
+    import {queryPhoneCode} from '@/api/common'
+    
 
     export default {
         data() {
@@ -77,7 +78,7 @@
                 this.$refs.form.validate(valid => {
                     if (valid) {
                         this.isCodeGeting = false
-                        queryPhotoCode({photo: this.form.phone}).then(res => {
+                        queryPhoneCode({photo: this.form.phone}).then(res => {
                             console.log(res)
                         }).catch(err => {
                             console.log(err)

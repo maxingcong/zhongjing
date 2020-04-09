@@ -7,7 +7,7 @@
                          alt="">
                     <div class="circle-content-wrap-left-list-item-info-content">
                         <span class="circle-content-wrap-left-list-item-info-content-name">{{item.nickname || item.circleName}}</span>
-                        <span class="circle-content-wrap-left-list-item-info-content-time">{{item.createTime | filterallYear}}</span>
+                        <span class="circle-content-wrap-left-list-item-info-content-time">{{item.before}}</span>
                     </div>
                     <button class="circle-content-wrap-left-list-item-info-btn" @click="followCircle(item)"
                             v-if="isCirle !== 4 && item.phone !== auth.info.phone">关注
@@ -20,10 +20,10 @@
                     <!--<img class="circle-content-wrap-left-list-item-content-one-img" src="@/assets/images/circle/demo_img.png" alt="">-->
                 </div>
                 <div class="circle-content-wrap-left-list-item-handle">
-                    <div class="circle-content-wrap-left-list-item-handle-item">
+                    <div class="circle-content-wrap-left-list-item-handle-item" @click="share">
                         <img class="circle-content-wrap-left-list-item-handle-item-img"
                              src="@/assets/images/circle/send.png" alt="">
-                        <span class="circle-content-wrap-left-list-item-handle-item-txt">36</span>
+                        <!-- <span class="circle-content-wrap-left-list-item-handle-item-txt">36</span> -->
                     </div>
                     <!--                    &lt;!&ndash;品论&ndash;&gt;-->
                     <!--                    <div class="circle-content-wrap-left-list-item-handle-item">-->
@@ -36,7 +36,7 @@
                         <img class="circle-content-wrap-left-list-item-handle-item-img"
                              src="@/assets/images/circle/dianzan.png" alt="">
                         <span class="circle-content-wrap-left-list-item-handle-item-txt">
-                            <!--{{item.num}}-->123
+                            <!--{{item.num}}-->{{item.isZan}}
                         </span>
                     </div>
                 </div>
@@ -105,6 +105,10 @@
                 // }).catch(err => {
                 //     console.log(err)
                 // })
+            },
+            share(){
+               window.open('http://v.t.sina.com.cn/share/share.php?=title'+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)
++'&source=bookmark','_blank','width=450,height=400')
             },
             followCircle(e) {
                 if (true) {

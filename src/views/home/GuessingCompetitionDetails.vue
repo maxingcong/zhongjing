@@ -258,7 +258,7 @@
                                 this.dateText = (day + day ? day + ' 天' : '') + hour + ':' + minutes + ':' + seconds
                                 if (cha < 0) {
                                     clearInterval(this.timeVal)
-                                    this.dateText = '比赛结束'
+                                    this.dateText = '等待结算'
                                 }
                                 // console.log(this.dateText)
                             }, 1000)

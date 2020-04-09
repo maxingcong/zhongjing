@@ -27,45 +27,37 @@
                             <div class="commodity-information">商品信息</div>
                             <div class="selling-price">售价</div>
                             <div class="quantity">数量</div>
-                            <!--                            <div class="payment-method">支付方式</div>-->
                             <div class="operation">操作</div>
                         </div>
-                        <div class="shoppingCart-list" v-for="item in list" :key="item.id">
+                        <div class="shoppingCart-list" v-for="(item , index) in list" :key="item.id">
                             <div class="select-icon">
-                                <label class="ma-checkbox"><input type="checkbox" value="1"><i></i><span></span></label>
+                                <label class="ma-checkbox"><input type="checkbox" @change="calculation()" v-model="item.isCheck"><i></i><span></span></label>
                             </div>
                             <div class="commodity-information">
-                                <div class="commodity-img"><img src="images/mall/icon_thing02.png"></div>
-                                <div class="commodity-name">游戏皮肤B款</div>
+                                <div class="commodity-img"><img :src="item.commodityName"></div>
+                                <div class="commodity-name">{{item.commodityName}}</div>
                             </div>
-                            <div class="selling-price">￥60</div>
+                            <div class="selling-price">￥{{item.price}}</div>
                             <div class="quantity">
                                 <div class="number-emendation">
-                                    <div class="icon">-</div>
-                                    <div class="number-text">2</div>
-                                    <div class="icon">+</div>
+                                    <div class="icon" @click="item.count && item.count > 1 && item.count--,calculation()">-</div>
+                                    <div class="number-text">{{item.count}}</div>
+                                    <div class="icon" @click="item.count && item.count > 1 && item.count++,calculation()">+</div>
                                 </div>
                             </div>
-                            <!--                            <div class="payment-method">-->
-                            <!--                                <ul>-->
-                            <!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>￥60</span></label></li>-->
-                            <!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>1200竞豆</span></label>-->
-                            <!--                                    </li>-->
-                            <!--                                    <li><label class="ma-radio"><input type="radio" name="tr" value="2"><i></i><span>￥60+600竞豆</span></label>-->
-                            <!--                                    </li>-->
-                            <!--                                </ul>-->
-                            <!--                            </div>-->
-                            <div class="operation"><a href="#">删除</a></div>
+                            <div class="operation"><a @click="list.splice(index,1),deleteList(item.id)">删除</a></div>
                         </div>
                         <div class="selectAll-box">
                             <div class="box-head">
                                 <div class="head-left"><label class="ma-checkbox"><input type="checkbox"
-                                                                                         value="1"><i></i><span>全选</span></label>
+                                                                                          v-model="checkAll"
+                                                                                         @change="calculation()"><i></i><span>全选</span></label>
                                 </div>
-                                <div class="head-right">总价： <b>￥120元</b></div>
+                                <div class="head-right">总价： <b>￥{{totalPrice}}元</b></div>
                             </div>
                             <div class="box-body">
                                 <p><span>留言：</span>买家留言 ，选填</p>
+                                <textarea style="width:600px;margin-top:20px"></textarea>
                             </div>
                         </div>
                         <div class="paymentMethod-box">
@@ -101,7 +93,7 @@
 
 <script>
   import {mapState} from 'vuex'
-  import {getmallCard} from '@/api/shoppingMall'
+  import {getmallCard,deleteCard} from '@/api/shoppingMall'
 
   export default {
     data() {
@@ -109,7 +101,9 @@
         type: '',
         list: [],
         ads: {},
-        address: {}
+        address: {},
+        totalPrice: 0,
+        checkAll: false
       }
     },
     watch: {},
@@ -120,12 +114,40 @@
       ...mapState(['auth'])
     },
     methods: {
+      calculation() {
+        let totalPrice = 0
+        this.list.forEach(v=>{
+          if(this.checkAll){
+            v.isCheck = true
+          }
+          if(v.count && v.price && v.isCheck){
+             let num = (v.count * v.price).toFixed(2)
+             totalPrice+=Number(num)
+          }
+        })
+        this.totalPrice = totalPrice
+      },
+      deleteList(id){
+        deleteCard({checkList: id}).then(res => {
+          if (res.succeed) {
+            this.$message.succeed('删除成功')
+            this.calculation()
+          } else {
+            console.log(res);
+            this.$message.warning(res.data && res.data.msg || '')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+      },
       query() {
         getmallCard({}).then(res => {
           if (res.succeed) {
             this.list = res.data && res.data.data.cart || []
-            debugger
             this.address = res.data.data.address.rows[0] || {}
+            this.calculation()
           } else {
             console.log(res);
             // this.$message.warning('网路开小差')
