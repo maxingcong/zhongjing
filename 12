@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="6cc570b4-3f8b-4bd8-b84f-5df221d01a87" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Banner.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Banner.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/circle/Circle.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/circle/Circle.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/combatTeam/Details.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/combatTeam/Details.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/home/GuessingCompetitionDetails.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/home/GuessingCompetitionDetails.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/match/components/DetailsFooter.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/match/components/DetailsFooter.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/match/components/DetailsLeft.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/match/components/DetailsLeft.vue" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="30" />
+    <option name="width" value="1400" />
+    <option name="height" value="772" />
+  </component>
+  <component name="ProjectId" id="1YYVmFfGoINKHbeb88Zu6JJVxFv" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="$PROJECT_DIR$/node_modules/eslint" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="settings.webpack" />
+    <property name="ts.external.directory.path" value="D:\webstorm\WebStorm 2019.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Administrator\Desktop\zj\zhongjing\src\views\shoppingMall" />
+      <recent name="C:\Users\Administrator\Desktop\zj\zhongjing\src\api\combatTeam" />
+      <recent name="C:\Users\Administrator\Desktop\zj\zhongjing\src\views\match\components" />
+      <recent name="C:\Users\Administrator\Desktop\zj\zhongjing\src\views\consultation\components" />
+      <recent name="C:\Users\Administrator\Desktop\zj\zhongjing\src\views\home\components" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/views/personalCenter" />
+      <recent name="$PROJECT_DIR$/src/views/personalCenter/components" />
+      <recent name="$PROJECT_DIR$/src/store/module" />
+      <recent name="$PROJECT_DIR$/src/store" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6cc570b4-3f8b-4bd8-b84f-5df221d01a87" name="Default" comment="" />
+      <created>1582949028128</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582949028128</updated>
+      <workItem from="1582949032216" duration="33203000" />
+      <workItem from="1583058468980" duration="5365000" />
+      <workItem from="1583119673490" duration="18196000" />
+      <workItem from="1583200909166" duration="4727000" />
+      <workItem from="1583217223413" duration="11326000" />
+      <workItem from="1585187584373" duration="9263000" />
+      <workItem from="1585273045622" duration="16168000" />
+      <workItem from="1585380139131" duration="20751000" />
+      <workItem from="1585547946572" duration="12110000" />
+      <workItem from="1585618689438" duration="9487000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1585299196341">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1585299196341" />
+    <state x="461" y="162" key="SettingsEditor" timestamp="1585299199376">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1585299199376" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1585550681788">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1585550681788" />
+    <state x="597" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1583221853372">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="597" y="135" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1583221853372" />
+    <state x="636" y="253" width="647" height="534" key="find.popup" timestamp="1585648061088">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="636" y="253" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585648061088" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1585298773284">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1585298773284" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/views/circle/components/MyFans.vue</url>
+          <line>2</line>
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/views/circle/components/DefaultCircle.vue</url>
+          <line>5</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/views/personalCenter/MyInfo.vue</url>
+          <line>3</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/views/personalCenter/components/OnfoDetailed.vue</url>
+          <line>8</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/views/personalCenter/components/AgentPromotionFriend.vue</url>
+          <line>108</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/views/shoppingMall/List.vue</url>
+          <line>1</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

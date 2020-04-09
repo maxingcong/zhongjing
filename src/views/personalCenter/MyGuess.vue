@@ -11,11 +11,13 @@
                     <div class="box" v-for="item in data" :key="item.id">
                         <div class="box-head">
                             <div class="head-data-list time">{{item.createTime}}</div>
-                            <div class="head-data-list game"><img :src="item.picture" class="mr10">{{item.matchName}}
+                            <div class="head-data-list game"><img style="width: 25px;height: 25px" :src="item.picture" class="mr10">{{item.matchName}}
                             </div>
                             <div class="head-data-list states"><span
-                                    class="mr10 text-success"> {{item.status || ''}}</span><label
-                                    class="lbl lbl-c1">{{item.bettingResult || '已结算'}}</label></div>
+                                    class="mr10 text-success"> {{emumObj.foreast[item.status]}}</span>
+                                <!--<label-->
+                                    <!--class="lbl lbl-c1">{{emumObj.foreast[item.bettingResult]}}</label>-->
+                                    </div>
                         </div>
                         <div class="box-body">
                             <div class="detail-data">
