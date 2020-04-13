@@ -5,3 +5,7 @@
 /*@import "materialdesignicons.min.css";*/
 @import "follow.css";
 @import "style.css";
+
+.information-category-content{
+    max-width: 780px !important;
+}

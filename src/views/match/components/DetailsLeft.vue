@@ -46,11 +46,13 @@
                     <div class="schedule-operation">
                         <a><label class="bdcolorlb lb1"
                                   @click="$router.push({name: 'match_details',query:{id:item.id}})">视频</label></a>
+<!--                        <label class="bdcolorlb lb2"-->
+<!--                               v-if="item.status !== 1  || item.status !== 0"-->
+<!--                               @click="$message.warning('当前赛事'+ emumObj.foreast[item.status] + '，暂时无法预测')">{{emumObj.foreast[item.status]}}</label>-->
                         <label class="bdcolorlb lb2"
-                               v-if="item.status !== 1"
-                               @click="$message.warning('当前赛事'+ emumObj.foreast[item.status] + '，暂时无法预测')">{{emumObj.foreast[item.status]}}</label>
-                        <label v-else class="bdcolorlb lb2"
-                               @click="$router.push({name: 'guessing_competition_details',query:{id: item.id}})">预测中</label>
+                               @click="$router.push({name: 'guessing_competition_details',query:{id: item.id}})">
+                            {{item.status == 1 ? emumObj.foreast[item.status] : '参与竞猜'}}
+                        </label>
                         <!--                        <label class="bdcolorlb lb2" @click="$router.push({name: 'guessing_competition_details',query:{id: 1 //item.id,md: item.matchInfoId}})">预测中</label>-->
                     </div>
                 </div>

@@ -321,7 +321,7 @@ form .sumbit a{font-size: 16px;color: #fff;background: #FD5F5F;border-radius:6px
 .agent-promotion-box .form-group{width: 70%;}
 
 /*弹框*/
-.modal.modal-open{display: block;}  
+.modal.modal-open{display: block;}
 .modal{width: 100%;height: 100%;background: rgba(0,0,0,0.5);position: fixed;left: 0px;top: 0px;z-index: 99999;display: none;}
 .modal .modal-content{position: relative;display: -webkit-box;display: -ms-flexbox;display: flex;-webkit-box-orient: vertical;-webkit-box-direction: normal;-ms-flex-direction: column;flex-direction: column;width: 100%;pointer-events: auto;background-color: #fff;background-clip: padding-box;outline: 0;}
 .modal .modal-content .modal-head .modal-remove{font-size: 24px;color: #BFBFBF;float: right;margin-top: 24px;margin-right: 24px;border-radius: 4px;}
@@ -705,8 +705,8 @@ form .sumbit a{font-size: 16px;color: #fff;background: #FD5F5F;border-radius:6px
 .information-category-content .information-details .information-antLins ul li{display: inline-block;}
 .information-category-content .information-details h1{font-size: 26px;color: #333;margin: 38px 0 30px 0;text-align: center;}
 .information-category-content .information-details .source-information{display: flex;align-items: center;font-size: 16px;color: #808080;padding-bottom: 37px;border-bottom: 1px solid #E6E6E6;}
-.information-category-content .information-details .source-information .source{margin: 0;flex: 1;} 
-.information-category-content .information-details .source-information .time{margin-left: auto;} 
+.information-category-content .information-details .source-information .source{margin: 0;flex: 1;}
+.information-category-content .information-details .source-information .time{margin-left: auto;}
 .information-category-content .information-details h2{font-size: 18px;color: #4D4D4D;margin: 40px 0 0 0;text-indent: 2em;}
 .information-category-content .information-details p{font-size: 18px;color: #4D4D4D;line-height: 30px;margin: 0;text-indent: 2em;margin-top: 40px;}
 .information-category-content .information-details .details-img{text-align: center;margin-top: 28px;}
@@ -1087,4 +1087,7 @@ table.table-primary tbody tr td span{display: block;font-size: 12px;}
 	.header-section .header-navigation{flex: 6;}
 	.header-section .header-other{flex: 3;}
 	.header-section .header-other .adsense{right: 45px;}
+}
+.information-category-content{
+  max-width: 780px !important;
 }
