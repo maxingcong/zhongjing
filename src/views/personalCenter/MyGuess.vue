@@ -34,11 +34,11 @@
                             </div>
                             <div class="detail-data">
                                 <span>赛果</span>
-                                <p class="small-size">QGhappy胜出</p>
+                                <p class="small-size">{{item.bettingResultName}}</p>
                             </div>
                             <div class="detail-data">
                                 <span>收益</span>
-                                <p class="text-danger"><b>+5000</b></p>
+                                <p class="text-danger"><b>{{item.profit}}</b></p>
                             </div>
                         </div>
                     </div>
