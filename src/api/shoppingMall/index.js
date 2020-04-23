@@ -71,5 +71,13 @@ export const getAddressList = (params) => {
  * @param {Object} params 参数
  */
 export const deleteCard = (params) => {
-    return http.post('/api/deleteCart', params)
+    return http.post('/mall/deleteCart?checkList', JSON.stringify(params))
+}
+
+
+/*移除商品
+ * @param {Object} params 参数
+ */
+export const postPay = (params) => {
+    return http.post('/wx/pay',params)
 }

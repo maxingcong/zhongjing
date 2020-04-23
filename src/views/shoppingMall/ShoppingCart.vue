@@ -7,7 +7,7 @@
                         <div class="send-address">
                             <img src="@/assets/images/mall/address.png">
                             <span>寄送至</span>
-                            <h4>{{address.createTime}}</h4>
+                            <h4>{{address.name}}</h4>
                             <p>{{address.province}}|{{address.city}}|{{address.region}} | {{address.detailAddress}}</p>
                             <p>{{address.phone}}</p>
                         </div>
@@ -57,19 +57,19 @@
                             </div>
                             <div class="box-body">
                                 <p><span>留言：</span>买家留言 ，选填</p>
-                                <textarea style="width:600px;margin-top:20px"></textarea>
+                                <textarea v-model="form.message" style="width:600px;margin-top:20px"></textarea>
                             </div>
                         </div>
                         <div class="paymentMethod-box">
                             <div class="box-left">
                                 <div class="title">支付</div>
                                 <ul>
-                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7"
-                                                                          value="nn"><i></i><em></em><b>
+                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payType"
+                                                                          value="0"><i></i><em></em><b>
                                         <!--                                        <img src="@/assets/images/icon_wechat01.png">-->
-                                        竞豆兑换<b>120</b>竞豆</b></label></li>
-                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7"
-                                                                          value="nn"><i></i><em></em><b>
+                                        竞豆兑换<b></b></b></label></li>
+                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payType"
+                                                                          value="1"><i></i><em></em><b>
                                         <!--                                        <img src="@/assets/images/icon_wechat01.png">-->
                                         现金兑换<b>￥100</b> 竞豆</b></label></li>
                                     <!--                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7"-->
@@ -82,7 +82,7 @@
                                     <!--                                    </li>-->
                                 </ul>
                             </div>
-                            <div class="box-right"><a href="#">确认付款</a></div>
+                            <div class="box-right"><a @click="submit">确认付款</a></div>
                         </div>
                     </div>
                 </div>
@@ -93,7 +93,7 @@
 
 <script>
   import {mapState} from 'vuex'
-  import {getmallCard,deleteCard} from '@/api/shoppingMall'
+  import {getmallCard,deleteCard,postPay} from '@/api/shoppingMall'
 
   export default {
     data() {
@@ -102,6 +102,10 @@
         list: [],
         ads: {},
         address: {},
+        form:{
+          message:'',
+          payType: null
+        },
         totalPrice: 0,
         checkAll: false
       }
@@ -114,6 +118,46 @@
       ...mapState(['auth'])
     },
     methods: {
+      submit(){
+        let list = []
+          this.list.forEach(v=>{
+          if(v.isCheck){
+            list.push({id:v.id,num:v.count})
+          }
+        })
+        if(!list.length){
+          this.$message.warning('请勾选付款商品')
+          return
+        }
+
+        if(!this.form.payType && this.form.payType != 0){
+          this.$message.warning('请选择付款方式')
+          return
+        }
+        if(!this.address || !this.address.id){
+          this.$message.warning('请选择收获地址')
+          return
+        }
+        postPay({
+          payType:this.form.payType,
+          checkList: list,
+          addressId:this.address.id,
+          message:this.form.message
+        }).then(res => {
+          if (res.succeed) {
+            this.$message.succeed('删除成功')
+            this.calculation()
+          } else {
+            console.log(res);
+            this.$message.warning(res.data && res.data.msg || '')
+          }
+          this.loading = false
+        }).catch(err => {
+          this.loading = false
+          console.log(err)
+        })
+
+      },
       calculation() {
         let totalPrice = 0
         this.list.forEach(v=>{
