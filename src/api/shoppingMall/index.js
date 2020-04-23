@@ -71,7 +71,7 @@ export const getAddressList = (params) => {
  * @param {Object} params 参数
  */
 export const deleteCard = (params) => {
-    return http.post('/mall/deleteCart?checkList', JSON.stringify(params))
+    return http.post('/mall/deleteCart', params)
 }
 
 

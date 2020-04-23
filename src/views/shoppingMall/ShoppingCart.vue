@@ -34,7 +34,7 @@
                                 <label class="ma-checkbox"><input type="checkbox" @change="calculation()" v-model="item.isCheck"><i></i><span></span></label>
                             </div>
                             <div class="commodity-information">
-                                <div class="commodity-img"><img :src="item.commodityName"></div>
+                                <div class="commodity-img"><img :src="item.picture"></div>
                                 <div class="commodity-name">{{item.commodityName}}</div>
                             </div>
                             <div class="selling-price">￥{{item.price}}</div>
@@ -174,7 +174,7 @@
       deleteList(id){
         deleteCard({checkList: id}).then(res => {
           if (res.succeed) {
-            this.$message.succeed('删除成功')
+            this.$message.success('删除成功')
             this.calculation()
           } else {
             console.log(res);
