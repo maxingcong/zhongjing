@@ -42,7 +42,7 @@
                                 <div class="number-emendation">
                                     <div class="icon" @click="item.count && item.count > 1 && item.count--,calculation()">-</div>
                                     <div class="number-text">{{item.count}}</div>
-                                    <div class="icon" @click="item.count && item.count > 1 && item.count++,calculation()">+</div>
+                                    <div class="icon" @click="item.count && item.count++,calculation()">+</div>
                                 </div>
                             </div>
                             <div class="operation"><a @click="list.splice(index,1),deleteList(item.id)">删除</a></div>
@@ -62,30 +62,36 @@
                         </div>
                         <div class="paymentMethod-box">
                             <div class="box-left">
-                                <div class="title">支付</div>
-                                <ul>
-                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payType"
-                                                                          value="0"><i></i><em></em><b>
-                                        <!--                                        <img src="@/assets/images/icon_wechat01.png">-->
-                                        竞豆兑换<b></b></b></label></li>
-                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payType"
-                                                                          value="1"><i></i><em></em><b>
-                                        <!--                                        <img src="@/assets/images/icon_wechat01.png">-->
-                                        现金兑换<b>￥100</b> 竞豆</b></label></li>
-                                    <!--                                    <li><label class="d-radiobox"> <input type="radio" name="tdr7"-->
-                                    <!--                                                                          value="nn"/>-->
-                                    <!--                                        <i></i><em></em><b>-->
-                                    <!--                                            &lt;!&ndash;                                        <img src="@/assets/images/quickpay01.png">&ndash;&gt;-->
-                                    <!--                                            现金+竞豆<b>￥60+60竞豆</b>-->
-                                    <!--                                        </b>-->
-                                    <!--                                    </label>-->
-                                    <!--                                    </li>-->
-                                </ul>
+                                <div class="title">确认订单</div>
                             </div>
-                            <div class="box-right"><a @click="submit">确认付款</a></div>
+                            <div class="box-right"><a @click="dialogVisible = true">确认订单</a></div>
                         </div>
                     </div>
                 </div>
+                <el-dialog
+                  title="确认订单"
+                  :visible.sync="dialogVisible"
+                  width="600px">
+                <el-form  status-icon ref="ruleForm" label-width="100px">
+                    <el-form-item label="支付方式">
+                        <ul style="display: flex">
+                                    <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payType"
+                                                                          value="0"><i></i><em></em><b>
+                                        竞豆兑换<b></b></b></label></li>
+                                    <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payType"
+                                                                          value="1"><i></i><em></em><b>
+                                        现金兑换<b>￥100</b> 竞豆</b></label></li>
+                                </ul>
+                  </el-form-item>
+                  <el-form-item label="确认密码" prop="checkPass">
+                    <el-input type="password" v-model="passwords" autocomplete="off"></el-input>
+                  </el-form-item>
+                </el-form>
+                  <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogVisible = false">取 消</el-button>
+                    <el-button type="primary" @click="submit">确 定 支 付</el-button>
+                  </span>
+                </el-dialog>
             </div>
         </div>
     </div>
@@ -102,6 +108,8 @@
         list: [],
         ads: {},
         address: {},
+        dialogVisible:false,
+        passwords: '',
         form:{
           message:'',
           payType: null
@@ -207,5 +215,7 @@
 </script>
 
 <style scoped>
-
+ul li{
+  flex: 0 0 32%;
+}
 </style>

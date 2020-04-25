@@ -22,12 +22,12 @@
                     <div class="box-right">
                         <div class="title">
                             <h3>{{data.player && data.player.playerName}}</h3><a @click="queryFollowTeam">关注</a>
-                            <p>中文名称暂缺</p>
+                            <!-- <p>中文名称暂缺</p> -->
                         </div>
                         <div class="label"><span>InvictusGaming</span><span class="main-attack">{{data.player && data.player.position}}</span>
                         </div>
                         <div class="match-data">
-                            比赛信息缺失
+                            <!-- 比赛信息缺失 -->
                             <div class="head">2019职业联赛</div>
                             <div class="body">
                                 <table>
@@ -95,9 +95,15 @@
                             <tr v-for="item in personalData" :key="item.id">
                                 <td width="12%">{{item.matchName}}</td>
                                 <td>{{item.appearanceNum}}</td>
-                                <td>{{item.sumKill}}<span>缺</span></td>
-                                <td>{{item.sumAssists}}<span>缺</span></td>
-                                <td>{{item.sumDeath}}<span>缺</span></td>
+                                <td>{{item.sumKill}}<span>
+                                    <!-- 缺 -->
+                                    </span></td>
+                                <td>{{item.sumAssists}}<span>
+                                    <!-- 缺 -->
+                                    </span></td>
+                                <td>{{item.sumDeath}}<span>
+                                    <!-- 缺 -->
+                                    </span></td>
                                 <td>{{item.kda}}</td>
                                 <td>{{item.money}}</td>
                                 <td>{{item.knifeRepair}}</td>

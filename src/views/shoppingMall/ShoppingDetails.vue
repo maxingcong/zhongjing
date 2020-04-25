@@ -19,20 +19,22 @@
                             </div>
                             <span>(还剩{{data.stock}}件)</span>
                         </div>
-                        <div class="exchange-mode">
-                            <label>兑换方式</label>
+                        <div class="exchange-mode" style="height:150px">
+                            <!-- <label>兑换方式</label> -->
                             <ul>
-                                <li><label> <input type="radio" name="mode"
-                                                   value="1"/>
-                                    竞豆兑换<b>120</b>竞豆
+                                <li><label> 
+                                    <!-- <input type="radio" name="mode"
+                                                   value="1"/> -->
+                                    竞豆兑换<b>{{data.combinationBean}}</b>竞豆
                                 </label></li>
-                                <li><label> <input type="radio" name="mode"
-                                                   value="2"/>
-                                    现金兑换<b>￥100</b> 竞豆
+                                <li><label> 
+                                    <!-- <input type="radio" name="mode"
+                                                   value="2"/> -->
+                                    现金兑换<b>￥{{data.combinationPrice}}</b> 
                                 </label></li>
-                                <li><label> <input type="radio" name="mode"
-                                                   value="3"/>
-                                    现金+竞豆<b>￥60+60竞豆</b>
+                                <li><label> 
+                                    现金+竞豆<b>{{data.conversionPrice}}
+                                    </b>
                                 </label></li>
                             </ul>
                         </div>
