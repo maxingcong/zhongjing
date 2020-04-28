@@ -75,9 +75,18 @@ export const deleteCard = (params) => {
 }
 
 
-/*移除商品
+
+
+/*确认订单
+ * @param {Object} params 参数
+ */
+export const confirmOrder = (params) => {
+    return http.post('/user/confirmOrder',params)
+}
+
+/*支付
  * @param {Object} params 参数
  */
 export const postPay = (params) => {
-    return http.post('/wx/pay',params)
+    return http.post('/pay',params)
 }
