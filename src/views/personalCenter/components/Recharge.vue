@@ -3,7 +3,7 @@
         <div class="pannel">
             <div class="pannel-head">
                 <ul>
-                    <li class="active"><a href="#">竞豆充值</a></li>
+                    <li class="active"><a>竞豆充值</a></li>
                 </ul>
             </div>
             <div class="pannel-body">
@@ -11,9 +11,9 @@
                     <div class="box-title">选择商品</div>
                     <div class="choose-commodity">
                         <div class="commodity-list active" v-for="(item,index) in list" :key="index">
-                            <div class="commodity-img"><img src="@/assets/images/chongzhi01.png"></div>
-                            <div class="amount-number">￥{{item.accout}}元</div>
-                            <div class="give-away-number">赠送{{item.accout}}豆</div>
+                            <div class="commodity-img"><img :src="item.pic"></div>
+                            <div class="amount-number">￥{{item.price}}元</div>
+                            <div class="give-away-number">赠送{{item.giveBean}}豆</div>
                             <div class="control-number">
                                 <button class="pull-left" @click="item.num++"><img src="@/assets/images/add.png">
                                 </button>
@@ -40,7 +40,7 @@
                             <li>
                                 <div class="f-checkinline">
                                     <label class="c-checkbox"> <input type="radio" name="payment"
-                                                                      v-model="paymentType"
+                                                                      v-model="payType"
                                                                       value="1"><i></i><span><img
                                             src="@/assets/images/icon_ali01.png">支付宝支付</span></label>
                                 </div>
@@ -48,7 +48,7 @@
                             <li>
                                 <div class="f-checkinline">
                                     <label class="c-checkbox"> <input type="radio" name="payment"
-                                                                      v-model="paymentType"
+                                                                      v-model="payType"
                                                                       value="2"><i></i><span><img
                                             src="@/assets/images/icon_wechat01.png">微信支付</span></label>
                                 </div>
@@ -56,7 +56,7 @@
                             <li>
                                 <div class="f-checkinline">
                                     <label class="c-checkbox"> <input type="radio" name="payment"
-                                                                      v-model="paymentType"
+                                                                      v-model="payType"
                                                                       value="3"><i></i><span><img
                                             src="@/assets/images/quickpay01.png">银联云闪付</span></label>
                                 </div>
@@ -71,12 +71,29 @@
                     </div>
                 </div>
             </div>
+                 <el-dialog
+                  :visible.sync="dialogVisible"
+                  :destroy-on-close="true"
+                  width="600px">
+                    <el-form>
+                       <el-form-item label="请扫码支付">
+                         <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <canvas v-if="msgText"  width='100' height= '100px' ref="code"></canvas>
+                          <div v-else>网络忙，请稍后</div>
+                          </div>
+                       </el-form-item>
+                    </el-form>
+                  <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogVisible = false">取 消</el-button>
+                  </span>
+            </el-dialog>
         </div>
     </div>
 </template>
 
 <script>
     import {putRecharge, queryRecharge} from '@/api/personalCenter'
+    import QRCode from 'qrcode'
 
     export default {
         name: "infoRecharge",
@@ -87,18 +104,22 @@
         },
         data() {
             return {
-                list: [{
-                    accout: 10,
-                    num: 0
-                }, {
-                    accout: 10,
-                    num: 0
-                }, {
-                    accout: 10,
-                    num: 0
-                }],
-                paymentType: '',
-                isTotalSum: true
+                list: [
+                //     {
+                //     accout: 10,
+                //     num: 0
+                // }, {
+                //     accout: 10,
+                //     num: 0
+                // }, {
+                //     accout: 10,
+                //     num: 0
+                // }
+                ],
+                payType: '',
+                isTotalSum: true,
+                dialogVisible: false,
+                msgText: ''
             }
         },
         computed: {
@@ -106,10 +127,10 @@
                 let totalSum = 0
                 this.list.forEach(_ => {
                     if (/^\d+$/.test(_.num)) {
-                        totalSum += (_.accout * _.num)
+                        totalSum += (_.price * _.num)
                         this.isTotalSum = false
                     }
-                    if (!totalSum || !this.paymentType) {
+                    if (!totalSum || !this.payType) {
                         this.isTotalSum = true
                     }
                 })
@@ -117,6 +138,9 @@
             }
         },
         inject: ["layoutApp"],
+        mounted(){
+           this.query()
+        },
         methods: {
             handInpueBlur(value, i) {
                 if (!(/^\d+$/.test(value))) {
@@ -124,29 +148,53 @@
                 }
             },
             query() {
-                // queryRecharge({}).then(res => {
-                //     if (res.success) {
-                //         this.list = res.data
-                //     } else {
-                //         console.log(res)
-                //         // this.$message.warning('网路开小差')
-                //     }
+                this.dialogVisible = false
+                queryRecharge({}).then(res => {
+                    if (res.succeed) {
+                        this.list = res.data && res.data.rows.map(item=>{
+                            item.num = 0
+                            return item
+                        })
+                    } else {
+                        console.log(res)
+                        // this.$message.warning('网路开小差')
+                    }
                     this.$emit('load')
-                // }).catch(err => {
-                //     this.$emit('load')
-                //     console.log(err)
-                //     this.$message.warning('网路开小差')
-                // })
+                }).catch(err => {
+                    this.$emit('load')
+                    console.log(err)
+                    this.$message.warning('网路开小差')
+                })
             },
             submit() {
-                if (!this.totalSum || !this.paymentType) {
+                if (!this.totalSum || !this.payType) {
                     this.isTotalSum = true
                     return
                 }
                 this.layoutApp.loading = true
-                putRecharge({params: JSON.stringify(this.list)}).then(res => {
+                let arr = []
+                this.list.forEach(v=>{
+                   arr.push({id: v.id,count: v.num})
+                })
+                putRecharge({payType:this.payType,recharges:arr}).then(res => {
                     console.log(res)
-                    this.$message.success('充值成功')
+                    if(res.code == 200 && escape(res.msg).indexOf( "%u" )>0){
+                        this.$message.success(res.data && res.data.msg || '')
+                    }else{
+                        let that =this
+                        that.msgText = res.data.msg
+                        that.$nextTick(()=>{
+                        that.dialogVisible = true
+                            try{
+                            QRCode.toCanvas(that.$refs.code, res.data.msg, function (error) {
+                                console.error(error)
+                                that.$message.warning(error)
+                            })
+                            }catch(e){
+                            console.log(e)
+                            }
+                        })
+                    }
                     this.layoutApp.loading = false
                     this.$emit('success')
                 }).catch(err => {

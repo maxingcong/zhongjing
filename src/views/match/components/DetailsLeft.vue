@@ -14,11 +14,11 @@
             </div>
             <div class="box-body">
                 <div class="video-content">
-                    <d-player v-if="isPlayError" @play="play" ref="player"
+                    <!-- <d-player v-if="isPlayError" @play="play" ref="player"
                               class="circle-content-wrap-left-list-item-content-video"
                               @error="onPlayerWaiting"
-                              :options="options"/>
-                    <iframe v-else src="http://liveshare.huya.com/iframe/lpl" width="100%" height="460px"></iframe>
+                              :options="options"/> -->
+                    <iframe  :src="videoAddress" width="100%" height="460px"></iframe>
                 </div>
             </div>
         </div>
@@ -119,9 +119,10 @@
             },
             // 设置视频播放路径
             _setVideoUrl(url) {
-                this.player.switchVideo({
-                    url: url
-                })
+                this.videoAddress = url
+                // this.player.switchVideo({
+                //     url: url
+                // })
             },
             handFollow() {
                 if (this.auth.info.token) {

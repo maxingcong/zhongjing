@@ -40,7 +40,7 @@ export const postMyInfoImg = (params) => {
  *  * @return fn  promise
  */
 export const putRecharge = (params) => {
-    return http.put('/auth/login', params)
+    return http.post('/recharge', params)
 }
 
 
@@ -50,7 +50,7 @@ export const putRecharge = (params) => {
  *  * @return fn  promise
  */
 export const queryRecharge = (params) => {
-    return http.get('/auth/login', params)
+    return http.get('/user/beanRecharge', params)
 }
 
 
