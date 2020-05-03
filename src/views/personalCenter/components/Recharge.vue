@@ -8,7 +8,7 @@
             </div>
             <div class="pannel-body">
                 <div class="bean-recharge-box">
-                    <div class="box-title">选择商品</div>
+                    <div class="box-title">选择竞豆</div>
                     <div class="choose-commodity">
                         <div class="commodity-list active" v-for="(item,index) in list" :key="index">
                             <div class="commodity-img"><img :src="item.pic"></div>

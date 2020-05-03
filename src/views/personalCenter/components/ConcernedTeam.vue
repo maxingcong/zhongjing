@@ -70,6 +70,10 @@
                 getFollowTeam({id: id}).then(res => {
                     if (res.succeed) {
                         this.lists[this.activeName] = res.data && res.data.rows || []
+                        this.$nextTick(()=>{
+                            this.$forceUpdate()
+                        })
+                        console.log(this.lists)
                     } else {
                         console.log(res);
                         this.$message.warning(res.data.msg || '')

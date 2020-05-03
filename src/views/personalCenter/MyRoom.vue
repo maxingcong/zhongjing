@@ -29,15 +29,15 @@
                             </div>
                             <div class="detail-data">
                                 <span>赛果</span>
-                                <p class="small-size">QGhappy胜出（1.26）</p>
+                                <p class="small-size">{{item.matchName}}胜出（1.26）</p>
                             </div>
                             <div class="detail-data">
                                 <span>盈亏情况</span>
-                                <p class="small-size">QGhappy胜出</p>
+                                <p class="small-size">{{item.matchName}}胜出</p>
                             </div>
                             <div class="detail-data">
                                 <span>房主收益</span>
-                                <p class="text-danger"><b>+5000</b></p>
+                                <p class="text-danger"><b>+{{item.ownerNumber}}</b></p>
                             </div>
                         </div>
                     </div>

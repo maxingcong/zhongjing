@@ -8,23 +8,24 @@
             </div>
             <div v-if="isShow" class="pannel-body">
                 <div class="order-box">
-                    <div class="order-list">
+                    <!-- {{list}} -->
+                    <div class="order-list" v-for="item in list" :key="item.id">
                         <div class="list-head">
-                            <div class="order-number">订单号: 787267040447818847</div>
+                            <div class="order-number" style="flex:0 0 300px">订单号: {{item.orderSn}}</div>
                             <div class="order-quantity">数量</div>
                             <div class="actual-payment">实付款</div>
-                            <div class="order-detail"></div>
-                            <div class="order-time">下单时间</div>
+                            <div class="order-detail">订单详情</div>
+                            <div class="order-time" style="flex:0 0 170px">下单时间</div>
                         </div>
-                        <div class="list-body" v-for="item in list" :key="item.id">
-                            <div class="order-number">
-                                <div class="order-img"><img :src="item.picture"></div>
-                                <p>{{item.commodityName}}</p>
+                        <div class="list-body">
+                            <div class="order-number" style="flex:0 0 300px">
+                                <div class="order-img"><img :src="item.img"></div>
+                                <!-- <p>{{item.orderItems[0].commodityName}}</p> -->
                             </div>
-                            <div class="order-quantity">{{item.shippingSn}}</div>
+                            <div class="order-quantity">{{item.orderItems[0].commodityName}}</div>
                             <div class="actual-payment">￥{{item.totalAmount}}</div>
-                            <div class="order-detail">{{item.orderStatus}} <a @click="detail(item.id)">订单详情</a></div>
-                            <div class="order-time">{{item.paymentTime}}</div>
+                            <div class="order-detail">{{emums.orderStatus[item.orderStatus]}} <a style="color:#5997f7" @click="detail(item.id)">订单详情</a></div>
+                            <div class="order-time" style="flex:0 0 170px">{{item.paymentTime}}</div>
                         </div>
                     </div>
                 </div>
@@ -41,12 +42,14 @@
 
 <script>
     import Details from './components/OrderDetails'
+    import emums from '@/enum.js'
     import {queryOrderList, queryOrderDetails} from '@/api/personalCenter'
 
     export default {
         name: "my_order",
         data() {
             return {
+                emums,
                 isShow: true,
                 data: {},
                 list: [],

@@ -75,21 +75,21 @@
     },
     methods: {
       query() {
-        queryInfoClassList({pageSize: 10, pageNum: 3}).then(res => {
+        queryInfoClassList({pageSize: 30, pageNum: 1}).then(res => {
           if (res.succeed) {
             this.data = res.data && res.data.rows || []
             // debugger
             // console.log(res.data.rows);
             this.data.forEach(v => {
               // debugger
-              if (v.id == 1) {
+              if (v.className == '视频资讯') {
                 if (v.picture) {
                   this.vidioList.push(v)
                 } else {
                   // debugger
                   this.vidioListText.push(v)
                 }
-              } else if (v.className == 2) {
+              } else if (v.className == '最新资讯') {
                 this.conList.push(v)
               } else {//赛事
                 this.matchList.push(v)

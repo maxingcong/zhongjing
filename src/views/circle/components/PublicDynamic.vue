@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="circle-content-wrap-left-more">加载更多</div>
+        <div class="circle-content-wrap-left-more" @click="pageSize+=10">加载更多</div>
     </div>
 </template>
 
@@ -71,6 +71,8 @@
                         url: mp4File
                     }
                 },
+                pageNum: 0,
+                pageSize: 10,
                 list: []
             }
         },
@@ -144,7 +146,7 @@
             },
             query() {
                 if (this.isCirle == 2) {
-                    getCircleFollow({}).then(res => {
+                    getCircleFollow({pageNum: this.pageNum, pageSize:this.pageSize}).then(res => {
                         // let data = res.body
                         // debugger
                         if (res.succeed) {

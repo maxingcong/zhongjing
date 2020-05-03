@@ -89,7 +89,7 @@ export const queryOrderList = (params) => {
  *  * @return fn  promise
  */
 export const queryOrderDetails = (params) => {
-    return http.get('/user/orderDetail' + params.id)
+    return http.get('/user/orderDetail/' + params.id)
 }
 
 /*

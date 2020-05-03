@@ -26,7 +26,7 @@
                         </div>
                         <div class="label"><span>InvictusGaming</span><span class="main-attack">{{data.player && data.player.position}}</span>
                         </div>
-                        <div class="match-data">
+                        <div class="match-data" style="margin-bottom:30px">
                             <!-- 比赛信息缺失 -->
                             <div class="head">2019职业联赛</div>
                             <div class="body">
@@ -59,8 +59,8 @@
                     <ul class="hero-list">
                         <li v-for="item in hero" :key="item.id">
                             <div class="hero-img">
-                                <img :src="item.heroIcon">
-                                <div class="hero-img-text">{{item.heroName || '数据缺失'}}</div>
+                                <img style="height:100px" :src="item.heroIcon">
+                                <div class="hero-img-text">{{item.heroName || ''}}</div>
                             </div>
                             <div class="user-data">
                                 <ul>

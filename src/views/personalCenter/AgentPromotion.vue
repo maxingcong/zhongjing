@@ -105,8 +105,11 @@
                     </div>
                 </div>
                 <div class="modal-body">
-                    <div style="width: 100%;height: 50px;line-height: 50px;text-align: center">
-                        {{auth.info.data.invitationCode}}
+                    <div style="width: 100%;height: 200px;line-height: 200px;text-align: center">
+                        <!-- {{auth.info.data.invitationCode}} -->
+                        <div class="QR-code-img">
+                            <canvas width="500" height="500" ref="QeCodeDiv"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -163,6 +166,13 @@
         if (e == 'qrcode') {
           this.$nextTick(() => {
             QRCode.toCanvas(this.$refs.QeCodeCanvas, code, function (error) {
+              console.error(error)
+            })
+          })
+        } else if(e == 'generalization-code'){
+          debugger
+           this.$nextTick(() => {
+            QRCode.toCanvas(this.$refs.QeCodeDiv, code, function (error) {
               console.error(error)
             })
           })

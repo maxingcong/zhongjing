@@ -13,8 +13,7 @@
                 </div>
             </div>
         </div>
-        <div class="circle-content-wrap-left-more">加载更多</div>
-
+        <div class="circle-content-wrap-left-more" @click="pageSize+=10">加载更多</div>
     </div>
 </template>
 
@@ -24,7 +23,9 @@
     export default {
         data() {
             return {
-                list: []
+                list: [],
+                pageNum: 0,
+                pageSize: 10
             }
         },
         mounted() {
@@ -32,7 +33,7 @@
         },
         methods: {
             query() {
-                queryMyFans({}).then(res => {
+                queryMyFans({pageNum: this.pageNum, pageSize:this.pageSize}).then(res => {
                     // let data = res.body
                     // debugger
                     if (res.succeed) {

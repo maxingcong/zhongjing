@@ -37,7 +37,7 @@
                 <div class="match-team right-team" style="text-align: left">
                     <div class="match-team-innerbox" style="width: 80px;float: left;margin-left: 50px">
                         <div class="team-name" style="width: 200px"><img
-                                style="width:56px;height: 56px;border-radius: 50%"
+                                style="width:56px !important;height: 56px !important;border-radius: 50% !important"
                                 :src="item.bIcon"><span style="margin-left: 0">{{item.bName}}</span>
                         </div>
                         <!--<div class="fraction">{{// item.bScore}}</div>-->
@@ -73,7 +73,7 @@
         },
         methods: {
             query() {
-                queryGuessingCompetition({pageNum: 0, pageSize: 4}).then(res => {
+                queryGuessingCompetition({pageNum: 0, pageSize: 3}).then(res => {
                     if (res.succeed) {
                         this.list = res.data && res.data.rows || []
                     } else {

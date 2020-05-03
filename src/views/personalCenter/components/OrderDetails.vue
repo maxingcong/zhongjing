@@ -24,22 +24,22 @@
                         <div class="actual-payment detail-payment">数量</div>
                         <div class="order-time">状态</div>
                     </div>
-                    <div class="list-body">
+                    <div class="list-body" v-for="(item,index) in data.orderItems" :key="index">
                         <div class="order-number">
-                            <div class="order-img"><img :src="data.picture"></div>
-                            <p>{{data.commodityName}}</p>
+                            <div class="order-img"><img :src="item.picture"></div>
+                            <p>{{item.commodityName}}</p>
                         </div>
-                        <div class="order-quantity">￥{{data.shippingAmount}}竞豆</div>
-                        <div class="actual-payment detail-payment">{{data.totalAmount}}</div>
-                        <div class="order-time">{{data.payStatus}}</div>
+                        <div class="order-quantity">￥{{item.combinationPrice}}竞豆</div>
+                        <div class="actual-payment detail-payment">{{item.count}}</div>
+                        <div class="order-time">{{emums.orderStatus[data.orderStatus]}}</div>
                     </div>
                     <div class="freight-details">
                         <p>运费： <span>商家包邮</span></p>
-                        <p>竞豆支付： <span class="amount">60</span></p>
-                        <p>现金支付： <span class="amount">￥60</span></p>
+                        <p>竞豆支付： <span class="amount">{{data.totalBean}}</span></p>
+                        <p>现金支付： <span class="amount">￥{{data.totalAmount}}</span></p>
                     </div>
                 </div>
-                <div class="box">
+                <!-- <div class="box">
                     <div class="logistics-information">
                         <div class="title">物流信息</div>
                         <p>快递单号：75326045052156</p>
@@ -90,13 +90,15 @@
                             </ul>
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import emums from '@/enum.js'
+
     export default {
         name: "infoRecharge",
         props: {
@@ -108,6 +110,11 @@
                 default: () => {
                     return {}
                 }
+            }
+        },
+        data(){
+            return {
+                emums
             }
         }
     }

@@ -28,12 +28,12 @@
                         </div>
                         <div class="privatecircleright-info-bottom">
                             <div class="privatecircleright-info-bottom-item">
-                                <span class="privatecircleright-info-bottom-item-num">{{data.postNum}}</span>
+                                <span class="privatecircleright-info-bottom-item-num">{{data.followUserNum}}</span>
                                 <span class="privatecircleright-info-bottom-item-desc">
                                     <a @click="type = 1">关注</a></span>
                             </div>
                             <div class="privatecircleright-info-bottom-item">
-                                <span class="privatecircleright-info-bottom-item-num">{{data.followUserNum}}</span>
+                                <span class="privatecircleright-info-bottom-item-num">{{data.postNum}}</span>
                                 <span class="privatecircleright-info-bottom-item-desc">
                                     <a @click="type = 2">动态</a></span>
                             </div>
