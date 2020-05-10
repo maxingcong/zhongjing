@@ -10,7 +10,7 @@
                     <div class="box-body">
                         <ul>
                             <li v-for="item in list" :key="item.id"><a @click="id = item.id,query()"><img
-                                    style="width: 30px;height: 30px"
+                                    style="width: 30px;height: 30px;border-radius: 50%;"
                                     :src="item.gameIcon">{{item.gameName}}</a></li>
                         </ul>
                     </div>

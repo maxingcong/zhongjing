@@ -28,7 +28,9 @@
                     </div>
                 </div>
                 <div class="box-body">
+                  <keep-alive>
                     <router-view/>
+                  </keep-alive>
                 </div>
             </div>
         </div>

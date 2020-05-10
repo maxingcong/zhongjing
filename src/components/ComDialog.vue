@@ -7,9 +7,14 @@
             @close="$emit('close')"
             width="80%">
         <slot></slot>
-        <span slot="footer" class="dialog-footer">
-           <el-button type="primary" @click="$emit('close')">确 定</el-button>
-        </span>
+           <el-button type="primary" style="    width: 300px;
+    position: absolute;
+    left: 50%;
+    margin-left: -150px;
+    bottom: 140px;"  @click="$emit('close')">确 定</el-button>
+
+        <!-- <span slot="footer" class="dialog-footer">
+        </span> -->
     </el-dialog>
 </template>
 

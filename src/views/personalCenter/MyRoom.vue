@@ -14,8 +14,9 @@
                             <div class="head-data-list game"><img style="border-radius: 50%"
                                                                   :src="item.gameIcon" class="mr10 img-24">{{item.matchName}}
                             </div>
-                            <div class="head-data-list states"><span
-                                    class="mr10 text-success"> {{item.status || ''}}</span><label
+                            <div class="head-data-list states">
+                                <!-- <span -->
+                                    <!-- class="mr10 text-success"> {{//item.status || ''}}</span> --><label
                                     class="lbl lbl-c1">{{emumObj.foreast[item.status]}}</label></div>
                         </div>
                         <div class="box-body">

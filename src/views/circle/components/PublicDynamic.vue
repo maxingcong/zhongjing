@@ -17,22 +17,13 @@
                 <div class="circle-content-wrap-left-list-item-content" v-if="isCirle != 4 && item.vidoo">
                     <d-player @play="play" ref="play" class="circle-content-wrap-left-list-item-content-video"
                               :options="{video: {url: item.vidoo}}"/>
-                    <!--<img class="circle-content-wrap-left-list-item-content-one-img" src="@/assets/images/circle/demo_img.png" alt="">-->
                 </div>
                 <div class="circle-content-wrap-left-list-item-handle">
                     <div class="circle-content-wrap-left-list-item-handle-item" @click="share">
                         <img class="circle-content-wrap-left-list-item-handle-item-img"
                              src="@/assets/images/circle/send.png" alt="">
-                        <!-- <span class="circle-content-wrap-left-list-item-handle-item-txt">36</span> -->
                     </div>
-                    <!--                    &lt;!&ndash;品论&ndash;&gt;-->
-                    <!--                    <div class="circle-content-wrap-left-list-item-handle-item">-->
-                    <!--                        <img class="circle-content-wrap-left-list-item-handle-item-img"-->
-                    <!--                             src="@/assets/images/circle/pinglun.png" alt="">-->
-                    <!--                        <span class="circle-content-wrap-left-list-item-handle-item-txt">1020</span>-->
-                    <!--                    </div>-->
-                    <!--点赞-->
-                    <div class="circle-content-wrap-left-list-item-handle-item" @click="thumbsUp">
+                    <div class="circle-content-wrap-left-list-item-handle-item" @click="thumbsUp(item.postId),item.isZan++">
                         <img class="circle-content-wrap-left-list-item-handle-item-img"
                              src="@/assets/images/circle/dianzan.png" alt="">
                         <span class="circle-content-wrap-left-list-item-handle-item-txt">
@@ -49,13 +40,14 @@
 <script>
     import VueDPlayer from 'vue-dplayer'
     import '@/assets/css/vue-dplayer.css'
-    import mp4File from '@/assets/video/demo_video.mp4'
+    // import mp4File from '@/assets/video/demo_video.mp4'
     import {
         getCircleAll,
         getCircleFollow,
         queryMyFollowCircle,
         queryCancelCircle,
-        getCircleDynamic
+        getCircleDynamic,
+        queryMyzan
     } from '@/api/circle'
     import {mapState} from 'vuex'
 
@@ -68,7 +60,7 @@
             return {
                 options: {
                     video: {
-                        url: mp4File
+                        url: ''
                     }
                 },
                 pageNum: 0,
@@ -97,22 +89,32 @@
             play() {
                 console.log('play callback')
             },
-            thumbsUp() {
-                // queryMyFollowCircle({id: e.id}).then(res => {
-                //     if (res.succeed) {
-                this.$message.success('点赞成功')
-                //     } else {
-                //         this.$message.warning(res.data.msg)
-                //     }
-                // }).catch(err => {
-                //     console.log(err)
-                // })
+            thumbsUp(id) {
+                if(!this.auth.info.token){
+                    this.$router.push({name:'login'})
+                }
+                queryMyzan({postId: id}).then(res => {
+                    if (res.succeed) {
+                     this.$message({
+                         offset: '200',
+                         type: 'success',
+                         message: '点赞成功'
+                     })
+                    } else {
+                        this.$message.warning(res.data.msg)
+                    }
+                }).catch(err => {
+                    console.log(err)
+                })
             },
             share(){
                window.open('http://v.t.sina.com.cn/share/share.php?=title'+encodeURIComponent(document.title)+'&url='+encodeURIComponent(location.href)
 +'&source=bookmark','_blank','width=450,height=400')
             },
             followCircle(e) {
+                    if(!this.auth.info.token){
+                    this.$router.push({name:'login'})
+                }
                 if (true) {
                     queryMyFollowCircle({circleId: e.id}).then(res => {
                         if (res.succeed) {

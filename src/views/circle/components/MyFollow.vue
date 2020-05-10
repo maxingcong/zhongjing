@@ -1,28 +1,15 @@
 <template>
     <div>
         <div class="follow-content-wrap-left-input-title">我的关注</div>
-        <div class="follow-content-wrap-left-input-list">
+        <div class="follow-content-wrap-left-input-list" v-for="item in list" :key="item.id">
             <div class="follow-content-wrap-left-input-list-item">
-                <img class="follow-content-wrap-left-input-list-item-img" src="" alt="">
-                <span class="follow-content-wrap-left-input-list-item-gamename">LOL战场</span>
-                <span class="follow-content-wrap-left-input-list-item-desc">LPL全明星周末11月30日海口冯小刚电影公社LPL全明星周末11月30日海口冯小刚电影公社</span>
-                <span class="follow-content-wrap-left-input-list-item-time">12分钟前更新</span>
-            </div>
-            <div class="follow-content-wrap-left-input-list-item">
-                <img class="follow-content-wrap-left-input-list-item-img" src="" alt="">
-                <span class="follow-content-wrap-left-input-list-item-gamename">LOL战场</span>
-                <span class="follow-content-wrap-left-input-list-item-desc">LPL全明星周末11月30日海口冯小刚电影公社LPL全明星周末11月30日海口冯小刚电影公社</span>
-                <span class="follow-content-wrap-left-input-list-item-time">12分钟前更新</span>
-            </div>
-            <div class="follow-content-wrap-left-input-list-item">
-                <img class="follow-content-wrap-left-input-list-item-img" src="" alt="">
-                <span class="follow-content-wrap-left-input-list-item-gamename">LOL战场</span>
-                <span class="follow-content-wrap-left-input-list-item-desc">LPL全明星周末11月30日海口冯小刚电影公社LPL全明星周末11月30日海口冯小刚电影公社</span>
-                <span class="follow-content-wrap-left-input-list-item-time">12分钟前更新</span>
+                <img class="follow-content-wrap-left-input-list-item-img" :src="item.avatar || item.pic" alt="">
+                <span class="follow-content-wrap-left-input-list-item-gamename">{{item.nickname || item.circleName}}</span>
+                <span class="follow-content-wrap-left-input-list-item-desc" v-html="item.content"></span>
+                <span class="follow-content-wrap-left-input-list-item-time">{{item.before}}</span>
             </div>
         </div>
-        <div class="circle-content-wrap-left-more">加载更多</div>
-
+        <div class="circle-content-wrap-left-more" @click="pageSize+=10">加载更多</div>
     </div>
 </template>
 
@@ -33,7 +20,9 @@
         name: 'follow', //关注
         data() {
             return {
-                list: []
+                list: [],
+                  pageNum: 0,
+                pageSize: 10
             }
         },
         mounted() {
@@ -41,7 +30,7 @@
         },
         methods: {
             query() {
-                getCircleFollow({}).then(res => {
+                getCircleFollow({pageNum: this.pageNum, pageSize:this.pageSize}).then(res => {
                     // debugger
                     let data = res.data
                     if (res.succeed) {

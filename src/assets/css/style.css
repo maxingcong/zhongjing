@@ -1503,6 +1503,8 @@ form .form-group .form-content ul.payment-method li img {
     vertical-align: top;
     padding: 10px 0px;
     width: 145px;
+    /* width: auto; */
+    /* min-width: 150px; */
     text-align: center;
 }
 
@@ -5776,10 +5778,11 @@ table.table-primary tbody tr td span {
 .img-24 {
     width: 24px;
     height: 24px;
-
+    border-radius: 50%;
 }
 
 .img-72 {
     width: 72px;
+    border-radius: 50%;
     height: 72px;
 }

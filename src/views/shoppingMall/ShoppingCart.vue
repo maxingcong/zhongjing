@@ -78,13 +78,22 @@
                           <ul style="display: flex">
                                       <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payMode"
                                                                             value="1"><i></i><em></em><b>
-                                          现金支付<b>{{payDate.totalPrice}}</b></b></label></li>
+                                          现金支付<b style="word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden">{{payDate.totalPrice}}</b></b></label></li>
                                       <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payMode"
                                                                             value="2"><i></i><em></em><b>
-                                          竞豆支付<b>￥{{payDate.totalBean}}</b> 竞豆</b></label></li>
+                                          竞豆支付<b style="word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden">￥{{payDate.totalBean}}</b> 竞豆</b></label></li>
                                           <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payMode"
                                                                             value="3"><i></i><em></em><b>
-                                          组合支付<b>{{payDate.totalBean}}</b> 竞豆</b></label></li>
+                                          组合支付<b style="word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden">{{payDate.totalBean}}</b> 竞豆</b></label></li>
                                 </ul>
                           </el-form-item>
                           <el-form-item label="支付方式" v-if="form.payMode && form.payMode != 2">
@@ -92,7 +101,10 @@
                                             <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr1" v-model="form.payType"
                                                                                   value="1"><i></i><em></em><b>
                                                 微信<b></b></b></label></li>
-                                            <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr1" v-model="form.payType"
+                                            <li style="flex:0 0 32%"><label style="word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden" class="d-radiobox"> <input type="radio" name="tdr1" v-model="form.payType"
                                                                                   value="2"><i></i><em></em><b>
                                                 支付宝<b></b></b></label></li>
                                         </ul>

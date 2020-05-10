@@ -35,8 +35,9 @@
   export default {
     name: "shoppingList",
     data() {
+      let that =this
       return {
-        categoryId: 1,
+        categoryId: that.$route.params.post_id,
         list: []
       }
     },

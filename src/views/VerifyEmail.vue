@@ -12,7 +12,7 @@
                         <div class="form-content">
                             <input type="text" class="form-control" v-model="form.code"
                                    placeholder="输入验证码">
-                            <button v-if="isCodeGeting" @click="queryEmail" class="btn btn-default">
+                            <button v-if="isCodeGeting" @click.stop="queryEmail" class="btn btn-default">
                                 获取验证码
                             </button>
                             <button v-if="!isCodeGeting" class="btn btn-default" size="small">

@@ -29,9 +29,9 @@
                         <el-input class="register-input" placeholder="手机验证码"
                                   v-model="form.phoneCode">
                             <div slot="suffix">
-                                <button v-if="isCodeGeting" @click.stop="getPhotoCode" class="btn btn-default">获取验证码
+                                <button v-if="isCodeGeting" @click.stop="getPhotoCode" style="background:#FD5F5F;color:#fff" class="btn btn-default">获取验证码
                                 </button>
-                                <button v-if="!isCodeGeting" class="btn btn-default" size="small">
+                                <button v-if="!isCodeGeting" style="background：#ccc" class="btn btn-default" size="small">
                                     <countdown :end-time="new Date().getTime()+60*1000" @finish="finish">
                                         <template slot="process" slot-scope="{timeObj}">
                                             <span>重新获取</span>
@@ -75,11 +75,11 @@
                 <a @click="isModalOpen = false" class="modal-remove"><img
                         src="@/assets/images/login&register/close_icon.png"></a>
                 <div class="modal-head">
-                    <p>验证邮箱</p>
-                    <p>即送188竞豆</p>
+                    <p>注册成功！</p>
+                    <p>并已获得188竞豆</p>
                 </div>
                 <div class="modal-body">
-                    <p>注册成功！</p>
+                    <p>立即绑定邮箱</p>
                     <a @click="$router.push({name:'verify_email'})">马上验证邮箱</a>
                 </div>
             </div>

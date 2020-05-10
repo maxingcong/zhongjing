@@ -1,8 +1,8 @@
 <template>
     <div>
         <ul>
-            <li  @click="$router.push({name: 'match_details',query:{id:item.id}}), $emit('switch', item.id)"  v-for="item in list" :key="item.id">
-                <a><img style="width: 54px;height: 54px;" :src="item.gameIcon"/></a>
+            <li  @click="$router.push({name: 'consultation_list',query:{id:item.id}}), $emit('switch', item.id)"  v-for="item in list" :key="item.id">
+                <a><img style="width: 54px;height: 54px;border-" :src="item.gameIcon"/></a>
 <!--                <a><img style="width: 50px;height: 50px;border-radius: 50%;" src="@/assets/images/index/bteam16.png"/></a>-->
             </li>
         </ul>

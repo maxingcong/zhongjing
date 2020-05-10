@@ -39,6 +39,11 @@
                 return this.$route.query.id || ''
             }
         },
+        watch: {
+          id:function () {
+              this.query()
+          }
+        },
         mounted() {
             this.query()
         },
@@ -52,6 +57,7 @@
                 queryMathDetails({id: this.id}).then(res => {
                     if (res.succeed) {
                         this.data = res.data
+                        this.$forceUpdate()
                     } else {
                         console.log(res);
                         // this.$message.warning('网路开小差')

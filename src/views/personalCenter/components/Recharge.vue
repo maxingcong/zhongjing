@@ -15,7 +15,7 @@
                             <div class="amount-number">￥{{item.price}}元</div>
                             <div class="give-away-number">赠送{{item.giveBean}}豆</div>
                             <div class="control-number">
-                                <button class="pull-left" @click="item.num++"><img src="@/assets/images/add.png">
+                                <button class="pull-left" @click="item.num++ && item.num<=10"><img src="@/assets/images/add.png">
                                 </button>
                                 <span class="control-input">
                                     <input type="number" v-model="item.num" @blur="handInpueBlur(item.num, index)"/>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="total-box">
-                        <p>本次可获得赠送竞豆： <b>15000豆</b></p>
+                        <p>本次可获得赠送竞豆： <b>{{totalSum*100}}豆</b></p>
                         <span>*单个商品每次最多购买10个</span>
                         <div class="total-number pull-right">共计支付：<b>￥{{totalSum}}元</b></div>
                     </div>
@@ -183,13 +183,14 @@
                     }else{
                         let that =this
                         that.msgText = res.data.msg
-                        that.$nextTick(()=>{
                         that.dialogVisible = true
+                        that.$nextTick(()=>{
                             try{
                             QRCode.toCanvas(that.$refs.code, res.data.msg, function (error) {
                                 console.error(error)
                                 that.$message.warning(error)
                             })
+                            this.$forceUpdate()
                             }catch(e){
                             console.log(e)
                             }

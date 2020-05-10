@@ -27,12 +27,18 @@
                                                    value="1"/> -->
                                     竞豆兑换<b>{{data.combinationBean}}</b>竞豆
                                 </label></li>
-                                <li><label> 
+                                <li><label style="word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden"> 
                                     <!-- <input type="radio" name="mode"
                                                    value="2"/> -->
                                     现金兑换<b>￥{{data.combinationPrice}}</b> 
                                 </label></li>
-                                <li><label> 
+                                <li><label style="word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden"> 
                                     现金+竞豆<b>{{data.conversionPrice}}
                                     </b>
                                 </label></li>
@@ -70,7 +76,7 @@
         data() {
             return {
                 type: '',
-                quantity: 0,
+                quantity: 1,
                 data: {
                     // id: this.$route.query.id
                 }

@@ -18,10 +18,12 @@
                     </div>
                 </div>
                 <div class="order-list">
-                    <div class="list-head">
+                    <div class="list-body">
                         <div class="order-number"><b class="mr10">2019-12-09</b>订单号: {{data.orderSn}}</div>
                         <div class="order-quantity">售价</div>
                         <div class="actual-payment detail-payment">数量</div>
+                        <!-- <div>商品金额</div> -->
+                        <div class="order-quantity">商品金额</div>
                         <div class="order-time">状态</div>
                     </div>
                     <div class="list-body" v-for="(item,index) in data.orderItems" :key="index">
@@ -31,6 +33,8 @@
                         </div>
                         <div class="order-quantity">￥{{item.combinationPrice}}竞豆</div>
                         <div class="actual-payment detail-payment">{{item.count}}</div>
+                        <div class="order-quantity">{{item.shippingAmount || 0}}</div>
+                        <!-- <div>{{item.shippingAmount || 0}}</div> -->
                         <div class="order-time">{{emums.orderStatus[data.orderStatus]}}</div>
                     </div>
                     <div class="freight-details">
@@ -38,7 +42,23 @@
                         <p>竞豆支付： <span class="amount">{{data.totalBean}}</span></p>
                         <p>现金支付： <span class="amount">￥{{data.totalAmount}}</span></p>
                     </div>
+                     <div class="freight-details">
+                         <button @click="submit" class="btn btn-primary">立即支付
+                            </button>
+                    </div>
                 </div>
+                <el-dialog
+                  title="支付"
+                  :visible.sync="ispay"
+                  width="600px">
+                    <el-form>
+                       <el-form-item label="请扫码支付">
+                         <div style="width:100%;height:100%;display:flex;justify-content: center;">
+                            <canvas  width='100' height= '100px' ref="code"></canvas>
+                          </div>
+                       </el-form-item>
+                    </el-form>
+                  </el-dialog>
                 <!-- <div class="box">
                     <div class="logistics-information">
                         <div class="title">物流信息</div>
@@ -114,12 +134,29 @@
         },
         data(){
             return {
-                emums
+                emums,
+                ispay:false
+            }
+        },
+        methods:{
+            submit(){
+                this.ispay = true
+                // that.$nextTick(()=>{
+                // try{
+                //   QRCode.toCanvas(that.$refs.code, res.data.msg, function (error) {
+                //     console.error(error)
+                //     that.$message.warning(error)
+                //   })
+                // }catch(e){
+                //   console.log(e)
+                // }
             }
         }
     }
 </script>
 
 <style scoped>
-
+.detail-payment{
+   width: 100px !important;
+}
 </style>

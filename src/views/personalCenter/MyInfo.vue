@@ -4,11 +4,11 @@
             <div class="pannel-body">
                 <div class="user-info">
                     <div class="head-sculpture"><img style="width:104px;height: 104px;border-radius: 50%"
-                                                     :src="data.avatar"></div>
+                                                     :src="data.avatar || touxiang"></div>
                     <div class="info-text">
                         <h5>{{data.nickname}} <p><span>ID</span>{{data.id}}</p></h5>
-                        <div class="tag"><img src="@/assets/images/phone.png"><span>{{data.phone}}</span></div>
-                        <div class="tag no-after"><img src="@/assets/images/email.png"><span>{{data.email}}</span>
+                        <div class="tag" @click="edit"><img src="@/assets/images/phone.png"><span>{{data.phone}}</span></div>
+                        <div class="tag no-after" @click="edit"><img src="@/assets/images/email.png"><span>{{data.email}}</span>
                         </div>
                     </div>
                     <div class="operation-box">
@@ -48,6 +48,7 @@
         name: "my_info",
         data() {
             return {
+                touxiang: require('@/assets/img/touxiang.png'),
                 isEdit: true,
                 type: 1,
                 data: {},

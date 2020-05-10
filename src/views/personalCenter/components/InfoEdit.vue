@@ -30,7 +30,7 @@
                 <div class="edit-box">
                     <div class="box-head"><h5>修改头像</h5></div>
                     <div class="box-body">
-                        <div class="head-portrait-edit">
+                        <div class="head-portrait-edit" style="margin-bottom:75px">
                             <el-upload
                                     class="avatar-uploader"
                                     accept="image/jpeg,image/jpg,image/png"
@@ -48,7 +48,8 @@
                     </div>
                 </div>
                 <div class="edit-box">
-                    <div class="box-head"><h5>修改名称</h5></div>
+                    <div class="box-head"
+                    ><h5>修改名称</h5></div>
                     <div class="box-body">
                         <form style="align-items: normal;">
                             <div class="form-left">
@@ -93,10 +94,10 @@
                                     <div class="form-content">
                                         <input type="text" class="form-control" v-model="phone.code"
                                                placeholder="输入验证码"/>
-                                        <countdown v-if="!isCodeGeting" :end-time="new Date().getTime()+60*1000"
+                                        <countdown style="background：#ccc" v-if="!isCodeGeting" :end-time="new Date().getTime()+60*1000"
                                                    @finish="finish">
                                             <template slot="process" slot-scope="{timeObj}">
-                                                <a class="sumbit-btn"> <span>重新获取</span>
+                                                <a class="sumbit-btn" style="background: #ccc !important;"> <span>重新获取</span>
                                                     ({{timeObj.s}}s)</a>
                                             </template>
                                         </countdown>
@@ -115,6 +116,7 @@
                 <div class="edit-box">
                     <div class="box-head"><h5>修改邮箱</h5></div>
                     <div class="box-body">
+                        <div v-if="!email.email" style="font-size:18px;color:red;margin:10px 0">!绑定邮箱获取更多福利</div>
                         <form>
                             <div class="form-left">
                                 <div class="form-group">
@@ -150,7 +152,7 @@
                                         <countdown v-if="!isNewEmailCode" :end-time="new Date().getTime()+60*1000"
                                                    @finish="finishNewEmail">
                                             <template slot="process" slot-scope="{timeObj}" class="sumbit-btn">
-                                                <a class="sumbit-btn"><span>重新获取</span>
+                                                <a class="sumbit-btn" style="background: #ccc !important;"><span>重新获取</span>
                                                     ({{timeObj.s}}s)</a>
                                             </template>
                                         </countdown>
@@ -394,6 +396,9 @@
 </script>
 
 <style scoped lang="less">
+.box-head{
+    border: none !important;
+}
     .avatar-uploader {
         width: 96px;
         height: 96px;

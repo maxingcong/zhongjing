@@ -37,9 +37,10 @@
                     <span @click="$router.push({name:'register'})">注册</span>
                 </span>
             </div>
-            <div class="privateheader-wrap-login-warn" @click="$router.push({name:'register'})">
+            <div class="privateheader-wrap-login-warn" >
                 <div class="privateheader-wrap-login-warn-wrap"></div>
-                <span class="privateheader-wrap-login-warn-txt">注册送188竞豆</span>
+                <span class="privateheader-wrap-login-warn-txt" @click="$router.push({name:'register'})" v-if="!auth.info.token">注册送188竞豆</span>
+                <span class="privateheader-wrap-login-warn-txt" @click="$router.push({name:'my_info'})"  v-else>充值送188竞豆</span>
             </div>
         </div>
     </div>

@@ -9,12 +9,12 @@
             <div class="duel-details">
                 <div class="duel-details-list" v-for="item in list.slice(0,1)" :key="item.matchInfoId">
                     <div class="duel-details-list-head">
-                        <div class="match-name"><img style="width: 24px;height: 24px" :src="item.picture">{{item.matchName}}</div>
+                        <div class="match-name"><img style="width: 24px;height: 24px;    border-radius: 50%;" :src="item.picture">{{item.matchName}}</div>
                         <div class="match-time">{{item.matchTime | filterTime}}</div>
                     </div>
                     <div class="duel-details-list-body">
                         <div class="duel-match">
-                            <div class="duel-match-logo"><img style="width: 72px;height: 72px" :src="item.aIcon"></div>
+                            <div class="duel-match-logo"><img style="width: 72px;height: 72px;    border-radius: 50%;" :src="item.aIcon"></div>
                             <div class="duel-match-name">{{item.aName}}</div>
                         </div>
                         <div class="duel-operation">
@@ -27,7 +27,7 @@
                             <span>竞猜热度{{item.hotValue}}</span>
                         </div>
                         <div class="duel-match">
-                            <div class="duel-match-logo"><img  style="width: 72px;height: 72px" :src="item.bIcon"></div>
+                            <div class="duel-match-logo"><img  style="width: 72px;height: 72px;    border-radius: 50%;" :src="item.bIcon"></div>
                             <div class="duel-match-name">{{item.bName}}</div>
                         </div>
                     </div>

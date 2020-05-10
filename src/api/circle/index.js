@@ -60,3 +60,9 @@ export const queryMyFollowCircle = (params) => {
 export const queryCancelCircle = (params) => {
     return http.post('/user/cancelCircle', params)
 }
+/*赞
+ * @param {Object} params 参数
+ */
+export const queryMyzan = (params) => {
+    return http.post('/user/fabulous', params)
+}

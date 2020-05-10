@@ -35,7 +35,7 @@
                     <ul class="item-list" style="display: flex;flex-wrap: wrap;">
                         <li v-for="item in data[0].players" :key="item.id">
                             <a @click="$router.push({name: 'team_member_details',query:{id:item.id}})">
-                                <div class="team-member-img"><img style="height:120px" :src="item.playerPicture"></div>
+                                <div class="team-member-img"><img style="height:92px; width:92px;   border-radius: 50%;" :src="item.playerPicture"></div>
                                 <div class="team-member-name">
                                     <div>{{item.playerName}}</div>
                                     <div style="width: 100%;text-align: center"><label>{{item.introduce}}</label></div>
