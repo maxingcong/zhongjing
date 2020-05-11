@@ -121,6 +121,13 @@
     },
     methods: {
       submitF() {
+        console.log(this.editor.txt)
+        let item = this.editor.txt.html().length
+        if(item > 1000){
+          this.$message.warning('您输入的内容过长，请重新编辑')
+          return
+        }
+        debugger
         posyCircleAll({content: this.editor.txt.html()}).then(res => {
           if (res.succeed) {
             this.$message.success('发表成功')

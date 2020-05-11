@@ -43,14 +43,57 @@
                         <p>现金支付： <span class="amount">￥{{data.totalAmount}}</span></p>
                     </div>
                      <div class="freight-details">
-                         <button @click="submit" class="btn btn-primary">立即支付
+                         <button @click="submit(data.orderSn)" class="btn btn-primary">立即支付
                             </button>
                     </div>
                 </div>
-                <el-dialog
+                 <el-dialog
                   title="支付"
-                  :visible.sync="ispay"
+                  :visible.sync="dialogVisible"
                   width="600px">
+                  <div v-if="!iscode">
+                     <el-form  status-icon ref="ruleForm" label-width="100px">
+                      <el-form-item label="支付类型">
+                          <ul style="display: flex">
+                                      <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payMode"
+                                                                            value="1"><i></i><em></em><b>
+                                          现金支付<b style="word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden">{{payDate.totalPrice}}</b></b></label></li>
+                                      <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payMode"
+                                                                            value="2"><i></i><em></em><b>
+                                          竞豆支付<b style="word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden">￥{{payDate.totalBean}}</b> 竞豆</b></label></li>
+                                          <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr7" v-model="form.payMode"
+                                                                            value="3"><i></i><em></em><b>
+                                          组合支付<b style="word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden">{{payDate.totalBean}}</b> 竞豆</b></label></li>
+                                </ul>
+                          </el-form-item>
+                          <el-form-item label="支付方式" v-if="form.payMode && form.payMode != 2">
+                                <ul style="display: flex">
+                                            <li style="flex:0 0 32%"><label class="d-radiobox"> <input type="radio" name="tdr1" v-model="form.payType"
+                                                                                  value="1"><i></i><em></em><b>
+                                                微信<b></b></b></label></li>
+                                            <li style="flex:0 0 32%"><label style="word-break: normal;
+    overflow-wrap: normal;
+    white-space: nowrap;
+    overflow: hidden" class="d-radiobox"> <input type="radio" name="tdr1" v-model="form.payType"
+                                                                                  value="2"><i></i><em></em><b>
+                                                支付宝<b></b></b></label></li>
+                                        </ul>
+                          </el-form-item>
+                          <el-form-item label="确认密码" prop="checkPass">
+                            <el-input type="password" v-model="passwords" autocomplete="off"></el-input>
+                          </el-form-item>
+                       </el-form>
+                  </div>
+                  <div v-else>
                     <el-form>
                        <el-form-item label="请扫码支付">
                          <div style="width:100%;height:100%;display:flex;justify-content: center;">
@@ -58,7 +101,12 @@
                           </div>
                        </el-form-item>
                     </el-form>
-                  </el-dialog>
+                  </div>
+                  <span slot="footer" class="dialog-footer">
+                    <el-button @click="dialogVisible = false">取 消</el-button>
+                    <el-button type="primary" v-if="!iscode" @click="submit">确 定 支 付</el-button>
+                  </span>
+                </el-dialog>
                 <!-- <div class="box">
                     <div class="logistics-information">
                         <div class="title">物流信息</div>
@@ -118,6 +166,7 @@
 
 <script>
     import emums from '@/enum.js'
+    import {queryOrderCode} from '@/api/personalCenter'
 
     export default {
         name: "infoRecharge",
@@ -134,13 +183,36 @@
         },
         data(){
             return {
+                passwords: '',
+                dialogVisible:false,
+                payDate: {},
                 emums,
-                ispay:false
+                ispay:false,
+                iscode: false,
+                form:{
+                    message:'',
+                    payType: 0,
+                    payMode: ''
+                }
             }
         },
         methods:{
-            submit(){
+            submit(orderSn){
                 this.ispay = true
+                this.dialogVisible = true
+                queryOrderCode({orderSn}).then(res => {
+                        if (res.succeed) {
+                            this.payDate = res.data.data || {}
+                            this.dialogVisible = true
+                        } else {
+                            console.log(res);
+                            this.$message.warning(res.data && res.data.msg || '')
+                        }
+                        this.loading = false
+                }).catch(err => {
+                    this.loading = false
+                    console.log(err)
+                 })
                 // that.$nextTick(()=>{
                 // try{
                 //   QRCode.toCanvas(that.$refs.code, res.data.msg, function (error) {

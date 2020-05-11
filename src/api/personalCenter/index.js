@@ -226,3 +226,12 @@ export const getfollowGame = (params) => {
 export const queryAgentCode = (params) => {
     return http.get('/user/promoCode', {params})
 }
+
+/*
+*订单支付
+ * @param {Object} params 参数
+ *  * @return fn  promise
+ */
+export const queryOrderCode = (params) => {
+    return http.post('/orderPay/'+ params.orderSn, {params})
+}
