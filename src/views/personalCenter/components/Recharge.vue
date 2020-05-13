@@ -15,14 +15,16 @@
                             <div class="amount-number">￥{{item.price}}元</div>
                             <div class="give-away-number">赠送{{item.giveBean}}豆</div>
                             <div class="control-number">
-                                <button class="pull-left" @click="item.num++ && item.num<=10"><img src="@/assets/images/add.png">
+                                <button class="pull-left" @click="item.num > 0&&item.num--"><img src="@/assets/images/reduce.png">
                                 </button>
                                 <span class="control-input">
                                     <input type="number" v-model="item.num" @blur="handInpueBlur(item.num, index)"/>
                                 </span>
                                 <!--                                <span><el-input class="control-input" v-model="item.num" size="small"/></span>-->
-                                <button class="pull-right" @click="item.num > 0&&item.num--"><img
-                                        src="@/assets/images/reduce.png">
+                                <button class="pull-right" @click="item.num++ && item.num<=10">
+                                <!-- <button class="pull-right" @click="item.num > 0&&item.num--"> -->
+                                    <!-- <img src="@/assets/images/reduce.png" /> -->
+                                    <img src="@/assets/images/add.png">
                                 </button>
                             </div>
                         </div>

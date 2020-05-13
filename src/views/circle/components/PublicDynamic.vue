@@ -1,7 +1,7 @@
 <template>
     <div>
         <div class="circle-content-wrap-left-list">
-            <div class="circle-content-wrap-left-list-item" v-for="item in list" :key="item.id">
+            <div class="circle-content-wrap-left-list-item" v-for="(item,index) in list" :key="index">
                 <div class="circle-content-wrap-left-list-item-info">
                     <img class="circle-content-wrap-left-list-item-info-avatar" :src="item.avatar || item.pic"
                          alt="">
@@ -15,7 +15,7 @@
                 </div>
                 <span class="circle-content-wrap-left-list-item-title" v-html="item.content"></span>
                  <!-- <div :ref="item.postId + 'toolbar'" v-if="item[postId + 'toolbar']" class="toolbar"></div> -->
-                 <div class="circle-content-wrap-left-input" v-if="item[id + 'toolbar']">
+                 <div class="circle-content-wrap-left-input" v-if="item[item.id + 'toolbar']">
                     <div :ref="item.id + 'editor'" class="text"></div>
                     <div style="display: flex;justify-content: space-between;margin-top: 20px">
                         <div :ref="item.id + 'toolbar'" class="toolbar"></div>
@@ -199,7 +199,7 @@
                 if(!this.auth.info.token){
                     this.$router.push({name:'login'})
                 }
-                queryMyzan({postId: item.postId}).then(res => {
+                queryMyzan({postId: item.id}).then(res => {
                     if (res.succeed) {
                      this.$message({
                          offset: '200',

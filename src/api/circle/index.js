@@ -12,7 +12,7 @@ export const getCircleAll = (params) => {
  * @param {Object} params 参数
  */
 export const getCircleDynamic = (params) => {
-    return http.get('/circle/info', params)
+    return http.get('/circle/myInfo', params)
 }
 /*查询关注
  * @param {Object} params 参数

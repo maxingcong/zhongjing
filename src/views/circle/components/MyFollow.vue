@@ -2,10 +2,10 @@
     <div>
         <div class="follow-content-wrap-left-input-title">我的关注</div>
         <div class="follow-content-wrap-left-input-list" v-for="item in list" :key="item.id">
-            <div class="follow-content-wrap-left-input-list-item">
+            <div class="follow-content-wrap-left-input-list-item" style="display: inline-table;">
                 <img class="follow-content-wrap-left-input-list-item-img" :src="item.avatar || item.pic" alt="">
                 <span class="follow-content-wrap-left-input-list-item-gamename">{{item.nickname || item.circleName}}</span>
-                <span class="follow-content-wrap-left-input-list-item-desc" v-html="item.content"></span>
+                <div class="follow-content-wrap-left-input-list-item-desc" v-html="item.content"></div>
                 <span class="follow-content-wrap-left-input-list-item-time">{{item.before}}</span>
             </div>
         </div>
